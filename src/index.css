@@ -1,3 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Prompt:wght@300;400;500;700&family=Quicksand:wght@500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --nav-bg-color: #000;
+  --logo-color: #fff;
+  --hero-bg-color: linear-gradient(
+    90.3deg,
+    #ff6a95 -0.98%,
+    rgba(255, 106, 149, 0.63) -0.97%,
+    #b67bfd 79.83%
+  );
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +29,9 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
