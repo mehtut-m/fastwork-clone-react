@@ -4,6 +4,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Header from './layouts/Header/Header';
 import Register from './pages/Register';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       <CssBaseline />
       <div className="App">
         <Header />
-        <Register />
+        {/* <Register /> */}
+        <Login />
       </div>
     </ThemeProvider>
   );
