@@ -1,13 +1,9 @@
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
@@ -22,7 +18,6 @@ export default function SignUp() {
       maxWidth="xs"
       sx={{
         height: 'calc(100vh - 72px)',
-        marginTop: '4rem',
       }}
     >
       <Box
@@ -30,16 +25,23 @@ export default function SignUp() {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
+          paddingTop: '4rem',
         }}
       >
         <Typography component="h1" variant="h5">
           fastwork
         </Typography>
 
-        <Typography component="h1" variant="h5">
-          fastwork
+        <Typography
+          component="h1"
+          variant="h5"
+          sx={{ textAlign: 'start', width: '100%' }}
+        >
+          สร้างบัญชี
         </Typography>
+        <Divider>CENTER</Divider>
 
+        {/* Register Form */}
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
@@ -50,7 +52,6 @@ export default function SignUp() {
                 fullWidth
                 id="firstName"
                 label="First Name"
-                autoFocus
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -100,20 +101,21 @@ export default function SignUp() {
             type="submit"
             fullWidth
             variant="contained"
+            color="primary"
             sx={{ mt: 3, mb: 2 }}
           >
             Sign Up
           </Button>
           <Grid container justifyContent="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
-                Already have an account? Sign in
+              มีบัญชีอยู่แล้ว ?
+              <Link href="/register" variant="body2">
+                เข้าสู่ระบบ
               </Link>
             </Grid>
           </Grid>
         </Box>
       </Box>
-      {/* <Copyright sx={{ mt: 5 }} /> */}
     </Container>
   );
 }
