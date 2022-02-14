@@ -1,17 +1,24 @@
-import { Button } from '@mui/material';
 import FacebookLogin from 'react-facebook-login/';
-// import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
+import axios from '../../config/axios';
 
 function FacebookLoginButton() {
+  const facebookLogin = async (response) => {
+    try {
+      const { accessToken } = response;
+      const res = await axios.post('auth/login/fb', {
+        accessToken,
+      });
+      console.log('from backend res => ', res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <FacebookLogin
-      appId="1088597931155576"
-      //   callback={responseFacebook}
-      //   render={(renderProps) => (
-      //     <Button onClick={renderProps.onClick}>
-      //       This is my custom FB button
-      //     </Button>
-      //   )}
+      appId="276357331272102"
+      callback={facebookLogin}
+      disableMobileRedirect={true}
+      fields="name,email,picture"
     />
   );
 }

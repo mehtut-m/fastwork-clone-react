@@ -80,7 +80,7 @@ export default function SignUp() {
                 name="email"
                 autoComplete="email"
               />
-              {/* <FormHelperText id="component-error-text">Error</FormHelperText> */}
+              <FormHelperText id="component-error-text">Error</FormHelperText>
             </Grid>
             <Grid item xs={12}>
               <TextField
