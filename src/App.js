@@ -3,9 +3,7 @@ import theme from './theme.js';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Header from './layouts/Header/Header';
-import Register from './pages/Register';
-import Login from './pages/Login';
-import { Divider } from '@mui/material';
+import RouteConfig from './routes/routeConfig';
 
 function App() {
   return (
@@ -13,8 +11,7 @@ function App() {
       <CssBaseline />
       <div className="App">
         <Header />
-        <Register />
-        {/* <Login /> */}
+        <RouteConfig />
       </div>
     </ThemeProvider>
   );
