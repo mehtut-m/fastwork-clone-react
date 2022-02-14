@@ -43,44 +43,45 @@ function Header() {
       transition: theme.transitions.create('width'),
       width: '100%',
       borderRadius: '1rem',
-      [theme.breakpoints.up('md')]: {
-        width: '20ch',
-      },
     },
   }));
 
   return (
-    <header>
-      <AppBar className={'header-bar'} sx={{ padding: '.75rem 0' }}>
-        <Container maxWidth="xl" sx={{ display: 'flex' }}>
-          <Link to="/">
-            <Typography
-              noWrap
-              component="h1"
-              className="fastwork-logo"
-              sx={{
-                mr: 2,
-                display: { md: 'flex' },
-                fontSize: '2rem',
-                fontWeight: '500',
-              }}
-            >
-              fastwork
-            </Typography>
-          </Link>
-          <Search sx={{ borderRadius: '15px' }}>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="จ้างฟรีแลนซ์ทำ ..."
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
-        </Container>
-        <Container>{/*  */}</Container>
-      </AppBar>
-    </header>
+    <AppBar
+      className={'header-bar'}
+      sx={{ padding: '.75rem 0', position: 'sticky' }}
+    >
+      <Container maxWidth="xl" sx={{ display: 'flex' }}>
+        <Link to="/">
+          <Typography
+            noWrap
+            component="h1"
+            className="fastwork-logo"
+            sx={{
+              mr: 2,
+              display: { md: 'flex' },
+              fontSize: '2rem',
+              fontWeight: '500',
+            }}
+          >
+            fastwork
+          </Typography>
+        </Link>
+        <Search sx={{ borderRadius: '15px' }}>
+          <SearchIconWrapper>
+            <SearchIcon />
+          </SearchIconWrapper>
+          <StyledInputBase
+            placeholder="จ้างฟรีแลนซ์ทำ ..."
+            inputProps={{ 'aria-label': 'search' }}
+            sx={{
+              width: '100%',
+            }}
+          />
+        </Search>
+      </Container>
+      <Container>{/*  */}</Container>
+    </AppBar>
   );
 }
 
