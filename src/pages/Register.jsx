@@ -1,13 +1,19 @@
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import FormHelperText from '@mui/material/FormHelperText';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import GoogleLoginButton from '../components/Login/GoogleLoginButton';
+import FacebookLoginButton from '../components/Login/FacebookLoginButton';
+import { useState } from 'react';
 
 export default function SignUp() {
+  const [formInput, setFormInput] = useState({});
+
   const handleSubmit = (event) => {
     event.preventDefault();
   };
@@ -22,9 +28,6 @@ export default function SignUp() {
     >
       <Box
         sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
           paddingTop: '4rem',
         }}
       >
@@ -39,7 +42,11 @@ export default function SignUp() {
         >
           สร้างบัญชี
         </Typography>
-        <Divider>CENTER</Divider>
+        <Box>
+          <GoogleLoginButton />
+          <FacebookLoginButton />
+        </Box>
+        <Divider>หรือ</Divider>
 
         {/* Register Form */}
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
@@ -73,6 +80,7 @@ export default function SignUp() {
                 name="email"
                 autoComplete="email"
               />
+              {/* <FormHelperText id="component-error-text">Error</FormHelperText> */}
             </Grid>
             <Grid item xs={12}>
               <TextField
