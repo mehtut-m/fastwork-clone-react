@@ -10,6 +10,10 @@ import {
 } from '@mui/material';
 
 function ForgetPassword() {
+  const handleForgetPassword = e => {
+    e.preventDefault();
+  };
+
   return (
     <Container component="main" maxWidth="xs">
       <Box
@@ -38,7 +42,12 @@ function ForgetPassword() {
           </p>
         </Typography>
 
-        <Box component="form" noValidate sx={{ mt: 1 }}>
+        <Box
+          component="form"
+          noValidate
+          sx={{ mt: 1 }}
+          onSubmit={handleForgetPassword}
+        >
           <TextField
             margin="normal"
             required

@@ -9,23 +9,26 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
+import { useState } from 'react';
+import FacebookLoginButton from '../components/Login/FacebookLoginButton';
+import GoogleLoginButton from '../components/Login/GoogleLoginButton';
 
 function Login() {
-  const handleSubmitLogin = event => {
-    event.preventDefault();
+  const [email, setEmail] = useState('');
+
+  const handleSubmitLogin = e => {
+    e.preventDefault();
+    console.log('email: ' + email);
   };
 
   return (
     <Container component="main" maxWidth="xs">
       <Box
         sx={{
-          marginTop: 8,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          boxShadow: '3',
-          borderRadius: 5,
-          padding: 8,
+          boxShadow: '4px 4px 18px 0px rgba(0,0,0,0.25);',
+          borderRadius: '10px',
+          marginTop: '5rem',
+          padding: '1rem',
         }}
       >
         <Typography component="h1" variant="h4">
@@ -43,10 +46,11 @@ function Login() {
           sx={{ mt: 1 }}
           onSubmit={handleSubmitLogin}
         >
-          <p>FACEBOOK LOGIN</p>
-          <hr />
-          <p>GMAIL LOGIN</p>
-          <Divider>หรือ</Divider>
+          <Box>
+            <GoogleLoginButton />
+            <FacebookLoginButton />
+          </Box>
+          <Divider sx={{ mt: 2 }}>หรือ</Divider>
           <TextField
             margin="normal"
             required
@@ -57,6 +61,7 @@ function Login() {
             autoComplete="email"
             autoFocus
           />
+
           <Button
             type="submit"
             fullWidth
@@ -67,8 +72,9 @@ function Login() {
           </Button>
           <Grid container justifyContent="center">
             <Grid item>
-              <Link href="/b" variant="body2">
-                ไม่เคยมีบัญชี? สร้างบัญชี
+              ไม่เคยมีบัญชี ?
+              <Link href="/register" variant="body2">
+                สร้างบัญชี
               </Link>
             </Grid>
           </Grid>

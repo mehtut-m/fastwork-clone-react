@@ -1,6 +1,10 @@
 import { Box, Button, Container, TextField, Typography } from '@mui/material';
 
 function ResetPassword() {
+  const handleResetPassword = e => {
+    e.preventDefault();
+  };
+
   return (
     <Container component="main" maxWidth="xs">
       <Box
@@ -27,7 +31,12 @@ function ResetPassword() {
           เพื่อดำเนินการเปลี่ยนรหัสผ่าน
         </p>
 
-        <Box component="form" noValidate sx={{ mt: 1 }}>
+        <Box
+          component="form"
+          noValidate
+          sx={{ mt: 1 }}
+          onSubmit={handleResetPassword}
+        >
           <TextField
             margin="normal"
             required

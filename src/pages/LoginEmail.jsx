@@ -7,8 +7,18 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
+import { useState } from 'react';
 
 function LoginEmail() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmitLoginEmail = e => {
+    e.preventDefault();
+    console.log('email: ' + email);
+    console.log('password: ' + password);
+  };
+
   return (
     <Container component="main" maxWidth="xs">
       <Box
@@ -30,7 +40,12 @@ function LoginEmail() {
           เข้าสู่ระบบ
         </Typography>
 
-        <Box component="form" noValidate sx={{ mt: 1 }}>
+        <Box
+          component="form"
+          noValidate
+          sx={{ mt: 1 }}
+          onSubmit={handleSubmitLoginEmail}
+        >
           <TextField
             margin="normal"
             required
@@ -40,6 +55,8 @@ function LoginEmail() {
             name="email"
             autoComplete="email"
             autoFocus
+            value={email}
+            onChange={e => setEmail(e.target.value)}
           />
 
           <TextField
@@ -50,8 +67,10 @@ function LoginEmail() {
             id="password"
             label="Password"
             name="password"
-            autoComplete="password"
+            autoComplete="off"
             autoFocus
+            value={password}
+            onChange={e => setPassword(e.target.value)}
           />
 
           <Button
