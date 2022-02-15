@@ -20,6 +20,7 @@ function Login() {
     >
       <Box
         sx={{
+          boxShadow: '0 7px 20px rgb(0 0 0 / 7%), 0 4px 6px rgb(0 0 0 / 10%)',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',

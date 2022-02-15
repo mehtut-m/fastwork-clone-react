@@ -1,10 +1,11 @@
+import { Box } from '@mui/material';
 import HeroBanner from '../components/Hero/HeroBanner';
 
 function Home() {
   return (
-    <div>
+    <Box sx={{}}>
       <HeroBanner />
-    </div>
+    </Box>
   );
 }
 
