@@ -1,10 +1,6 @@
 .header-bar {
-  background-color: var(--nav-bg-color);
   color: var(--logo-color);
 }
 .header-bar > * {
   color: var(--logo-color);
-}
-.fastwork-logo {
-  font-size: 3rem;
 }

@@ -1,4 +1,11 @@
-import { AppBar, Container, Menu, Typography, InputBase } from '@mui/material';
+import {
+  AppBar,
+  Box,
+  Container,
+  Menu,
+  Typography,
+  InputBase,
+} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
@@ -49,38 +56,81 @@ function Header() {
   return (
     <AppBar
       className={'header-bar'}
-      sx={{ padding: '.75rem 0', position: 'sticky' }}
+      color="nav-primary-color"
+      sx={{
+        padding: '.75rem 0',
+        position: 'sticky',
+      }}
     >
-      <Container maxWidth="xl" sx={{ display: 'flex' }}>
-        <Link to="/">
-          <Typography
-            noWrap
-            component="h1"
-            className="fastwork-logo"
-            sx={{
-              mr: 2,
-              display: { md: 'flex' },
-              fontSize: '2rem',
-              fontWeight: '500',
-            }}
-          >
-            fastwork
-          </Typography>
-        </Link>
-        <Search sx={{ borderRadius: '15px' }}>
-          <SearchIconWrapper>
-            <SearchIcon />
-          </SearchIconWrapper>
-          <StyledInputBase
-            placeholder="จ้างฟรีแลนซ์ทำ ..."
-            inputProps={{ 'aria-label': 'search' }}
-            sx={{
-              width: '100%',
-            }}
-          />
-        </Search>
+      <Container
+        maxWidth="xl"
+        sx={{ display: 'flex', justifyContent: 'space-between' }}
+      >
+        <Box sx={{ display: 'flex' }}>
+          <Link to="/">
+            <Typography
+              noWrap
+              component="h1"
+              className="fastwork-logo"
+              sx={{
+                mr: 2,
+                display: { md: 'flex' },
+                fontSize: '2rem',
+                fontWeight: '500',
+              }}
+            >
+              fastwork
+            </Typography>
+          </Link>
+          <Search sx={{ borderRadius: '15px' }}>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="จ้างฟรีแลนซ์ทำ ..."
+              inputProps={{ 'aria-label': 'search' }}
+              sx={{
+                width: '100%',
+              }}
+            />
+          </Search>
+        </Box>
+
+        {/* Menu bar */}
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Link to="/login">
+            <Typography
+              noWrap
+              component="h1"
+              className="fastwork-logo"
+              sx={{
+                mr: 2,
+                display: { md: 'flex' },
+                fontSize: '1rem',
+                fontWeight: '500',
+              }}
+            >
+              เข้าสู่ระบบ
+            </Typography>
+          </Link>
+
+          <Link to="/register">
+            <Typography
+              noWrap
+              component="h1"
+              className="fastwork-logo"
+              sx={{
+                mr: 2,
+                display: { md: 'flex' },
+                fontSize: '1rem',
+                fontWeight: '500',
+              }}
+            >
+              สมัครเป็นฟรีแลนซ์
+            </Typography>
+          </Link>
+        </Box>
       </Container>
-      <Container>{/*  */}</Container>
     </AppBar>
   );
 }
