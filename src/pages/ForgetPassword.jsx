@@ -1,20 +1,15 @@
+// import { ThemeProvider } from '@emotion/react';
 import {
   Box,
   Button,
-  // Checkbox,
   Container,
-  Divider,
   Grid,
   Link,
   TextField,
   Typography,
 } from '@mui/material';
 
-function Login() {
-  const handleSubmitLogin = event => {
-    event.preventDefault();
-  };
-
+function ForgetPassword() {
   return (
     <Container component="main" maxWidth="xs">
       <Box
@@ -32,43 +27,41 @@ function Login() {
           Fastwork
         </Typography>
         <br />
+        <Typography>
+          <Typography component="h1" variant="h5">
+            ลืมรหัสผ่าน
+          </Typography>
 
-        <Typography component="h1" variant="h5">
-          เข้าสู่ระบบ
+          <p>
+            Fastwork จะทําการส่งรหัสยืนยันไปยังอีเมล / เบอร์โทรศัพท์ของคุณ
+            เพื่อยืนยันความเป็นเจ้าของบัญชี
+          </p>
         </Typography>
 
-        <Box
-          component="form"
-          noValidate
-          sx={{ mt: 1 }}
-          onSubmit={handleSubmitLogin}
-        >
-          <p>FACEBOOK LOGIN</p>
-          <hr />
-          <p>GMAIL LOGIN</p>
-          <Divider>หรือ</Divider>
+        <Box component="form" noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
             required
             fullWidth
             id="email"
-            label="Email Address"
+            label="ํYour Email"
             name="email"
             autoComplete="email"
             autoFocus
           />
+
           <Button
             type="submit"
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            ถัดไป
+            ส่งรหัสยืนยัน
           </Button>
           <Grid container justifyContent="center">
             <Grid item>
-              <Link href="/b" variant="body2">
-                ไม่เคยมีบัญชี? สร้างบัญชี
+              <Link href="/login" variant="body2">
+                เข้าสู่ระบบ
               </Link>
             </Grid>
           </Grid>
@@ -78,4 +71,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default ForgetPassword;
