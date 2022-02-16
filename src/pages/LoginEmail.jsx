@@ -1,20 +1,14 @@
 import {
   Box,
   Button,
-  // Checkbox,
   Container,
-  Divider,
   Grid,
   Link,
   TextField,
   Typography,
 } from '@mui/material';
 
-function Login() {
-  const handleSubmitLogin = event => {
-    event.preventDefault();
-  };
-
+function LoginEmail() {
   return (
     <Container component="main" maxWidth="xs">
       <Box
@@ -32,21 +26,11 @@ function Login() {
           Fastwork
         </Typography>
         <br />
-
         <Typography component="h1" variant="h5">
           เข้าสู่ระบบ
         </Typography>
 
-        <Box
-          component="form"
-          noValidate
-          sx={{ mt: 1 }}
-          onSubmit={handleSubmitLogin}
-        >
-          <p>FACEBOOK LOGIN</p>
-          <hr />
-          <p>GMAIL LOGIN</p>
-          <Divider>หรือ</Divider>
+        <Box component="form" noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
             required
@@ -57,18 +41,31 @@ function Login() {
             autoComplete="email"
             autoFocus
           />
+
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            type="password"
+            id="password"
+            label="Password"
+            name="password"
+            autoComplete="password"
+            autoFocus
+          />
+
           <Button
             type="submit"
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            ถัดไป
+            เข้าสู่ระบบ
           </Button>
           <Grid container justifyContent="center">
             <Grid item>
-              <Link href="/b" variant="body2">
-                ไม่เคยมีบัญชี? สร้างบัญชี
+              <Link href="/forgetPassword" variant="body2">
+                ลืมรหัสผ่าน
               </Link>
             </Grid>
           </Grid>
@@ -78,4 +75,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default LoginEmail;

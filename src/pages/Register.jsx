@@ -1,6 +1,5 @@
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import FormHelperText from '@mui/material/FormHelperText';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -10,12 +9,26 @@ import Container from '@mui/material/Container';
 import GoogleLoginButton from '../components/Login/GoogleLoginButton';
 import FacebookLoginButton from '../components/Login/FacebookLoginButton';
 import { useState } from 'react';
+import { register } from '../apis/auth';
 
 export default function SignUp() {
-  const [formInput, setFormInput] = useState({});
+  const [formInput, setFormInput] = useState({
+    firstName: '',
+    lastName: '',
+    password: '',
+    confirmPassword: '',
+  });
 
-  const handleSubmit = (event) => {
+  const handleChange = (event) => {
+    setFormInput((prev) => ({
+      ...prev,
+      [event.target.name]: event.target.value,
+    }));
+  };
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    const res = await register(formInput);
+    console.log(res);
   };
 
   return (
@@ -28,7 +41,10 @@ export default function SignUp() {
     >
       <Box
         sx={{
-          paddingTop: '4rem',
+          boxShadow: '4px 4px 18px 0px rgba(0,0,0,0.25);',
+          borderRadius: '10px',
+          marginTop: '4rem',
+          padding: '1rem',
         }}
       >
         <Typography component="h1" variant="h5">
@@ -48,7 +64,6 @@ export default function SignUp() {
         </Box>
         <Divider>หรือ</Divider>
 
-        {/* Register Form */}
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
@@ -59,6 +74,7 @@ export default function SignUp() {
                 fullWidth
                 id="firstName"
                 label="First Name"
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -69,6 +85,7 @@ export default function SignUp() {
                 label="Last Name"
                 name="lastName"
                 autoComplete="family-name"
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -79,8 +96,8 @@ export default function SignUp() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={handleChange}
               />
-              <FormHelperText id="component-error-text">Error</FormHelperText>
             </Grid>
             <Grid item xs={12}>
               <TextField
@@ -91,6 +108,7 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="new-password"
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -102,6 +120,7 @@ export default function SignUp() {
                 type="password"
                 id="confirmPassword"
                 autoComplete="new-password"
+                onChange={handleChange}
               />
             </Grid>
           </Grid>

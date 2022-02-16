@@ -1,20 +1,6 @@
-import {
-  Box,
-  Button,
-  // Checkbox,
-  Container,
-  Divider,
-  Grid,
-  Link,
-  TextField,
-  Typography,
-} from '@mui/material';
+import { Box, Button, Container, TextField, Typography } from '@mui/material';
 
-function Login() {
-  const handleSubmitLogin = event => {
-    event.preventDefault();
-  };
-
+function ResetPassword() {
   return (
     <Container component="main" maxWidth="xs">
       <Box
@@ -32,50 +18,51 @@ function Login() {
           Fastwork
         </Typography>
         <br />
-
         <Typography component="h1" variant="h5">
-          เข้าสู่ระบบ
+          ลืมรหัสผ่าน
         </Typography>
 
-        <Box
-          component="form"
-          noValidate
-          sx={{ mt: 1 }}
-          onSubmit={handleSubmitLogin}
-        >
-          <p>FACEBOOK LOGIN</p>
-          <hr />
-          <p>GMAIL LOGIN</p>
-          <Divider>หรือ</Divider>
+        <p>
+          รหัสยืนยันได้ถูกส่งไปยังอีเมล / เบอร์โทรศัพท์ของคุณแล้ว
+          เพื่อดำเนินการเปลี่ยนรหัสผ่าน
+        </p>
+
+        <Box component="form" noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
             required
             fullWidth
             id="email"
-            label="Email Address"
+            label="Your Email"
             name="email"
             autoComplete="email"
             autoFocus
           />
+
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            type="password"
+            id="password"
+            label="Password"
+            name="password"
+            autoComplete="password"
+            autoFocus
+          />
+
           <Button
             type="submit"
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            ถัดไป
+            เข้าสู่ระบบ
           </Button>
-          <Grid container justifyContent="center">
-            <Grid item>
-              <Link href="/b" variant="body2">
-                ไม่เคยมีบัญชี? สร้างบัญชี
-              </Link>
-            </Grid>
-          </Grid>
         </Box>
       </Box>
     </Container>
   );
 }
 
-export default Login;
+export default ResetPassword;
