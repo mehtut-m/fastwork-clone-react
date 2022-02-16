@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  // Checkbox,
   Container,
   Divider,
   Grid,
@@ -11,7 +10,7 @@ import {
 } from '@mui/material';
 
 function Login() {
-  const handleSubmitLogin = event => {
+  const handleSubmitLogin = (event) => {
     event.preventDefault();
   };
 

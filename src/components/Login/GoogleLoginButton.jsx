@@ -5,6 +5,7 @@ function GoogleLoginButton() {
   const googleLogin = async (response) => {
     try {
       const { tokenId } = response;
+      console.log(tokenId);
       const res = await axios.post('/auth/login/google', {
         tokenId,
       });
