@@ -5,7 +5,7 @@ import Paper from '@mui/material/Paper';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
-import Button from '@mui/material/Button';
+
 import Typography from '@mui/material/Typography';
 import CategoryForm from '../../components/Services/ServiceForm/CategoryForm';
 import DetailForm from '../../components/Services/ServiceForm/DetailForm';
@@ -14,7 +14,14 @@ import AddStepFrom from '../../components/Services/ServiceForm/AddStepForm';
 import PackageFormWrapper from '../../components/Services/ServiceForm/PackageFormWrapper';
 
 function CreateServices() {
+  const [categoryForm, setCategoryForm] = useState({
+    name: '',
+    description: '',
+    subCategoryId: '',
+    categoryId: '',
+  });
   const [activeStep, setActiveStep] = useState(0);
+  console.log('form to send', categoryForm);
   const steps = [
     'เลือกหมวดหมู่ผลงาน',
     'ชื่องานและคำอธิบาย',
@@ -26,14 +33,52 @@ function CreateServices() {
   function getStepContent(step) {
     switch (step) {
       case 0:
-        return <CategoryForm />;
+        return (
+          <CategoryForm
+            categoryForm={categoryForm}
+            setCategoryForm={setCategoryForm}
+            activeStep={activeStep}
+            handleNext={handleNext}
+            handleBack={handleBack}
+          />
+        );
       case 1:
-        return <DetailForm />;
+        return (
+          <DetailForm
+            activeStep={activeStep}
+            handleNext={handleNext}
+            handleBack={handleBack}
+            setCategoryForm={setCategoryForm}
+          />
+        );
       case 2:
-        return <ThumbnailForm />;
+        return (
+          <ThumbnailForm
+            activeStep={activeStep}
+            handleNext={handleNext}
+            handleBack={handleBack}
+            setCategoryForm={setCategoryForm}
+          />
+        );
       case 3:
-        return <AddStepFrom />;
+        return (
+          <AddStepFrom
+            activeStep={activeStep}
+            handleNext={handleNext}
+            handleBack={handleBack}
+            setCategoryForm={setCategoryForm}
+          />
+        );
       case 4:
+        return (
+          <PackageFormWrapper
+            setCategoryForm={setCategoryForm}
+            activeStep={activeStep}
+            handleNext={handleNext}
+            handleBack={handleBack}
+          />
+        );
+      case 5:
         return <PackageFormWrapper />;
       default:
         throw new Error('Unknown step');
@@ -100,22 +145,6 @@ function CreateServices() {
                   sx={{ minWidth: 120, maxWidth: '28.75rem', width: '100%' }}
                 >
                   {getStepContent(activeStep)}
-
-                  <Box sx={{ display: 'flex', justifyContent: `flex-end` }}>
-                    {activeStep !== 0 && (
-                      <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
-                        กลับ
-                      </Button>
-                    )}
-
-                    <Button
-                      variant="contained"
-                      onClick={handleNext}
-                      sx={{ mt: 3, ml: 1 }}
-                    >
-                      บันทึกและไปต่อ
-                    </Button>
-                  </Box>
                 </Box>
               </>
             )}
