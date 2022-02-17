@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Box, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
+import { createPost } from '../../../services/upload';
 
 function ThumbnailForm({
   activeStep,
@@ -23,8 +24,9 @@ function ThumbnailForm({
     }
   };
 
-  const handleClickNext = () => {
+  const handleClickNext = async () => {
     setCategoryForm((prev) => ({ ...prev, images: imgArr }));
+    await createPost(imgArr);
     handleNext();
   };
 

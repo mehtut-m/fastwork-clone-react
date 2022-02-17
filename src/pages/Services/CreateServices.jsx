@@ -78,8 +78,6 @@ function CreateServices() {
             handleBack={handleBack}
           />
         );
-      case 5:
-        return <PackageFormWrapper />;
       default:
         throw new Error('Unknown step');
     }
