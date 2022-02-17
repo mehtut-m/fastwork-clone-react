@@ -19,13 +19,13 @@ export default function SignUp() {
     confirmPassword: '',
   });
 
-  const handleChange = (event) => {
-    setFormInput((prev) => ({
+  const handleChange = event => {
+    setFormInput(prev => ({
       ...prev,
       [event.target.name]: event.target.value,
     }));
   };
-  const handleSubmit = async (event) => {
+  const handleSubmit = async event => {
     event.preventDefault();
     const res = await register(formInput);
     console.log(res);
@@ -136,7 +136,7 @@ export default function SignUp() {
           <Grid container justifyContent="flex-end">
             <Grid item>
               มีบัญชีอยู่แล้ว ?
-              <Link href="/register" variant="body2">
+              <Link href="/login" variant="body2">
                 เข้าสู่ระบบ
               </Link>
             </Grid>

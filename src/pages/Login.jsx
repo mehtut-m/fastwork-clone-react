@@ -1,77 +1,42 @@
-import {
-  Box,
-  Button,
-  Container,
-  Divider,
-  Grid,
-  Link,
-  TextField,
-  Typography,
-} from '@mui/material';
+import { Box, Container } from '@mui/material';
+import { useState } from 'react';
+import LoginEmail from '../components/Login/LoginEmail';
+import MainLogin from '../components/Login/MainLogin';
 
 function Login() {
-  const handleSubmitLogin = (event) => {
-    event.preventDefault();
+  //* ถ้า สถานะ มีการเปลี่ยนแปลง Component นั้นก็จะถูก render ใส่อัตโนมัติ
+  const [email, setEmail] = useState('');
+
+  //* ใช้สำหรับ คลิกไปหน้าถัดไป ในหน้า loginemail
+  const [mainLogin, setMainLogin] = useState(false);
+
+  // const [loading, setLoading] = useState(false);
+
+  const handleSubmitLogin = e => {
+    e.preventDefault();
+    setMainLogin(true);
+    console.log('email: ' + email);
   };
 
   return (
     <Container component="main" maxWidth="xs">
       <Box
         sx={{
-          marginTop: 8,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          boxShadow: '3',
-          borderRadius: 5,
-          padding: 8,
+          boxShadow: '4px 4px 18px 0px rgba(0,0,0,0.25);',
+          borderRadius: '10px',
+          marginTop: '5rem',
+          padding: '1rem',
         }}
       >
-        <Typography component="h1" variant="h4">
-          Fastwork
-        </Typography>
-        <br />
-
-        <Typography component="h1" variant="h5">
-          เข้าสู่ระบบ
-        </Typography>
-
-        <Box
-          component="form"
-          noValidate
-          sx={{ mt: 1 }}
-          onSubmit={handleSubmitLogin}
-        >
-          <p>FACEBOOK LOGIN</p>
-          <hr />
-          <p>GMAIL LOGIN</p>
-          <Divider>หรือ</Divider>
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            autoFocus
+        {!mainLogin ? (
+          <MainLogin
+            handleClickLogin={handleSubmitLogin}
+            email={email}
+            setEmail={setEmail}
           />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            ถัดไป
-          </Button>
-          <Grid container justifyContent="center">
-            <Grid item>
-              <Link href="/b" variant="body2">
-                ไม่เคยมีบัญชี? สร้างบัญชี
-              </Link>
-            </Grid>
-          </Grid>
-        </Box>
+        ) : (
+          <LoginEmail email={email} />
+        )}
       </Box>
     </Container>
   );
