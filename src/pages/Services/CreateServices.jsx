@@ -46,6 +46,7 @@ function CreateServices() {
         return (
           <DetailForm
             activeStep={activeStep}
+            categoryForm={categoryForm}
             handleNext={handleNext}
             handleBack={handleBack}
             setCategoryForm={setCategoryForm}
@@ -55,6 +56,7 @@ function CreateServices() {
         return (
           <ThumbnailForm
             activeStep={activeStep}
+            categoryForm={categoryForm}
             handleNext={handleNext}
             handleBack={handleBack}
             setCategoryForm={setCategoryForm}
@@ -64,6 +66,7 @@ function CreateServices() {
         return (
           <AddStepFrom
             activeStep={activeStep}
+            categoryForm={categoryForm}
             handleNext={handleNext}
             handleBack={handleBack}
             setCategoryForm={setCategoryForm}
@@ -72,6 +75,7 @@ function CreateServices() {
       case 4:
         return (
           <PackageFormWrapper
+            categoryForm={categoryForm}
             setCategoryForm={setCategoryForm}
             activeStep={activeStep}
             handleNext={handleNext}

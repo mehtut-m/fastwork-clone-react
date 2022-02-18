@@ -56,7 +56,6 @@ const AuthContextProvider = ({ children }) => {
       const { tokenId } = response;
       const res = await signInGoogle(tokenId);
       console.log('from backend res => ', res);
-
       if (res.status === 200) {
         setToken(res.data.token);
         dispatch({
