@@ -8,10 +8,11 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import GoogleLoginButton from '../components/Login/GoogleLoginButton';
 import FacebookLoginButton from '../components/Login/FacebookLoginButton';
-import { useState } from 'react';
-import { register } from '../apis/auth';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../contexts/AuthContext';
 
 export default function SignUp() {
+  const { register } = useContext(AuthContext);
   const [formInput, setFormInput] = useState({
     firstName: '',
     lastName: '',
@@ -19,16 +20,15 @@ export default function SignUp() {
     confirmPassword: '',
   });
 
-  const handleChange = (event) => {
-    setFormInput((prev) => ({
+  const handleChange = event => {
+    setFormInput(prev => ({
       ...prev,
       [event.target.name]: event.target.value,
     }));
   };
-  const handleSubmit = async (event) => {
+  const handleSubmit = async event => {
     event.preventDefault();
-    const res = await register(formInput);
-    console.log(res);
+    await register(formInput);
   };
 
   return (
@@ -136,7 +136,7 @@ export default function SignUp() {
           <Grid container justifyContent="flex-end">
             <Grid item>
               มีบัญชีอยู่แล้ว ?
-              <Link href="/register" variant="body2">
+              <Link href="/login" variant="body2">
                 เข้าสู่ระบบ
               </Link>
             </Grid>

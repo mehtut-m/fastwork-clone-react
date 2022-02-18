@@ -1,44 +1,58 @@
-// import { ThemeProvider } from '@emotion/react';
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  Link,
-  TextField,
-  Typography,
-} from '@mui/material';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import Link from '@mui/material/Link';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 
 function ForgetPassword() {
+  const handleForgetPassword = e => {
+    e.preventDefault();
+  };
+
   return (
     <Container component="main" maxWidth="xs">
       <Box
         sx={{
-          marginTop: 8,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          boxShadow: '3',
-          borderRadius: 5,
-          padding: 8,
+          boxShadow: '4px 4px 18px 0px rgba(0,0,0,0.25);',
+          marginTop: '5rem',
+          borderRadius: '10px',
+          padding: '1rem',
         }}
       >
-        <Typography component="h1" variant="h4">
+        <Typography
+          component="h1"
+          variant="h4"
+          sx={{ mb: 3, fontWeight: 'bold', color: 'blue' }}
+        >
           Fastwork
         </Typography>
-        <br />
-        <Typography>
-          <Typography component="h1" variant="h5">
+        <Box>
+          {/* <Typography> */}
+          <Typography
+            component="h1"
+            variant="h5"
+            sx={{ textAlign: 'start', fontWeight: 'bold' }}
+          >
             ลืมรหัสผ่าน
           </Typography>
 
-          <p>
-            Fastwork จะทําการส่งรหัสยืนยันไปยังอีเมล / เบอร์โทรศัพท์ของคุณ
-            เพื่อยืนยันความเป็นเจ้าของบัญชี
-          </p>
-        </Typography>
+          <Box>
+            <Typography sx={{ textAlign: 'start' }}>
+              Fastwork จะทําการส่งรหัสยืนยันไปยังอีเมล / เบอร์โทรศัพท์ของคุณ
+              เพื่อยืนยันความเป็นเจ้าของบัญชี
+            </Typography>
+          </Box>
+          {/* </Typography> */}
+        </Box>
 
-        <Box component="form" noValidate sx={{ mt: 1 }}>
+        <Box
+          component="form"
+          noValidate
+          sx={{ mt: 1 }}
+          onSubmit={handleForgetPassword}
+        >
           <TextField
             margin="normal"
             required

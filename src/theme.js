@@ -11,6 +11,21 @@ const theme = createTheme({
     },
     'nav-primary-color': { main: '#000' },
   },
+  typography: {
+    fontFamily: [
+      '-apple-system',
+      'Kanit',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+  },
 });
 
 export default theme;
