@@ -6,6 +6,7 @@ import CreateServices from '../pages/Services/CreateServices';
 import Login from '../pages/Login';
 import ForgetPassword from '../pages/ForgetPassword';
 import Chat from '../pages/Chat';
+import Post from '../pages/Post';
 
 function RouteConfig() {
   return (
@@ -13,6 +14,7 @@ function RouteConfig() {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/post" element={<Post />} />
       <Route path="/services/add" element={<CreateServices />} />
       <Route path="/message" element={<Chat />} />
       <Route path="/forget-password" element={<ForgetPassword />} />
