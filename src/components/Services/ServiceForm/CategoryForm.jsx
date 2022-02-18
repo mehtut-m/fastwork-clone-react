@@ -27,13 +27,13 @@ function CategoryForm({
 
   const handleClickNext = async () => {
     const res = await createPostCategory(selectedSubCat);
-    console.log(res);
     setCategoryForm((prev) => ({
       ...prev,
+      postId: res.data.post.id,
       subCategoryId: selectedSubCat,
       categoryId: subCategories[0]?.categoryId,
     }));
-    // handleNext();
+    handleNext();
   };
 
   const handleClickBack = () => {

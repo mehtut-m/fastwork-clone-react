@@ -2,20 +2,24 @@ import { useState } from 'react';
 import { Box, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
+import { addPostImage } from '../../../apis/post';
+
 import { createPost } from '../../../services/upload';
 
 function ThumbnailForm({
   activeStep,
   handleBack,
   handleNext,
+  categoryForm,
   setCategoryForm,
 }) {
+  const { postId, name } = categoryForm;
   const [imgArr, setImgArr] = useState([]);
   const Input = styled('input')({
     display: 'none',
   });
-  console.log(imgArr);
-  const handleSelectImage = (e) => {
+
+  const handleSelectImage = async (e) => {
     const imgArr = e.target.files;
     if (imgArr.length >= 3 && imgArr.length <= 12) {
       setImgArr([...e.target.files]);
@@ -25,6 +29,15 @@ function ThumbnailForm({
   };
 
   const handleClickNext = async () => {
+    const formData = new FormData();
+
+    for (const element of imgArr) {
+      console.log('hi');
+      formData.append('image', element);
+    }
+    formData.append('postId', postId);
+    const res = await addPostImage(formData);
+    console.log(res);
     setCategoryForm((prev) => ({ ...prev, images: imgArr }));
     await createPost(imgArr);
     handleNext();

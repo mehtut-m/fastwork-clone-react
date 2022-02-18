@@ -5,10 +5,17 @@ import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
 import Input from '@mui/material/Input';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import { addInstruction } from '../../../apis/post';
 
-function AddStepForm({ activeStep, handleBack, handleNext, setCategoryForm }) {
+function AddStepForm({
+  activeStep,
+  handleBack,
+  handleNext,
+  setCategoryForm,
+  categoryForm,
+}) {
   const [instructions, setInstructions] = useState(['', '']);
-
+  const { postId } = categoryForm;
   const addSteps = () => {
     if (instructions.length < 10) {
       setInstructions((prev) => [...prev, '']);
@@ -21,9 +28,12 @@ function AddStepForm({ activeStep, handleBack, handleNext, setCategoryForm }) {
     setInstructions(newStep);
   };
 
-  const handleClickNext = () => {
+  const handleClickNext = async () => {
     const validInstruction = instructions.filter((item) => item.trim() !== '');
     if (validInstruction.length > 1) {
+      const payload = { postId, instructions };
+      const res = await addInstruction(payload);
+      console.log(res);
       setCategoryForm((prev) => ({ ...prev, instructions: validInstruction }));
       handleNext();
     } else {
