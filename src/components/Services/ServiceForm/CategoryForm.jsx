@@ -6,6 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { Typography } from '@mui/material';
+import { createPostCategory } from '../../../apis/post';
 
 function CategoryForm({
   activeStep,
@@ -24,13 +25,15 @@ function CategoryForm({
       .catch((err) => console.log(err));
   }, []);
 
-  const handleClickNext = () => {
+  const handleClickNext = async () => {
+    const res = await createPostCategory(selectedSubCat);
+    console.log(res);
     setCategoryForm((prev) => ({
       ...prev,
       subCategoryId: selectedSubCat,
       categoryId: subCategories[0]?.categoryId,
     }));
-    handleNext();
+    // handleNext();
   };
 
   const handleClickBack = () => {

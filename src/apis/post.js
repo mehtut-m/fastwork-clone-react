@@ -1,5 +1,5 @@
 import axios from '../config/axios';
 
-// export const getAllCategories = async (payload) => {
-//   return axios.get('/categories');
-// };
+export const createPostCategory = async (subCategoryId) => {
+  return axios.post('/post/category', { subCategoryId });
+};

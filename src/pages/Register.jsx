@@ -8,10 +8,11 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import GoogleLoginButton from '../components/Login/GoogleLoginButton';
 import FacebookLoginButton from '../components/Login/FacebookLoginButton';
-import { useState } from 'react';
-import { register } from '../apis/auth';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../contexts/AuthContext';
 
 export default function SignUp() {
+  const { register } = useContext(AuthContext);
   const [formInput, setFormInput] = useState({
     firstName: '',
     lastName: '',
@@ -27,8 +28,7 @@ export default function SignUp() {
   };
   const handleSubmit = async event => {
     event.preventDefault();
-    const res = await register(formInput);
-    console.log(res);
+    await register(formInput);
   };
 
   return (
