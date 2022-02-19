@@ -6,10 +6,12 @@ import {
   Typography,
   InputBase,
 } from '@mui/material';
+
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import './Header.css';
+import UserMenu from '../../components/Menu/UserMenu';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 
@@ -96,7 +98,7 @@ function Header() {
           </Search>
         </Box>
 
-        {/* Menu bar */}
+        {/* Guest bar */}
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <Link to="/login">
             <Typography
@@ -130,6 +132,9 @@ function Header() {
             </Typography>
           </Link>
         </Box>
+
+        {/* User bar */}
+        <UserMenu />
       </Container>
     </AppBar>
   );

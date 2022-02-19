@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 
 import PostItem from './PostItem';
 
-function PostWrapper() {
+function PostWrapper({ post }) {
   return (
     <Container component="main" maxWidth="unset">
       <Grid

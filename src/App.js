@@ -6,11 +6,13 @@ import Header from './layouts/Header/Header';
 import RouteConfig from './routes/routeConfig';
 import Login from './pages/Login';
 import { useState } from 'react';
+import LoadingScreen from './components/Utils/LoadingScreen';
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <LoadingScreen />
       <div className="App">
         <Header />
         <RouteConfig />

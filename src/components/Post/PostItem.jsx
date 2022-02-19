@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -10,43 +11,45 @@ import { Avatar } from '@mui/material';
 function PostItem() {
   return (
     <Card sx={{ maxWidth: 362, maxHeight: 360, minWidth: 242 }}>
-      <CardMedia
-        sx={{ backgroundColor: 'red', height: '187px' }}
-        component="img"
-        height="140"
-        image="https://storage.googleapis.com/fastwork-static/987bd900-9051-4a55-b93f-cff333ee921f.jpg"
-        alt="green iguana"
-      />
-
-      <CardContent sx={{ position: 'relative', pt: '1.5rem', pb: '.125rem' }}>
-        <Avatar
-          sx={{
-            position: 'absolute',
-            transform: 'translateY(50%)',
-            top: '-50%',
-          }}
+      <Link to={`/product/:id`}>
+        <CardMedia
+          sx={{ backgroundColor: 'red', height: '187px' }}
+          component="img"
+          height="140"
+          image="https://storage.googleapis.com/fastwork-static/987bd900-9051-4a55-b93f-cff333ee921f.jpg"
+          alt="green iguana"
         />
-        <Typography
-          gutterBottom
-          variant="h5"
-          component="div"
-          sx={{ textAlign: 'start', fontSize: '1.125rem' }}
-        >
-          ออกแบบโลโก้สำหรับทุกธุรกิจ คุยง่าย ส่งงานไว
-        </Typography>
-      </CardContent>
 
-      <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Box sx={{ display: 'flex', padding: '0' }}>
-          <StarIcon sx={{ color: '#FBBC05', fontSize: '1.25rem' }} />
-          <Typography>4.86 (78)</Typography>
-        </Box>
+        <CardContent sx={{ position: 'relative', pt: '1.5rem', pb: '.125rem' }}>
+          <Avatar
+            sx={{
+              position: 'absolute',
+              transform: 'translateY(50%)',
+              top: '-50%',
+            }}
+          />
+          <Typography
+            gutterBottom
+            variant="h5"
+            component="div"
+            sx={{ textAlign: 'start', fontSize: '1.125rem' }}
+          >
+            ออกแบบโลโก้สำหรับทุกธุรกิจ คุยง่าย ส่งงานไว
+          </Typography>
+        </CardContent>
 
-        <Box sx={{ p: '5px 4px', color: '#000', height: '50px' }}>
-          <Typography sx={{ fontSize: '.75rem' }}>เริ่มต้น</Typography>
-          <Typography sx={{ fontSize: '.75rem' }}>฿ 4,500</Typography>
-        </Box>
-      </CardActions>
+        <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Box sx={{ display: 'flex', padding: '0' }}>
+            <StarIcon sx={{ color: '#FBBC05', fontSize: '1.25rem' }} />
+            <Typography>4.86 (78)</Typography>
+          </Box>
+
+          <Box sx={{ p: '5px 4px', color: '#000', height: '50px' }}>
+            <Typography sx={{ fontSize: '.75rem' }}>เริ่มต้น</Typography>
+            <Typography sx={{ fontSize: '.75rem' }}>฿ 4,500</Typography>
+          </Box>
+        </CardActions>
+      </Link>
     </Card>
   );
 }

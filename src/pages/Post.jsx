@@ -82,7 +82,7 @@ function Post() {
         count={10}
         variant="outlined"
         color="primary"
-        sx={{ m: '0 auto' }}
+        sx={{ m: '2.5rem auto', width: 'max-content' }}
       />
     </Container>
   );
