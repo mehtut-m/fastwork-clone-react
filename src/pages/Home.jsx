@@ -9,6 +9,7 @@ function Home() {
       <HeroBanner />
       <Navbar />
       <TrendingPost />
+      <TrendingPost />
     </Box>
   );
 }

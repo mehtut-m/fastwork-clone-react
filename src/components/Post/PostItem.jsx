@@ -10,7 +10,7 @@ import { Avatar } from '@mui/material';
 
 function PostItem() {
   return (
-    <Card sx={{ maxWidth: 362, maxHeight: 360, minWidth: 242 }}>
+    <Card sx={{ maxWidth: 321, maxHeight: 360, minWidth: 242 }}>
       <Link to={`/product/:id`}>
         <CardMedia
           sx={{ backgroundColor: 'red', height: '187px' }}
@@ -45,8 +45,8 @@ function PostItem() {
           </Box>
 
           <Box sx={{ p: '5px 4px', color: '#000', height: '50px' }}>
-            <Typography sx={{ fontSize: '.75rem' }}>เริ่มต้น</Typography>
-            <Typography sx={{ fontSize: '.75rem' }}>฿ 4,500</Typography>
+            <Typography sx={{}}>เริ่มต้น</Typography>
+            <Typography sx={{}}>฿ 4,500</Typography>
           </Box>
         </CardActions>
       </Link>

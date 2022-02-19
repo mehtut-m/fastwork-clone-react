@@ -54,15 +54,21 @@ export default function SignUp() {
         <Typography
           component="h1"
           variant="h5"
-          sx={{ textAlign: 'start', width: '100%' }}
+          sx={{
+            textAlign: 'start',
+            width: '100%',
+            fontWeight: 600,
+            fontSize: '1.5rem',
+            my: '1rem',
+          }}
         >
-          สร้างบัญชี
+          สร้างบัญชี fastwork
         </Typography>
         <Box>
           <GoogleLoginButton />
           <FacebookLoginButton />
         </Box>
-        <Divider>หรือ</Divider>
+        <Divider sx={{ my: '1rem' }}>หรือ</Divider>
 
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid container spacing={2}>
@@ -136,7 +142,7 @@ export default function SignUp() {
           <Grid container justifyContent="flex-end">
             <Grid item>
               มีบัญชีอยู่แล้ว ?
-              <Link href="/login" variant="body2">
+              <Link href="/login" variant="body2" sx={{ ml: '.5rem' }}>
                 เข้าสู่ระบบ
               </Link>
             </Grid>

@@ -1,30 +1,34 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 import React from 'react';
 import PostItem from './PostItem';
 
 function TrendingPost() {
   return (
-    <Box>
+    <Container>
       {/* Header */}
       <Typography
         component="h3"
         sx={{ fontSize: '2rem', textAlign: 'start', my: '2rem' }}
       >
         ยอดนิยมในหมวด
-        <Typography
-          component="span"
-          sx={{ color: 'primary.main', fontSize: 'inherit' }}
-        >
-          ออกแบบ Logo
-        </Typography>
+        <Link to="/">
+          <Typography
+            component="span"
+            sx={{ color: 'primary.main', fontSize: 'inherit', ml: '.5rem' }}
+          >
+            ออกแบบ Logo
+          </Typography>
+        </Link>
       </Typography>
-      <Box sx={{}}>
+
+      <Box sx={{ display: 'flex', gap: '.5rem' }}>
         <PostItem sx={{ width: '321px' }} />
         <PostItem sx={{ width: '321px' }} />
         <PostItem sx={{ width: '321px' }} />
         <PostItem sx={{ width: '321px' }} />
       </Box>
-    </Box>
+    </Container>
   );
 }
 
