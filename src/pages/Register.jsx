@@ -20,13 +20,13 @@ export default function SignUp() {
     confirmPassword: '',
   });
 
-  const handleChange = event => {
-    setFormInput(prev => ({
+  const handleChange = (event) => {
+    setFormInput((prev) => ({
       ...prev,
       [event.target.name]: event.target.value,
     }));
   };
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     await register(formInput);
   };

@@ -2,7 +2,6 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import StarIcon from '@mui/icons-material/Star';
 import { Box } from '@mui/system';
@@ -10,7 +9,7 @@ import { Avatar } from '@mui/material';
 
 function PostItem() {
   return (
-    <Card sx={{ maxWidth: 362, maxHeight: 320, minWidth: 242 }}>
+    <Card sx={{ maxWidth: 362, maxHeight: 360, minWidth: 242 }}>
       <CardMedia
         sx={{ backgroundColor: 'red', height: '187px' }}
         component="img"
@@ -38,8 +37,8 @@ function PostItem() {
       </CardContent>
 
       <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Box sx={{ display: 'flex', padding: '1rem' }}>
-          <StarIcon sx={{ color: '#FBBC05' }} />
+        <Box sx={{ display: 'flex', padding: '0' }}>
+          <StarIcon sx={{ color: '#FBBC05', fontSize: '1.25rem' }} />
           <Typography>4.86 (78)</Typography>
         </Box>
 

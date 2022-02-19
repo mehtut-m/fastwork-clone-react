@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Pagination from '@mui/material/Pagination';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import Typography from '@mui/material/Typography';
 import PostWrapper from '../components/Post/PostWrapper';
@@ -76,6 +77,13 @@ function Post() {
       <Typography sx={{ textAlign: 'start' }}>งาน 293 รายการ</Typography>
 
       <PostWrapper />
+
+      <Pagination
+        count={10}
+        variant="outlined"
+        color="primary"
+        sx={{ m: '0 auto' }}
+      />
     </Container>
   );
 }
