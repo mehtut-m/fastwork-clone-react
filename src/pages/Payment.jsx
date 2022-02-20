@@ -1,10 +1,10 @@
-import { Container, Typography } from '@mui/material';
+import { Button, Container, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import React from 'react';
+import PaymentForm from '../components/Form/CreditCardForm';
 
 function Payment() {
   return (
-    <Container sx={{ display: 'flex', height: '100vh' }}>
+    <Container sx={{ display: 'flex', height: 'calc(100vh - 4.5rem)' }}>
       <Box
         sx={{
           backgroundColor: 'primary.main',
@@ -22,7 +22,6 @@ function Payment() {
         >
           รายการที่ต้องชำระ
         </Typography>
-
         <Box
           sx={{
             background: '#fff',
@@ -66,9 +65,18 @@ function Payment() {
             <Box>250 บาท</Box>
           </Box>
         </Box>
+        {/*  */}
+        <Typography variant="body1" color="#00FF38" sx={{ mt: '1rem' }}>
+          100% Secure Checkout
+        </Typography>
+        <Button sx={{ color: '#fff', textDecoration: 'underline' }}>
+          ยกเลิกรายการ
+        </Button>
       </Box>
 
-      <Box sx={{ width: '100%' }}></Box>
+      <Box sx={{ width: '100%' }}>
+        <PaymentForm />
+      </Box>
     </Container>
   );
 }

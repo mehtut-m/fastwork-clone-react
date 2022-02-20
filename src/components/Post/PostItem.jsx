@@ -10,14 +10,24 @@ import { Avatar } from '@mui/material';
 
 function PostItem() {
   return (
-    <Card sx={{ maxWidth: 321, maxHeight: 360, minWidth: 242 }}>
+    <Card
+      sx={{
+        maxWidth: 321,
+        maxHeight: 360,
+        minWidth: 242,
+        '&:hover': {
+          transform: 'translateY(-5px)',
+          transition: 'all .2s ease-in-out',
+        },
+      }}
+    >
       <Link to={`/product/:id`}>
         <CardMedia
           sx={{ backgroundColor: 'red', height: '187px' }}
           component="img"
           height="140"
           image="https://storage.googleapis.com/fastwork-static/987bd900-9051-4a55-b93f-cff333ee921f.jpg"
-          alt="green iguana"
+          alt="PostImage"
         />
 
         <CardContent sx={{ position: 'relative', pt: '1.5rem', pb: '.125rem' }}>

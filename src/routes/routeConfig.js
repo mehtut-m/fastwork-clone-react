@@ -8,8 +8,11 @@ import Payment from '../pages/Payment';
 import ForgetPassword from '../pages/ForgetPassword';
 import Chat from '../pages/Chat';
 import Post from '../pages/Post';
+import MyPost from '../pages/MyPost';
+import { useContext } from 'react';
 
 function RouteConfig() {
+  // const {} = useContext()
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -20,6 +23,7 @@ function RouteConfig() {
       <Route path="/message" element={<Chat />} />
       <Route path="/payment" element={<Payment />} />
       <Route path="/forget-password" element={<ForgetPassword />} />
+      <Route path="my/post" element={<MyPost />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
