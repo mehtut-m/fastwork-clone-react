@@ -5,12 +5,18 @@ import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import { start } from '@popperjs/core';
+import { login } from '../../apis/auth';
 
 import FacebookLoginButton from './FacebookLoginButton';
 import GoogleLoginButton from './GoogleLoginButton';
 
-function MainLogin({ email, handleClickLogin, setEmail }) {
+function MainLogin({
+  email,
+  handleClickLogin,
+  setEmail,
+  validateEmail,
+  emailError,
+}) {
   return (
     <>
       <Typography
@@ -29,25 +35,43 @@ function MainLogin({ email, handleClickLogin, setEmail }) {
         เข้าสู่ระบบ
       </Typography>
 
-      <Box component="form" sx={{ mt: 1 }} onSubmit={handleClickLogin}>
-        <Box>
-          <GoogleLoginButton />
-          <FacebookLoginButton />
-        </Box>
-        <Divider sx={{ mt: 2 }}>หรือ</Divider>
-        <TextField
-          type="email"
-          margin="normal"
-          fullWidth
-          id="email"
-          label="Email Address"
-          name="email"
-          autoComplete="email"
-          required
-          autoFocus
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-        />
+      <Box>
+        <GoogleLoginButton />
+        <FacebookLoginButton />
+      </Box>
+      <Divider sx={{ mt: 2 }}>หรือ</Divider>
+
+      <Box
+        component="form"
+        sx={{ mt: 1 }}
+        novalidate={true}
+        onSubmit={handleClickLogin}
+      >
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <TextField
+              type="email"
+              margin="normal"
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              required
+              autoFocus
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+            />
+            <span
+              sx={{
+                fontWeight: 'bold',
+                color: 'red',
+              }}
+            >
+              {emailError}
+            </span>
+          </Grid>
+        </Grid>
 
         <Button
           type="submit"

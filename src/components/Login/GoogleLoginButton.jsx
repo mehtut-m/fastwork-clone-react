@@ -2,7 +2,7 @@ import GoogleLogin from 'react-google-login';
 import axios from '../../config/axios';
 
 function GoogleLoginButton() {
-  const googleLogin = async (response) => {
+  const googleLogin = async response => {
     try {
       const { tokenId } = response;
       console.log(tokenId);

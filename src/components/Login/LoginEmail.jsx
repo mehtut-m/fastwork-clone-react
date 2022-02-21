@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { login } from '../../apis/auth';
 
 import {
   Box,
@@ -11,12 +12,22 @@ import {
 } from '@mui/material';
 
 function LoginEmail({ email }) {
+  const submitMainLogin = async () => {
+    try {
+      const res = await login({ email, password });
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const avatarStyle = { backgroundColor: 'black' };
+
   //*เช็ค คลิกไปหน้า
   const [password, setPassword] = useState('');
 
   const handleSubmitLoginEmail = e => {
     e.preventDefault();
-    console.log('password: ' + password);
   };
 
   return (
@@ -44,28 +55,34 @@ function LoginEmail({ email }) {
         onSubmit={handleSubmitLoginEmail}
       >
         <Box sx={{ display: 'flex', mt: 3 }}>
-          <Avatar />
+          <Avatar style={avatarStyle} />
           <Typography sx={{ fontWeight: 'bold', mt: 1, mx: 1 }}>
             {email}
           </Typography>
         </Box>
-        <TextField
-          margin="normal"
-          required
-          fullWidth
-          type="password"
-          id="password"
-          label="Password"
-          name="password"
-          autoComplete="off"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-        />
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              type="password"
+              id="password"
+              label="Password"
+              name="password"
+              autoComplete="off"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+          </Grid>
+        </Grid>
+
         <Button
           type="submit"
           fullWidth
           variant="contained"
           sx={{ mt: 3, mb: 2 }}
+          onClick={submitMainLogin}
         >
           เข้าสู่ระบบ
         </Button>
