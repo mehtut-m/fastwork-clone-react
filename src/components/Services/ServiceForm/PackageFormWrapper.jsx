@@ -3,18 +3,24 @@ import PackageFormItem from './PackageFormItem';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import { addApiPackages } from '../../../apis/post';
 
 function PackageFormWrapper({
   activeStep,
   handleBack,
   handleNext,
+  categoryForm,
   setCategoryForm,
 }) {
   const [packages, setPackages] = useState([{}]);
+  const { postId } = categoryForm;
   const addPackages = () => {
     setPackages([...packages, {}]);
   };
-  const handleClickNext = () => {
+  const handleClickNext = async () => {
+    console.log(addPackages);
+    const res = await addApiPackages({ postId, packages });
+    console.log(res);
     setCategoryForm((prev) => ({ ...prev, packages }));
   };
 
