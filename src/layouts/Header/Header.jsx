@@ -6,16 +6,19 @@ import {
   Typography,
   InputBase,
 } from '@mui/material';
-
+import './Header.css';
+import { UserContext } from '../../contexts/UserContext';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
-import './Header.css';
 import UserMenu from '../../components/Menu/UserMenu';
+import { useContext } from 'react';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 
 function Header() {
+  const { user } = useContext(UserContext);
+
   const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     display: 'flex',
@@ -61,6 +64,7 @@ function Header() {
       color="nav-primary-color"
       sx={{
         padding: '.75rem 0',
+        top: '0',
         position: 'sticky',
       }}
     >
@@ -97,9 +101,45 @@ function Header() {
             />
           </Search>
         </Box>
-
         {/* Guest bar */}
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        {!user?.role ? (
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Link to="/login">
+              <Typography
+                noWrap
+                component="h1"
+                className="fastwork-logo"
+                sx={{
+                  mr: 2,
+                  display: { md: 'flex' },
+                  fontSize: '1rem',
+                  fontWeight: '500',
+                }}
+              >
+                เข้าสู่ระบบ
+              </Typography>
+            </Link>
+
+            <Link to="/register">
+              <Typography
+                noWrap
+                component="h1"
+                className="fastwork-logo"
+                sx={{
+                  mr: 2,
+                  display: { md: 'flex' },
+                  fontSize: '1rem',
+                  fontWeight: '500',
+                }}
+              >
+                สมัครเป็นฟรีแลนซ์
+              </Typography>
+            </Link>
+          </Box>
+        ) : (
+          <UserMenu />
+        )}
+        {/* <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <Link to="/login">
             <Typography
               noWrap
@@ -132,9 +172,7 @@ function Header() {
             </Typography>
           </Link>
         </Box>
-
-        {/* User bar */}
-        <UserMenu />
+        <UserMenu /> */}
       </Container>
     </AppBar>
   );

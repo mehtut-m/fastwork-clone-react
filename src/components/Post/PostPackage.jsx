@@ -1,80 +1,101 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, selectClasses, Typography } from '@mui/material';
+import { formatThaiCurrency } from '../../services/currencyService';
+import { useState } from 'react';
 
-function PostPackage() {
+function PostPackage({ post }) {
+  const [packageSelect, setPackageSelect] = useState(0);
+  const packages = post?.Packages;
+
   return (
-    <>
+    <Box
+      component="section"
+      sx={{
+        borderRadius: '5px',
+        width: '33%',
+        maxWidth: '351px',
+        border: '1px solid gray',
+        height: '100%',
+        position: 'sticky',
+        top: '5.5rem',
+      }}
+    >
       <Box
         component="div"
-        sx={{ display: "flex", justifyContent: "space-evenly" }}
+        sx={{
+          display: 'flex',
+          width: '100%',
+        }}
       >
-        <Button
-          variant="contained" // ! change when click other button
-          sx={{ width: "6.625rem", height: "4.8rem" }}
-        >
-          ฿1,800
-        </Button>
-        <Button sx={{ width: "6.625rem", height: "4.8rem" }}>฿3,000</Button>
-        <Button sx={{ width: "6.625rem", height: "4.8rem" }}>฿6,500</Button>
+        {packages &&
+          packages.length > 1 &&
+          packages.map((pkg, index) => (
+            <Button
+              key={pkg.id}
+              variant="contained" // ! change when click other button
+              sx={{ height: '4.8rem', borderRadius: 0, width: '100%' }}
+              onClick={() => {
+                setPackageSelect(index);
+              }}
+            >
+              {formatThaiCurrency(pkg.price)}
+            </Button>
+          ))}
       </Box>
+
+      {/*  */}
       <Typography // TODO: Topic name package
         component="p"
         sx={{
-          fontSize: "1rem",
-          textAlign: "start",
-          marginLeft: "1.375rem",
-          marginTop: "1.125rem",
-          color: "#7900FF",
+          fontSize: '1rem',
+          textAlign: 'start',
+          marginLeft: '1.375rem',
+          marginTop: '1.125rem',
+          color: '#7900FF',
         }}
       >
-        แพ็กเกจ : Silver package
+        แพ็กเกจ : {packages && packages[packageSelect].name}
       </Typography>
       <Typography // TODO: Content
         sx={{
-          fontSize: "1rem",
-          textAlign: "start",
-          marginLeft: "1.375rem",
-          marginRight: "1.375rem",
+          fontSize: '1rem',
+          textAlign: 'start',
+          marginLeft: '1.375rem',
+          marginRight: '1.375rem',
         }}
       >
-        -I will design 2 logos and then you choose 1 logo that you like for
-        develop to edit for 3 times. After design finish I will send the file to
-        you. (jpg,png,eps(vector file)) -free rubber stamp file. -ออกแบบโลโก้ 2
-        แบบ (ใช้เวลา 3-5 วัน) (ต้องการงานด่วนใน 1 วัน + 2,000 บาท ) -พัฒนาต่อ 1
-        แบบ -สามารถแก้ไขได้ 3 ครั้ง (เกินสามครั้งคิดเพิ่มครั้งละ 200 บาท)
-        ลูกค้าจะได้รับ ความละเอียดสูง 300 DPI 1.ไฟล์vector file พร้อมส่งโรงพิมพ์
-        2.ไฟล์ png ความละเอียดสูง 3.ไฟล์ jpg ความละเอียดสูง
+        {packages && packages[packageSelect].description}
       </Typography>
       <Box
         sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          marginTop: "0.8rem",
-          marginBottom: "1.375rem",
+          display: 'flex',
+          justifyContent: 'space-between',
+          marginTop: '0.8rem',
+          marginBottom: '1.375rem',
         }}
       >
-        <Typography sx={{ marginLeft: "1.375rem", fontWeight: "bold" }}>
+        <Typography sx={{ marginLeft: '1.375rem', fontWeight: 'bold' }}>
           ระยะเวลาในการทำงาน
         </Typography>
         <Typography
-          sx={{ marginRight: "1.375rem", fontWeight: "bold", color: "#7900FF" }}
+          sx={{ marginRight: '1.375rem', fontWeight: 'bold', color: '#7900FF' }}
         >
-          3 วัน
+          {packages && packages[packageSelect].duration} วัน
         </Typography>
       </Box>
-      <Typography component="hr" sx={{ margin: "1rem" }}></Typography>
+      <Typography component="hr" sx={{ margin: '1rem' }}></Typography>
       <Button // TODO: button
         sx={{
-          background: "#7900FF",
-          color: "#fff",
-          width: "13.125rem",
-          height: "2.75rem",
-          marginBottom: "1.375rem",
-          ":hover": { background: "#7900FF", color: "#fff" },
+          background: '#7900FF',
+          color: '#fff',
+          width: '13.125rem',
+          height: '2.75rem',
+          marginBottom: '1.375rem',
+          ':hover': { background: '#7900FF', color: '#fff' },
         }}
       >
         สนใจจ้าง
       </Button>
-    </>
+    </Box>
   );
 }
 

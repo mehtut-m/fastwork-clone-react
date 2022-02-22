@@ -1,8 +1,8 @@
 import { Container, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
-import AvailablePost from '../components/Post/AvailablePost';
-import PostItem from '../components/Post/PostItem';
+import AvailablePost from '../../components/Post/AvailablePost';
+import PostItem from '../../components/Post/PostItem';
 
 function MyPost() {
   return (

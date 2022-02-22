@@ -8,8 +8,8 @@ function Home() {
     <Box sx={{}}>
       <HeroBanner />
       <Navbar />
-      <TrendingPost />
-      <TrendingPost />
+      <TrendingPost categoryId={1} />
+      <TrendingPost categoryId={6} />
     </Box>
   );
 }
