@@ -68,6 +68,11 @@ function PackageFormItem({ isMultiplePkg, number, setPackages, idx }) {
       </FormControl>
       <Typography sx={{ fontSize: '1.125rem' }}>ใช้เวลาทำ</Typography>
       <TextField type="number" name="duration" onChange={handleChange} />
+
+      <Typography sx={{ fontSize: '1.125rem' }}>
+        จำนวนครั้งในการแก้ไข
+      </Typography>
+      <TextField type="number" name="revise" onChange={handleChange} />
     </Paper>
   );
 }

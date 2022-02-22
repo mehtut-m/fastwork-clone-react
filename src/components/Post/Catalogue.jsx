@@ -11,7 +11,6 @@ import Typography from '@mui/material/Typography';
 import PostWrapper from './PostWrapper';
 
 function Catalogue({ posts, categoryInfo }) {
-  console.log('--------_>', categoryInfo.id);
   const breadcrumbs = [
     <Link underline="hover" key="1" color="inherit" to={`/category/`}>
       ประเภทงานทั้งหมด

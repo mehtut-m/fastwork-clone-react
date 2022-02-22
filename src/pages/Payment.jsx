@@ -1,8 +1,14 @@
 import { Button, Container, Typography } from '@mui/material';
 import { Box } from '@mui/system';
+import { formatThaiCurrency } from '../services/currencyService';
+import { useContext, useEffect } from 'react';
+import { CheckoutContext } from '../contexts/CheckoutContext';
 import PaymentForm from '../components/Form/CreditCardForm';
 
 function Payment() {
+  const { order, post, packageId } = useContext(CheckoutContext);
+  const pkg = post?.Packages?.find((element) => element.id === packageId);
+
   return (
     <Container sx={{ display: 'flex', height: 'calc(100vh - 4.5rem)' }}>
       <Box
@@ -41,7 +47,7 @@ function Payment() {
             }}
           >
             <Box>ราคางาน</Box>
-            <Box>250 บาท</Box>
+            <Box>{pkg?.price && formatThaiCurrency(pkg?.price)} บาท</Box>
           </Box>
           <Box
             sx={{
@@ -52,7 +58,7 @@ function Payment() {
             }}
           >
             <Box>ยอดชำระค่าจ้างงาน</Box>
-            <Box>250 บาท</Box>
+            <Box>{pkg?.price && formatThaiCurrency(pkg?.price)} บาท</Box>
           </Box>
           <Box
             sx={{
@@ -62,7 +68,7 @@ function Payment() {
             }}
           >
             <Box>จำนวนที่ต้องชำระ</Box>
-            <Box>250 บาท</Box>
+            <Box>{pkg?.price && formatThaiCurrency(pkg?.price)} บาท</Box>
           </Box>
         </Box>
         {/*  */}
@@ -75,7 +81,7 @@ function Payment() {
       </Box>
 
       <Box sx={{ width: '100%' }}>
-        <PaymentForm />
+        <PaymentForm pkg={pkg} />
       </Box>
     </Container>
   );
