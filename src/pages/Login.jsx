@@ -15,7 +15,9 @@ function Login() {
 
   const handleSubmitLogin = e => {
     e.preventDefault();
+
     const email = e.target[0].value;
+
     if (typeof email !== 'string' || email.trim() === '' || email.length < 0) {
       setEmailValid(true);
       setEmailError('Required');
@@ -24,7 +26,7 @@ function Login() {
 
     if (!validator.isEmail(email)) {
       setEmailValid(true);
-      setEmailError('invalid email');
+      setEmailError('Incorrect email');
       return;
     }
     setMainLogin(true);

@@ -35,7 +35,7 @@ function LoginEmail({ email }) {
     if (password.length === 0) {
       setPasswordError('Password is required');
     } else if (password.length < 6) {
-      setPasswordError('Password should be minimum 6 characters');
+      setPasswordError('Incorrect Password');
     } else if (password.indexOf(' ') >= 0) {
       setPasswordError('Password cannot contain spaces');
     } else {
@@ -87,6 +87,7 @@ function LoginEmail({ email }) {
         >
           <Grid item xs={12}>
             <TextField
+              error={passwordValid}
               margin="normal"
               required
               fullWidth
@@ -117,9 +118,9 @@ function LoginEmail({ email }) {
           type="submit"
           fullWidth
           variant="contained"
+          disabled={!password}
           sx={{ mt: 3, mb: 2 }}
           onClick={submitMainLogin}
-          disabled={!email}
         >
           เข้าสู่ระบบ
         </Button>
