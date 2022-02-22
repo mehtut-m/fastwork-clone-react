@@ -16,3 +16,12 @@ export const addInstruction = async (payload) => {
 export const addApiPackages = async (payload) => {
   return axios.post('post/package', payload);
 };
+export const getPostById = async (id) => {
+  return axios.get(`post/${id}`);
+};
+export const getPostBySubCategories = async (id) => {
+  return axios.get(`post/subCategories/${id}`);
+};
+export const getAllPost = async (id, payload) => {
+  return axios.get(`post/`, payload);
+};

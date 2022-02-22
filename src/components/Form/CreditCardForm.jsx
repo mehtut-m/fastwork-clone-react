@@ -1,7 +1,14 @@
 import { Button, Grid, TextField } from '@mui/material';
 import { Box } from '@mui/material';
+import { useState } from 'react';
 
 function CreditCardForm() {
+  const [paymentInfo, setPaymentInfo] = useState({
+    cardNumber: '',
+    cardHolderName: '',
+    expireDate: '',
+    cvc: '',
+  });
   return (
     <Box
       component="form"
@@ -17,6 +24,7 @@ function CreditCardForm() {
             fullWidth
             id="cardNumber"
             label="Card Number"
+            value={paymentInfo.cardNo}
             // onChange={handleChange}
           />
         </Grid>
@@ -27,10 +35,10 @@ function CreditCardForm() {
             fullWidth
             id="cardHolderName"
             label="Card Holder Name"
+            value={paymentInfo.cardHolderName}
             // onChange={handleChange}
           />
         </Grid>
-
         <Grid item xs={12} sm={6}>
           <TextField
             name="expireDate"
@@ -38,20 +46,23 @@ function CreditCardForm() {
             fullWidth
             id="expireDate"
             label="MM/YY"
+            value={paymentInfo.expireDate}
             // onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            name="CVC"
+            name="cvc"
             required
             fullWidth
             id="cvc"
             label="CVC"
+            value={paymentInfo.cvc}
             // onChange={handleChange}
           />
         </Grid>
       </Grid>
+
       <Button variant="contained" sx={{ py: '1rem', width: '100%' }}>
         ชำระจำนวนเงิน 250 บาท
       </Button>

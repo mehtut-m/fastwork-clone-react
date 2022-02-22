@@ -30,14 +30,11 @@ function ThumbnailForm({
 
   const handleClickNext = async () => {
     const formData = new FormData();
-
     for (const element of imgArr) {
-      console.log('hi');
       formData.append('image', element);
     }
     formData.append('postId', postId);
     const res = await addPostImage(formData);
-    console.log(res);
     setCategoryForm((prev) => ({ ...prev, images: imgArr }));
     await createPost(imgArr);
     handleNext();

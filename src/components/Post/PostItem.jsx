@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -7,8 +7,10 @@ import Typography from '@mui/material/Typography';
 import StarIcon from '@mui/icons-material/Star';
 import { Box } from '@mui/system';
 import { Avatar } from '@mui/material';
+import { formatThaiCurrency } from '../../services/currencyService';
 
-function PostItem() {
+function PostItem({ item }) {
+  const packageArr = item.Packages.sort((a, b) => a.price - b.price);
   return (
     <Card
       sx={{
@@ -21,12 +23,12 @@ function PostItem() {
         },
       }}
     >
-      <Link to={`/product/:id`}>
+      <Link to={`/post/1`}>
         <CardMedia
-          sx={{ backgroundColor: 'red', height: '187px' }}
+          sx={{ height: '187px' }}
           component="img"
           height="140"
-          image="https://storage.googleapis.com/fastwork-static/987bd900-9051-4a55-b93f-cff333ee921f.jpg"
+          image={item.PostImages[0].url}
           alt="PostImage"
         />
 
@@ -37,6 +39,7 @@ function PostItem() {
               transform: 'translateY(50%)',
               top: '-50%',
             }}
+            src={item.User.profileImage}
           />
           <Typography
             gutterBottom
@@ -44,7 +47,7 @@ function PostItem() {
             component="div"
             sx={{ textAlign: 'start', fontSize: '1.125rem' }}
           >
-            ออกแบบโลโก้สำหรับทุกธุรกิจ คุยง่าย ส่งงานไว
+            {item.name}
           </Typography>
         </CardContent>
 
@@ -56,7 +59,9 @@ function PostItem() {
 
           <Box sx={{ p: '5px 4px', color: '#000', height: '50px' }}>
             <Typography sx={{}}>เริ่มต้น</Typography>
-            <Typography sx={{}}>฿ 4,500</Typography>
+            <Typography sx={{}}>
+              {formatThaiCurrency(packageArr[0].price)}
+            </Typography>
           </Box>
         </CardActions>
       </Link>
