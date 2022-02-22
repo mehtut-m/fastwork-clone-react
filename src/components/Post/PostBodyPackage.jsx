@@ -1,22 +1,25 @@
-import { Typography } from "@mui/material";
-import PostBodyPackageList from "./PostBodyPackageList";
+import { Typography } from '@mui/material';
+import PostBodyPackageList from './PostBodyPackageList';
 
-function PostBodyPackage() {
+function PostBodyPackage({ post, handleOpen, handleClose }) {
   return (
     <>
       <Typography // TODO: Package List
         component="h2"
         sx={{
-          fontSize: "2rem",
-          textAlign: "start",
-          color: "#7900FF",
-          marginTop: "1.125rem",
+          color: '#7900FF',
+          fontSize: '2rem',
+          marginTop: '1.125rem',
+          textAlign: 'start',
         }}
       >
         แพ็กเกจ
       </Typography>
-      <PostBodyPackageList />
-      <PostBodyPackageList />
+      <PostBodyPackageList
+        post={post}
+        handleOpen={handleOpen}
+        handleClose={handleClose}
+      />
     </>
   );
 }

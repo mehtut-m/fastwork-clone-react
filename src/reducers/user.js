@@ -11,7 +11,7 @@ const userReducer = (state, action) => {
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
     case AUTH_SUCCESS: {
-      console.log('User Reducer here');
+      console.log('state ------>', state);
       console.log(action.payload);
       return { ...state, ...action.payload };
     }

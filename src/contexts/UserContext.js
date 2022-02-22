@@ -9,9 +9,23 @@ const initialState = {};
 
 const UserContextProvider = ({ children }) => {
   const [user, dispatch] = useReducer(userReducer, initialState);
-  const token = getToken();
 
-  useEffect(() => {}, [token]);
+  useEffect(() => {
+    const token = getToken();
+    if (token) {
+      axios
+        .get('/user/me')
+        .then((res) => {
+          if (res.status === 200) {
+            dispatch({
+              type: 'LOGIN_SUCCESS',
+              payload: res.data.user,
+            });
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+  }, []);
 
   return (
     <UserContext.Provider

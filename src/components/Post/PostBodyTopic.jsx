@@ -1,12 +1,12 @@
-import { Typography } from "@mui/material";
+import { Typography } from '@mui/material';
 
-function PostBodyTopic() {
+function PostBodyTopic({ post }) {
   return (
     <Typography // TODO: Topic
       component="h2"
-      sx={{ fontSize: "2rem", textAlign: "start", color: "#7900FF" }}
+      sx={{ fontSize: '2rem', textAlign: 'start', color: '#7900FF' }}
     >
-      รับเขียนงาน 3D perspective ออกแบบภายใน
+      {post?.name}
     </Typography>
   );
 }

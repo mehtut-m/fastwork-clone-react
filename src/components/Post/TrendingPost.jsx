@@ -1,9 +1,18 @@
 import { Box, Container, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import React from 'react';
+import { getPostBySubCategories } from '../../apis/post';
+import React, { useEffect, useState } from 'react';
 import PostItem from './PostItem';
 
-function TrendingPost() {
+function TrendingPost({ categoryId }) {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    getPostBySubCategories(categoryId)
+      .then((res) => setPosts(res.data.post))
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <Container>
       {/* Header */}
@@ -12,21 +21,34 @@ function TrendingPost() {
         sx={{ fontSize: '2rem', textAlign: 'start', my: '2rem' }}
       >
         ยอดนิยมในหมวด
-        <Link to="/">
+        <Link to={`/sub-category/${categoryId}`}>
           <Typography
             component="span"
-            sx={{ color: 'primary.main', fontSize: 'inherit', ml: '.5rem' }}
+            sx={{
+              color: 'primary.main',
+              fontSize: 'inherit',
+              ml: '.5rem',
+              '&::before': {
+                content: '""',
+                width: '0px',
+                height: '1px',
+                background: 'black',
+                transition: '300ms',
+              },
+              '&:hover::before': {
+                width: '100%',
+              },
+            }}
           >
-            ออกแบบ Logo
+            {posts?.[0]?.SubCategory.name}
           </Typography>
         </Link>
       </Typography>
 
       <Box sx={{ display: 'flex', gap: '.5rem' }}>
-        <PostItem sx={{ width: '321px' }} />
-        <PostItem sx={{ width: '321px' }} />
-        <PostItem sx={{ width: '321px' }} />
-        <PostItem sx={{ width: '321px' }} />
+        {posts.map((item) => (
+          <PostItem item={item} key={item.id} />
+        ))}
       </Box>
     </Container>
   );
