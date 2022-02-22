@@ -14,7 +14,6 @@ const authReducer = (state, action) => {
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
     case AUTH_SUCCESS: {
-      console.log('AuthReducer =====>', action.payload);
       return { ...state, isAuthenticated: true };
     }
     case LOADING: {

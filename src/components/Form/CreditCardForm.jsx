@@ -1,37 +1,83 @@
-import { Button, Grid, TextField } from '@mui/material';
+import { Button, Grid, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/material';
-import { useState, useEffect } from 'react';
+import LoadingButton from '@mui/lab/LoadingButton';
+import { useState, useEffect, useContext } from 'react';
+import { checkoutCreditCard } from '../../apis/checkout';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import { OMISE_SCRIPT_URL, OMISE_PUBLIC_KEY } from '../../config/env';
+import { useNavigate } from 'react-router-dom';
+import { CheckoutContext } from '../../contexts/CheckoutContext';
 
+const MySwal = withReactContent(Swal);
 let Omise;
 
-function CreditCardForm({ pkg }) {
+function CreditCardForm({ pkg, order }) {
+  const navigate = useNavigate();
+  const { clearOrder } = useContext(CheckoutContext);
+  const [loading, setLoading] = useState(false);
+
   const [paymentInfo, setPaymentInfo] = useState({
-    number: '',
-    name: '',
+    number: '4242424242424242',
+    name: 'wewew',
     expiration_year: '2025',
     expiration_month: '12',
-    security_code: '',
+    security_code: '123',
   });
-  console.log(paymentInfo);
+
   useEffect(() => {
     Omise = window.Omise;
     Omise.setPublicKey('pkey_test_5qx9dm3xhihw7x7cpj2');
-    console.log(Omise);
   }, []);
+
   const handleChange = (e) => {
     setPaymentInfo({ ...paymentInfo, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    Omise.createToken('card', paymentInfo, (statusCode, response) => {
+    setLoading(true);
+    Omise.createToken('card', paymentInfo, async (statusCode, response) => {
       if (statusCode === 200) {
-        // Success: send back the TOKEN_ID to your server. The TOKEN_ID can be
-        // found in `response.id`.
-        console.log(response.id);
-        // checkoutForm.submit();
+        // Success: send back the TOKEN_ID to server.
+        try {
+          const paymentResult = await checkoutCreditCard({
+            token: response.id,
+            packageId: pkg?.id,
+            requirement: order.requirement,
+          });
+          if (paymentResult.status === 200) {
+            Swal.fire({
+              position: 'top-center',
+              icon: 'success',
+              title: 'Your order has been placed',
+              showConfirmButton: false,
+              timer: 1750,
+            });
+            clearOrder();
+            setTimeout(() => navigate('/'), 2000);
+          } else {
+            Swal.fire({
+              position: 'top-center',
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Payment failed, Try Again!',
+              showConfirmButton: false,
+              timer: 1750,
+            });
+          }
+        } catch (err) {
+          Swal.fire({
+            position: 'top-center',
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Payment failed, Try Again!',
+            showConfirmButton: false,
+            timer: 1750,
+          });
+        } finally {
+          setLoading(false);
+        }
       } else {
         // Error: display an error message. Note that `response.message` contains
         // a preformatted error message. Also note that `response.code` will be
@@ -41,9 +87,22 @@ function CreditCardForm({ pkg }) {
   };
 
   return (
-    <Box component="form" noValidate sx={{ mt: 1 }} onSubmit={handleSubmit}>
+    <Box
+      component="form"
+      noValidate
+      sx={{ mt: 1, p: '2rem' }}
+      onSubmit={handleSubmit}
+    >
+      <Typography
+        component="h1"
+        color="primary"
+        textAlign="start"
+        sx={{ fontSize: '1.75rem', mb: '1rem' }}
+      >
+        ชำระเงินผ่านบัตรเครดิต/เดบิต
+      </Typography>
       <Grid container spacing={2}>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12}>
           <TextField
             name="number"
             required
@@ -54,7 +113,7 @@ function CreditCardForm({ pkg }) {
             onChange={handleChange}
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12}>
           <TextField
             name="name"
             required
@@ -90,13 +149,14 @@ function CreditCardForm({ pkg }) {
         </Grid>
       </Grid>
 
-      <Button
+      <LoadingButton
+        loading={loading}
         variant="contained"
         type="submit"
-        sx={{ py: '1rem', width: '100%' }}
+        sx={{ py: '1rem', width: '100%', mt: '1.25rem' }}
       >
-        ชำระจำนวนเงิน 250 บาท
-      </Button>
+        ชำระจำนวนเงิน {pkg?.price} บาท
+      </LoadingButton>
     </Box>
   );
 }

@@ -62,7 +62,6 @@ const AuthContextProvider = ({ children }) => {
           type: LOGIN_SUCCESS,
           payload: res.data,
         });
-
         setUser({
           type: LOGIN_SUCCESS,
           payload: res.data.user,

@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react';
 import { UserContext } from '../../contexts/UserContext';
+import { AuthContext } from '../../contexts/AuthContext';
 import { Box, Menu, Typography } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 import Avatar from '@mui/material/Avatar';
@@ -7,13 +8,13 @@ import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 
 function UserMenu() {
+  const { logOut } = useContext(AuthContext);
   const { user } = useContext(UserContext);
   const settings = [
-    'ข้อความและออเดอร์',
-    'ฟรีแลนซ์ที่ถูกใจ',
-    'ตั้งค่าโปรไฟล์',
-    'สมัครเป็นฟรีแลนซ์',
-    'ออกจากระบบ',
+    { menu: 'ข้อความและออเดอร์', onClick: () => {}, path: null },
+    { menu: 'ฟรีแลนซ์ที่ถูกใจ', onClick: () => {}, path: null },
+    { menu: 'ตั้งค่าโปรไฟล์', onClick: () => {}, path: null },
+    { menu: 'ออกจากระบบ', onClick: logOut, path: null },
   ];
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -72,9 +73,17 @@ function UserMenu() {
             {user.email}
           </Typography>
         </MenuItem>
-        {settings.map((setting) => (
-          <MenuItem key={setting} onClick={handleCloseUserMenu}>
-            <Typography textAlign="center">{setting}</Typography>
+        {settings.map(({ menu, onClick }, index) => (
+          <MenuItem
+            key={index}
+            onClick={() => {
+              if (onClick) {
+                onClick();
+              }
+              handleCloseUserMenu();
+            }}
+          >
+            <Typography textAlign="center">{menu}</Typography>
           </MenuItem>
         ))}
       </Menu>

@@ -18,7 +18,7 @@ const pages = ['Products', 'Pricing', 'Blog'];
 
 function Header() {
   const { user } = useContext(UserContext);
-
+  console.log(user);
   const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     display: 'flex',
@@ -50,7 +50,6 @@ function Header() {
     color: 'inherit',
     '& .MuiInputBase-input': {
       padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)})`,
       transition: theme.transitions.create('width'),
       width: '100%',
@@ -102,7 +101,7 @@ function Header() {
           </Search>
         </Box>
         {/* Guest bar */}
-        {!user?.role ? (
+        {!user.id ? (
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Link to="/login">
               <Typography
@@ -139,40 +138,6 @@ function Header() {
         ) : (
           <UserMenu />
         )}
-        {/* <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Link to="/login">
-            <Typography
-              noWrap
-              component="h1"
-              className="fastwork-logo"
-              sx={{
-                mr: 2,
-                display: { md: 'flex' },
-                fontSize: '1rem',
-                fontWeight: '500',
-              }}
-            >
-              เข้าสู่ระบบ
-            </Typography>
-          </Link>
-
-          <Link to="/register">
-            <Typography
-              noWrap
-              component="h1"
-              className="fastwork-logo"
-              sx={{
-                mr: 2,
-                display: { md: 'flex' },
-                fontSize: '1rem',
-                fontWeight: '500',
-              }}
-            >
-              สมัครเป็นฟรีแลนซ์
-            </Typography>
-          </Link>
-        </Box>
-        <UserMenu /> */}
       </Container>
     </AppBar>
   );

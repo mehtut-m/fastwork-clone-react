@@ -135,6 +135,7 @@ export default function CheckoutModal({
                 <Typography sx={{ mb: '.5rem' }}>
                   อัพโหลดรูปภาพประกอบ Scope งาน หรือ Reference ได้สูงสุด  3 ภาพ
                 </Typography>
+
                 <label htmlFor="contained-button-file">
                   <Input
                     accept="image/*"

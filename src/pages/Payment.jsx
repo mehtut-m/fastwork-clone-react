@@ -81,7 +81,7 @@ function Payment() {
       </Box>
 
       <Box sx={{ width: '100%' }}>
-        <PaymentForm pkg={pkg} />
+        <PaymentForm pkg={pkg} order={order} />
       </Box>
     </Container>
   );
