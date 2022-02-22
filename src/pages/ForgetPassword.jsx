@@ -12,28 +12,40 @@ function ForgetPassword() {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container
+      component="main"
+      maxWidth="xs"
+      sx={{
+        height: 'calc(100vh - 72px)',
+      }}
+    >
       <Box
         sx={{
           boxShadow: '4px 4px 18px 0px rgba(0,0,0,0.25);',
-          marginTop: '5rem',
+          marginTop: '4rem',
           borderRadius: '10px',
           padding: '1rem',
         }}
       >
         <Typography
           component="h1"
-          variant="h4"
-          sx={{ mb: 3, fontWeight: 'bold', color: 'blue' }}
+          variant="h5"
+          // sx={{ mb: 3, fontWeight: 'bold', color: 'blue' }}
         >
-          Fastwork
+          fastwork
         </Typography>
+
         <Box>
-          {/* <Typography> */}
           <Typography
             component="h1"
             variant="h5"
-            sx={{ textAlign: 'start', fontWeight: 'bold' }}
+            sx={{
+              textAlign: 'start',
+              width: '100%',
+              fontWeight: 600,
+              fontSize: '1.5rem',
+              my: '1rem',
+            }}
           >
             ลืมรหัสผ่าน
           </Typography>
@@ -50,20 +62,23 @@ function ForgetPassword() {
         <Box
           component="form"
           noValidate
-          sx={{ mt: 1 }}
+          // sx={{ mt: 1 }}
           onSubmit={handleForgetPassword}
         >
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="ํYour Email"
-            name="email"
-            autoComplete="email"
-            autoFocus
-          />
-
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="ํYour Email"
+                name="email"
+                autoComplete="email"
+                autoFocus
+              />
+            </Grid>
+          </Grid>
           <Button
             type="submit"
             fullWidth

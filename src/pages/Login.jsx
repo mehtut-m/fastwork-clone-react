@@ -7,25 +7,27 @@ import validator from 'validator';
 function Login() {
   //* ถ้า สถานะ มีการเปลี่ยนแปลง Component นั้นก็จะถูก render ใส่อัตโนมัติ
   const [email, setEmail] = useState('');
-
+  const [emailValid, setEmailValid] = useState(false);
   const [emailError, setEmailError] = useState('');
-
-  const validateEmail = e => {};
 
   //* ใช้สำหรับ คลิกไปหน้าถัดไป ในหน้า loginemail
   const [mainLogin, setMainLogin] = useState(false);
 
   const handleSubmitLogin = e => {
     e.preventDefault();
-    setMainLogin(true);
-
-    const email = e.target.value;
-
-    if (validator.isEmail(email)) {
-      console.log('password');
-    } else {
-      setEmailError('Enter valid Email Format!');
+    const email = e.target[0].value;
+    if (typeof email !== 'string' || email.trim() === '' || email.length < 0) {
+      setEmailValid(true);
+      setEmailError('Required');
+      return;
     }
+
+    if (!validator.isEmail(email)) {
+      setEmailValid(true);
+      setEmailError('invalid email');
+      return;
+    }
+    setMainLogin(true);
   };
 
   return (
@@ -40,7 +42,7 @@ function Login() {
         sx={{
           boxShadow: '4px 4px 18px 0px rgba(0,0,0,0.25);',
           borderRadius: '10px',
-          marginTop: '5rem',
+          marginTop: '4rem',
           padding: '1rem',
         }}
       >
@@ -49,6 +51,10 @@ function Login() {
             handleClickLogin={handleSubmitLogin}
             email={email}
             setEmail={setEmail}
+            emailValid={emailValid}
+            setEmailValid={setEmailValid}
+            emailError={emailError}
+            setEmailError={setEmailError}
           />
         ) : (
           <LoginEmail email={email} />

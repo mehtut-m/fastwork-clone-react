@@ -21,29 +21,49 @@ function LoginEmail({ email }) {
     }
   };
 
-  const avatarStyle = { backgroundColor: 'black' };
+  const avatarStyle = { backgroundColor: 'salmon' };
 
   //*เช็ค คลิกไปหน้า
+
   const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [passwordValid, setPasswordValid] = useState(false);
 
   const handleSubmitLoginEmail = e => {
     e.preventDefault();
+
+    if (password.length === 0) {
+      setPasswordError('Password is required');
+    } else if (password.length < 6) {
+      setPasswordError('Password should be minimum 6 characters');
+    } else if (password.indexOf(' ') >= 0) {
+      setPasswordError('Password cannot contain spaces');
+    } else {
+      setPasswordError('');
+      setPasswordValid(true);
+    }
   };
 
   return (
     <>
       <Typography
         component="h1"
-        variant="h4"
-        sx={{ mb: 3, fontWeight: 'bold', color: 'blue' }}
+        variant="h5"
+        // sx={{ mb: 3, fontWeight: 'bold', color: 'blue' }}
       >
-        Fastwork
+        fastwork
       </Typography>
 
       <Typography
         component="h1"
         variant="h5"
-        sx={{ textAlign: 'start', fontWeight: 'bold' }}
+        sx={{
+          textAlign: 'start',
+          width: '100%',
+          fontWeight: 600,
+          fontSize: '1.5rem',
+          my: '1rem',
+        }}
       >
         เข้าสู่ระบบ
       </Typography>
@@ -51,8 +71,8 @@ function LoginEmail({ email }) {
       <Box
         component="form"
         noValidate
-        sx={{ mt: 1 }}
         onSubmit={handleSubmitLoginEmail}
+        // sx={{ mt: 3 }}
       >
         <Box sx={{ display: 'flex', mt: 3 }}>
           <Avatar style={avatarStyle} />
@@ -60,7 +80,11 @@ function LoginEmail({ email }) {
             {email}
           </Typography>
         </Box>
-        <Grid container spacing={2}>
+        <Grid
+          container
+          spacing={2}
+          // sx={{ mt: 1 }}
+        >
           <Grid item xs={12}>
             <TextField
               margin="normal"
@@ -74,6 +98,18 @@ function LoginEmail({ email }) {
               value={password}
               onChange={e => setPassword(e.target.value)}
             />
+            {passwordError.length > 0 && (
+              <Typography
+                sx={{
+                  // fontWeight: 'bold',
+                  textAlign: 'start',
+                  fontSize: '12px',
+                  color: 'red',
+                }}
+              >
+                {passwordError}
+              </Typography>
+            )}
           </Grid>
         </Grid>
 
@@ -83,9 +119,11 @@ function LoginEmail({ email }) {
           variant="contained"
           sx={{ mt: 3, mb: 2 }}
           onClick={submitMainLogin}
+          disabled={!email}
         >
           เข้าสู่ระบบ
         </Button>
+
         <Grid container justifyContent="center">
           <Grid item>
             <Link href="/forget-password" variant="body2">
