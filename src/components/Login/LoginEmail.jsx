@@ -12,6 +12,19 @@ import {
 } from '@mui/material';
 
 function LoginEmail({ email }) {
+  const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [passwordValid, setPasswordValid] = useState(false);
+
+  const handleOnchangePassword = e => {
+    setPassword(e.target.value);
+    if (e.target.value.length < 1) {
+      setPasswordValid(false);
+      setPasswordError('');
+      return;
+    }
+  };
+
   const submitMainLogin = async () => {
     try {
       const res = await login({ email, password });
@@ -27,17 +40,16 @@ function LoginEmail({ email }) {
 
   //*เช็ค คลิกไปหน้า
 
-  const [password, setPassword] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-  const [passwordValid, setPasswordValid] = useState(false);
-
   const handleSubmitLoginEmail = e => {
     e.preventDefault();
 
+    //*  Check password
+
+    //password not empty
     if (password.length === 0) {
       setPasswordError('Password is required');
     } else if (password.length < 6) {
-      setPasswordError('Incorrect Password');
+      setPasswordError('Password length must be atleast 6 characters');
     } else if (password.indexOf(' ') >= 0) {
       setPasswordError('Password cannot contain spaces');
     } else {
@@ -90,7 +102,7 @@ function LoginEmail({ email }) {
         >
           <Grid item xs={12}>
             <TextField
-              error
+              error={passwordValid}
               margin="normal"
               required
               fullWidth
@@ -100,7 +112,7 @@ function LoginEmail({ email }) {
               name="password"
               autoComplete="off"
               value={password}
-              onChange={e => setPassword(e.target.value)}
+              onChange={handleOnchangePassword}
             />
             {passwordError.length > 0 && (
               <Typography

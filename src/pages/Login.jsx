@@ -18,6 +18,7 @@ function Login() {
 
     const email = e.target[0].value;
 
+    //* Validate email
     if (typeof email !== 'string' || email.trim() === '' || email.length < 0) {
       setEmailValid(true);
       setEmailError('Required');
