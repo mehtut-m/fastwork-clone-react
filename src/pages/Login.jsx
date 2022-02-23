@@ -13,7 +13,7 @@ function Login() {
   //* ใช้สำหรับ คลิกไปหน้าถัดไป ในหน้า loginemail
   const [mainLogin, setMainLogin] = useState(false);
 
-  const handleSubmitLogin = e => {
+  const handleSubmitLogin = (e) => {
     e.preventDefault();
 
     const email = e.target[0].value;

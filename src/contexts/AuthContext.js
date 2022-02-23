@@ -27,13 +27,14 @@ const AuthContextProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const logIn = (payload) => {
+    setToken(payload.token);
     dispatch({
       type: LOGIN_SUCCESS,
-      payload,
+      payload: payload.user,
     });
     setUser({
       type: LOGIN_SUCCESS,
-      payload,
+      payload: payload.user,
     });
   }; //login request
 

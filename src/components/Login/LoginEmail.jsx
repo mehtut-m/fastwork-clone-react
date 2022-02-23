@@ -31,8 +31,7 @@ function LoginEmail({ email }) {
       // const res = await logIn({ email, password });
       const res = await requestlogIn({ email, password });
       if (res.status === 200) {
-        //
-        logIn(res.data.user);
+        logIn(res.data);
       }
     } catch (err) {
       console.log(err);
