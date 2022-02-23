@@ -1,5 +1,6 @@
 import { Box } from '@mui/material';
 import HeroBanner from '../components/Hero/HeroBanner';
+import HomeTwo from '../components/HomeTwo';
 import Navbar from '../components/Nav/Navbar';
 import TrendingPost from '../components/Post/TrendingPost';
 
@@ -8,6 +9,7 @@ function Home() {
     <Box sx={{}}>
       <HeroBanner />
       <Navbar />
+      <HomeTwo />
       <TrendingPost categoryId={1} />
       <TrendingPost categoryId={6} />
     </Box>

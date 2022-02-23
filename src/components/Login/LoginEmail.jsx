@@ -15,7 +15,9 @@ function LoginEmail({ email }) {
   const submitMainLogin = async () => {
     try {
       const res = await login({ email, password });
+      console.log(res);
       console.log(res.data);
+      console.log(res.status);
     } catch (err) {
       console.log(err);
     }
@@ -41,6 +43,7 @@ function LoginEmail({ email }) {
     } else {
       setPasswordError('');
       setPasswordValid(true);
+      submitMainLogin();
     }
   };
 
@@ -87,7 +90,7 @@ function LoginEmail({ email }) {
         >
           <Grid item xs={12}>
             <TextField
-              error={passwordValid}
+              error
               margin="normal"
               required
               fullWidth
@@ -120,7 +123,6 @@ function LoginEmail({ email }) {
           variant="contained"
           disabled={!password}
           sx={{ mt: 3, mb: 2 }}
-          onClick={submitMainLogin}
         >
           เข้าสู่ระบบ
         </Button>
