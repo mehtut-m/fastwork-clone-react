@@ -13,9 +13,26 @@ function TestOrderUserPage() {
 
   const orderId = 1; // ! Hand code for test
 
+  const submitOrder = async (commentUser, imageUser, orderId, revise) => {
+    const formData = new FormData();
+    formData.append("orderId", orderId);
+    formData.append("comment", commentUser);
+    formData.append("image", imageUser);
+    formData.append("revise", revise);
+    console.log(formData);
+    try {
+      const res = await axios.patch("/orders/review", formData);
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const handleClickSubmit = async (e) => {
     e.preventDefault();
     console.log(e.target.value);
+    const revise = e.target.value;
+    await submitOrder(commentUser, imageUser, orderId, revise);
   };
 
   const fetchOrder = async () => {

@@ -26,7 +26,8 @@ function TestOrderFreelancePage() {
     formData.append("image", imageFreelance);
     console.log(formData);
     try {
-      await axios.patch("/orders/update-status-review", formData);
+      const res = await axios.patch("/orders/update-status-review", formData);
+      console.log(res.data);
     } catch (err) {
       console.log(err);
     }
