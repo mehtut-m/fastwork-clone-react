@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { checkoutCreditCard } from '../apis/checkout';
 import axios from '../config/axios';
 
 const CheckoutContext = createContext();
@@ -34,6 +35,14 @@ const CheckoutContextProvider = ({ children }) => {
     navigate('/payment', { replace: true });
   };
 
+  const checkoutPayment = async (payload) => {
+    const formData = new FormData();
+    for (const key in payload) {
+      formData.append(key, payload[key]);
+    }
+    return checkoutCreditCard(formData);
+  };
+
   return (
     <CheckoutContext.Provider
       value={{
@@ -45,6 +54,7 @@ const CheckoutContextProvider = ({ children }) => {
         updateOrderImage,
         proceedToPayment,
         selectPackage,
+        checkoutPayment,
       }}
     >
       {children}

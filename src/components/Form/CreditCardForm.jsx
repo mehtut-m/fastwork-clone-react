@@ -14,7 +14,7 @@ let Omise;
 
 function CreditCardForm({ pkg, order }) {
   const navigate = useNavigate();
-  const { clearOrder } = useContext(CheckoutContext);
+  const { checkoutPayment, clearOrder } = useContext(CheckoutContext);
   const [loading, setLoading] = useState(false);
 
   const [paymentInfo, setPaymentInfo] = useState({
@@ -41,12 +41,12 @@ function CreditCardForm({ pkg, order }) {
       if (statusCode === 200) {
         // Success: send back the TOKEN_ID to server.
         try {
-          const paymentResult = await checkoutCreditCard({
+          const paymentResult = await checkoutPayment({
             token: response.id,
             packageId: pkg?.id,
             requirement: order.requirement,
           });
-          if (paymentResult.status === 200) {
+          if (paymentResult.status === 201) {
             Swal.fire({
               position: 'top-center',
               icon: 'success',
@@ -79,6 +79,15 @@ function CreditCardForm({ pkg, order }) {
           setLoading(false);
         }
       } else {
+        setLoading(false);
+        Swal.fire({
+          position: 'top-center',
+          icon: 'error',
+          title: 'Transaction Failed',
+          text: 'Your payment info is Invalid!',
+          showConfirmButton: false,
+          timer: 1750,
+        });
         // Error: display an error message. Note that `response.message` contains
         // a preformatted error message. Also note that `response.code` will be
         // "invalid_card" in case of validation error on the card.
