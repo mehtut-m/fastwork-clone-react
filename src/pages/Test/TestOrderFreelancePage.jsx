@@ -15,7 +15,11 @@ function TestOrderFreelancePage() {
   const orderId = 1; // ! Hand code for test
 
   // TODO: axios to backend
-  const createOrder = async (commentFreelance, imageFreelance, orderId) => {
+  const submitOrderToReview = async (
+    commentFreelance,
+    imageFreelance,
+    orderId
+  ) => {
     const formData = new FormData();
     formData.append("orderId", orderId);
     formData.append("comment", commentFreelance);
@@ -31,7 +35,7 @@ function TestOrderFreelancePage() {
   // TODO: submit form
   const handleClickSubmit = async (e) => {
     e.preventDefault();
-    await createOrder(commentFreelance, imageFreelance, orderId); // ! Hard code order id
+    await submitOrderToReview(commentFreelance, imageFreelance, orderId); // ! Hard code order id
   };
 
   const fetchOrder = async () => {
@@ -45,8 +49,8 @@ function TestOrderFreelancePage() {
   };
 
   const countDownDate = new Date(order.deadlineDate).getTime();
-  const timeOnCreate = new Date().getTime();
-  const timeleft = countDownDate - timeOnCreate;
+  const timeToDay = new Date().getTime();
+  const timeleft = countDownDate - timeToDay;
   const days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
   const hours = Math.floor(
     (timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
@@ -99,7 +103,7 @@ function TestOrderFreelancePage() {
         >
           {/* // TODO: commentFreelance */}
           <Input
-            placeholder="เขียนสำหรับคำเมนต์"
+            placeholder="เขียนสำหรับคอมเมนต์"
             onChange={(e) => setCommentFreelance(e.target.value)}
           />
         </FormControl>
