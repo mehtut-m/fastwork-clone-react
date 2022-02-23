@@ -39,6 +39,7 @@ function RouteConfig() {
           </>
         )}
         <Route path="/" element={<Home />} />
+        <Route path="/order" element={<Order />} />
         <Route path="/sub-category/:id" element={<SubcategaryCatalogue />} />
         <Route path="/post/:id" element={<Post />} />
         <Route path="*" element={<Navigate to="/" />} />

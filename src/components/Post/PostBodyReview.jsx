@@ -3,6 +3,7 @@ import { Box } from '@mui/system';
 import StarIcon from '@mui/icons-material/Star';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
+import Rating from '@mui/material/Rating';
 import PostBodyReviewComment from './PostBodyReviewComment';
 
 function PostBodyReview() {
@@ -55,13 +56,13 @@ function PostBodyReview() {
           }}
         >
           <Typography component="p">คะแนนเฉลี่ย</Typography>
-          <Box sx={{ display: 'flex', color: '#F2A218' }}>
-            <StarIcon />
-            <StarIcon />
-            <StarIcon />
-            <StarHalfIcon />
-            <StarBorderIcon />
-          </Box>
+
+          <Rating
+            name="half-rating"
+            defaultValue={3.5}
+            precision={0.5}
+            readOnly
+          />
         </Box>
       </Box>
       <PostBodyReviewComment />

@@ -32,7 +32,8 @@ function Catalogue({ posts, categoryInfo }) {
       {/* Breadcrumbs */}
       <Breadcrumbs
         separator={<NavigateNextIcon fontSize="small" />}
-        sx={{ color: 'primary.main' }}
+        color="primary"
+        sx={{ my: '2rem' }}
         aria-label="breadcrumb"
       >
         {breadcrumbs}
