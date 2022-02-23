@@ -86,7 +86,6 @@ export default function CheckoutModal({
       aria-labelledby="spring-modal-title"
       aria-describedby="spring-modal-description"
       open={open}
-      onEnter={() => clearOrder()}
       onClose={handleClose}
       closeAfterTransition
       BackdropComponent={Backdrop}

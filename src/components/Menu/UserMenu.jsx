@@ -1,4 +1,5 @@
 import { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { UserContext } from '../../contexts/UserContext';
 import { AuthContext } from '../../contexts/AuthContext';
 import { Box, Menu, Typography } from '@mui/material';
@@ -11,10 +12,10 @@ function UserMenu() {
   const { logOut } = useContext(AuthContext);
   const { user } = useContext(UserContext);
   const settings = [
-    { menu: 'ข้อความและออเดอร์', onClick: () => {}, path: null },
-    { menu: 'ฟรีแลนซ์ที่ถูกใจ', onClick: () => {}, path: null },
-    { menu: 'ตั้งค่าโปรไฟล์', onClick: () => {}, path: null },
-    { menu: 'ออกจากระบบ', onClick: logOut, path: null },
+    { menu: 'ออเดอร์ของฉัน', onClick: () => {}, path: '/order' },
+    { menu: 'ฟรีแลนซ์ที่ถูกใจ', onClick: () => {}, path: '#' },
+    { menu: 'ตั้งค่าโปรไฟล์', onClick: () => {}, path: '#' },
+    { menu: 'ออกจากระบบ', onClick: logOut, path: '#' },
   ];
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -73,18 +74,20 @@ function UserMenu() {
             {user.email}
           </Typography>
         </MenuItem>
-        {settings.map(({ menu, onClick }, index) => (
-          <MenuItem
-            key={index}
-            onClick={() => {
-              if (onClick) {
-                onClick();
-              }
-              handleCloseUserMenu();
-            }}
-          >
-            <Typography textAlign="center">{menu}</Typography>
-          </MenuItem>
+        {settings.map(({ menu, onClick, path }, index) => (
+          <Link to={path}>
+            <MenuItem
+              key={index}
+              onClick={() => {
+                if (onClick) {
+                  onClick();
+                }
+                handleCloseUserMenu();
+              }}
+            >
+              <Typography textAlign="center">{menu}</Typography>
+            </MenuItem>
+          </Link>
         ))}
       </Menu>
     </Box>
