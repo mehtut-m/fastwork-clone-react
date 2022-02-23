@@ -85,8 +85,8 @@ function TestOrderFreelancePage() {
           จำนวนการแก้ไขงานที่เหลือ : {order && order.reviseCount}
         </Typography>
         <Typography>
-          ระยะเวลาสิ้นสุดงาน : {dayLeft} วัน : {hoursLeft} ชั่วโมง :
-          {minutesLeft} นาที :{secondsLeft} วินาที
+          ระยะเวลาสิ้นสุดงาน : {dayLeft} วัน : {hoursLeft} ชั่วโมง :{" "}
+          {minutesLeft} นาที : {secondsLeft} วินาที
         </Typography>
         <FormControl
           sx={{
