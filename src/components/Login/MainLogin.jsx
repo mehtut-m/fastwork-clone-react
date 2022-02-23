@@ -18,7 +18,7 @@ function MainLogin({
   setEmailError,
 }) {
   const handleOnchangeText = e => {
-    console.log(email);
+    // console.log(email);
     setEmail(e.target.value);
     if (e.target.value.length < 1) {
       setEmailValid(false);
