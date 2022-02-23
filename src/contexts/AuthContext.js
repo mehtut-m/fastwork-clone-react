@@ -26,12 +26,20 @@ const AuthContextProvider = ({ children }) => {
 
   const navigate = useNavigate();
 
-  const login = () => {}; // make a login request
+  const logIn = (payload) => {
+    dispatch({
+      type: LOGIN_SUCCESS,
+      payload,
+    });
+    setUser({
+      type: LOGIN_SUCCESS,
+      payload,
+    });
+  }; //login request
 
   // register the user
   const register = async (formInput) => {
     const res = await callApiRegister(formInput);
-    console.log(res);
     dispatch({
       type: REGISTER_SUCCESS,
       payload: res.data,
@@ -77,6 +85,7 @@ const AuthContextProvider = ({ children }) => {
       value={{
         googleLogin,
         register,
+        logIn,
         logOut,
       }}
     >

@@ -1,17 +1,14 @@
 import axios from '../config/axios';
 
-export const register = async payload => {
+export const register = async (payload) => {
   return axios.post('/auth/register', payload);
 };
 
-export const login = async payload => {
+export const requestlogIn = async (payload) => {
   return axios.post('/auth/login', payload);
 };
-export const signIn = async payload => {
-  // return axios.post('/auth/login', payload);
-};
 
-export const signInGoogle = async tokenId => {
+export const signInGoogle = async (tokenId) => {
   return axios.post('/auth/login/google', {
     tokenId,
   });

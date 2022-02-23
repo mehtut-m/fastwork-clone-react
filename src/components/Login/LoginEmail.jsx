@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { login } from '../../apis/auth';
-
+import React, { useContext, useState } from 'react';
+import { requestlogIn } from '../../apis/auth';
 import {
   Box,
   Button,
@@ -10,13 +9,15 @@ import {
   Typography,
   Avatar,
 } from '@mui/material';
+import { AuthContext } from '../../contexts/AuthContext';
 
 function LoginEmail({ email }) {
+  const { logIn } = useContext(AuthContext);
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [passwordValid, setPasswordValid] = useState(false);
 
-  const handleOnchangePassword = e => {
+  const handleOnchangePassword = (e) => {
     setPassword(e.target.value);
     if (e.target.value.length < 1) {
       setPasswordValid(false);
@@ -27,10 +28,12 @@ function LoginEmail({ email }) {
 
   const submitMainLogin = async () => {
     try {
-      const res = await login({ email, password });
-      console.log(res);
-      console.log(res.data);
-      console.log(res.status);
+      // const res = await logIn({ email, password });
+      const res = await requestlogIn({ email, password });
+      if (res.status === 200) {
+        //
+        logIn(res.data.user);
+      }
     } catch (err) {
       console.log(err);
     }
@@ -40,7 +43,7 @@ function LoginEmail({ email }) {
 
   //*เช็ค คลิกไปหน้า
 
-  const handleSubmitLoginEmail = e => {
+  const handleSubmitLoginEmail = (e) => {
     e.preventDefault();
 
     //*  Check password
