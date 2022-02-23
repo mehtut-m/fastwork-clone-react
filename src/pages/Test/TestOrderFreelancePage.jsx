@@ -117,7 +117,7 @@ function TestOrderFreelancePage() {
             gap: "2rem",
           }}
         >
-          {/* // TODO: should imageFreelance */}
+          {/* // TODO: should image */}
           <label htmlFor="contained-button-file">
             <Input
               accept="image/*"
