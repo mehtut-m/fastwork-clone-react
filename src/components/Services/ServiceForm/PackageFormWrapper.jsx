@@ -19,6 +19,7 @@ function PackageFormWrapper({
   };
   const handleClickNext = async () => {
     console.log(addPackages);
+    console.log(packages);
     const res = await addApiPackages({ postId, packages });
     console.log(res);
     setCategoryForm((prev) => ({ ...prev, packages }));

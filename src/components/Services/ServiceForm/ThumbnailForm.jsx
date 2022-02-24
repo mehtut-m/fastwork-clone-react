@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { LoadingContext } from '../../../contexts/LoadingContext';
 import { Box, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
+import LoadingButton from '@mui/lab/LoadingButton';
 import { addPostImage } from '../../../apis/post';
-
 import { createPost } from '../../../services/upload';
 
 function ThumbnailForm({
@@ -13,6 +14,7 @@ function ThumbnailForm({
   categoryForm,
   setCategoryForm,
 }) {
+  const { isLoading, setIsLoading } = useContext(LoadingContext);
   const { postId, name } = categoryForm;
   const [imgArr, setImgArr] = useState([]);
   const Input = styled('input')({
@@ -29,14 +31,18 @@ function ThumbnailForm({
   };
 
   const handleClickNext = async () => {
+    setIsLoading(true);
     const formData = new FormData();
     for (const element of imgArr) {
       formData.append('image', element);
     }
     formData.append('postId', postId);
     const res = await addPostImage(formData);
-    setCategoryForm((prev) => ({ ...prev, images: imgArr }));
     await createPost(imgArr);
+    if (res.status === 200) {
+      setCategoryForm((prev) => ({ ...prev, images: imgArr }));
+    }
+    setIsLoading(false);
     handleNext();
   };
 
@@ -72,13 +78,14 @@ function ThumbnailForm({
           </Button>
         )}
 
-        <Button
+        <LoadingButton
           variant="contained"
+          loading={isLoading}
           onClick={handleClickNext}
           sx={{ mt: 3, ml: 1 }}
         >
           บันทึกและไปต่อ
-        </Button>
+        </LoadingButton>
       </Box>
     </>
   );

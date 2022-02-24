@@ -23,7 +23,7 @@ function PostItem({ item }) {
         },
       }}
     >
-      <Link to={`/post/1`}>
+      <Link to={`/post/${item.id}`}>
         <CardMedia
           sx={{ height: '187px' }}
           component="img"

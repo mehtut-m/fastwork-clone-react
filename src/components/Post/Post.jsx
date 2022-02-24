@@ -6,7 +6,8 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { CheckoutContext } from '../../contexts/CheckoutContext';
 import PostBody from './PostBody';
 import PostHeader from './PostHeader';
-import { Breadcrumbs, Container, Typography } from '@mui/material';
+import PackageToggle from './PackageToggle';
+import { Breadcrumbs, Container } from '@mui/material';
 
 function Post() {
   const { id } = useParams();

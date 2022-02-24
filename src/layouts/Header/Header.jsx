@@ -72,20 +72,18 @@ function Header() {
         sx={{ display: 'flex', justifyContent: 'space-between' }}
       >
         <Box sx={{ display: 'flex' }}>
-          <Link to="/">
-            <Typography
-              noWrap
-              component="h1"
-              className="fastwork-logo"
-              sx={{
-                mr: 2,
-                display: { md: 'flex' },
-                fontSize: '2rem',
-                fontWeight: '500',
-              }}
-            >
-              fastwork
-            </Typography>
+          <Link
+            to="/"
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <img
+              alt="fastwork"
+              src="https://fastwork.co/static-v4/images/logo/fastwork-logo-full-white.svg"
+            />
           </Link>
           <Search sx={{ borderRadius: '15px' }}>
             <SearchIconWrapper>

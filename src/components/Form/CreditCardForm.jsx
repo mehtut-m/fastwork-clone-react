@@ -1,13 +1,13 @@
-import { Button, Grid, TextField, Typography } from '@mui/material';
+import { Grid, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { useState, useEffect, useContext } from 'react';
-import { checkoutCreditCard } from '../../apis/checkout';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { OMISE_SCRIPT_URL, OMISE_PUBLIC_KEY } from '../../config/env';
 import { useNavigate } from 'react-router-dom';
 import { CheckoutContext } from '../../contexts/CheckoutContext';
+import { LoadingContext } from '../../contexts/LoadingContext';
 
 const MySwal = withReactContent(Swal);
 let Omise;
@@ -15,7 +15,7 @@ let Omise;
 function CreditCardForm({ pkg, order }) {
   const navigate = useNavigate();
   const { checkoutPayment, clearOrder } = useContext(CheckoutContext);
-  const [loading, setLoading] = useState(false);
+  const { isLoading, setIsLoading } = useContext(LoadingContext);
 
   const [paymentInfo, setPaymentInfo] = useState({
     number: '4242424242424242',
@@ -36,7 +36,7 @@ function CreditCardForm({ pkg, order }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
+    setIsLoading(true);
     Omise.createToken('card', paymentInfo, async (statusCode, response) => {
       if (statusCode === 200) {
         // Success: send back the TOKEN_ID to server.
@@ -76,10 +76,10 @@ function CreditCardForm({ pkg, order }) {
             timer: 1750,
           });
         } finally {
-          setLoading(false);
+          setIsLoading(false);
         }
       } else {
-        setLoading(false);
+        setIsLoading(false);
         Swal.fire({
           position: 'top-center',
           icon: 'error',
@@ -159,7 +159,7 @@ function CreditCardForm({ pkg, order }) {
       </Grid>
 
       <LoadingButton
-        loading={loading}
+        loading={isLoading}
         variant="contained"
         type="submit"
         sx={{ py: '1rem', width: '100%', mt: '1.25rem' }}

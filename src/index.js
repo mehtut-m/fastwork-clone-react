@@ -4,22 +4,29 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import AuthContextProvider from './contexts/AuthContext';
+import LoadingContextProvider from './contexts/LoadingContext';
 import CheckoutContextProvider from './contexts/CheckoutContext';
+import OrderContextProvider from './contexts/OrderContext';
 import UserContextProvider from './contexts/UserContext';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <UserContextProvider>
-        <AuthContextProvider>
-          <CheckoutContextProvider>
-            <App />
-          </CheckoutContextProvider>
-        </AuthContextProvider>
-      </UserContextProvider>
+      <LoadingContextProvider>
+        <UserContextProvider>
+          <AuthContextProvider>
+            <CheckoutContextProvider>
+              <OrderContextProvider>
+                <App />
+              </OrderContextProvider>
+            </CheckoutContextProvider>
+          </AuthContextProvider>
+        </UserContextProvider>
+      </LoadingContextProvider>
     </BrowserRouter>
   </React.StrictMode>,
+
   document.getElementById('root')
 );
 

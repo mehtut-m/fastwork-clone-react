@@ -14,7 +14,7 @@ function PackageFormItem({ isMultiplePkg, number, setPackages, idx }) {
   // console.log(packageItem);
 
   const handleChange = (e) => {
-    // console.log('first)
+    console.log(typeof e.target.value);
     setPackages((prev) => {
       const newState = [...prev];
       newState[idx] = { ...newState[idx], [e.target.name]: e.target.value };

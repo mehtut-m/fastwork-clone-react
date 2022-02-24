@@ -1,16 +1,16 @@
-import { Button, FormControl, Input, Typography } from "@mui/material";
-import { Box } from "@mui/system";
-import { useEffect, useState } from "react";
-import axios from "../../config/axios";
+import { Button, FormControl, Input, Typography } from '@mui/material';
+import { Box } from '@mui/system';
+import { useEffect, useState } from 'react';
+import axios from '../../config/axios';
 
 function TestOrderFreelancePage() {
-  const [commentFreelance, setCommentFreelance] = useState("");
-  const [imageFreelance, setImageFreelance] = useState("");
+  const [commentFreelance, setCommentFreelance] = useState('');
+  const [imageFreelance, setImageFreelance] = useState('');
   const [order, setOrder] = useState([]);
-  const [dayLeft, setDayLeft] = useState("");
-  const [hoursLeft, setHoursLeft] = useState("");
-  const [minutesLeft, setMinutesLeft] = useState("");
-  const [secondsLeft, setSecondsLeft] = useState("");
+  const [dayLeft, setDayLeft] = useState('');
+  const [hoursLeft, setHoursLeft] = useState('');
+  const [minutesLeft, setMinutesLeft] = useState('');
+  const [secondsLeft, setSecondsLeft] = useState('');
 
   const orderId = 1; // ! Hand code for test
 
@@ -21,12 +21,12 @@ function TestOrderFreelancePage() {
     orderId
   ) => {
     const formData = new FormData();
-    formData.append("orderId", orderId);
-    formData.append("comment", commentFreelance);
-    formData.append("image", imageFreelance);
+    formData.append('orderId', orderId);
+    formData.append('comment', commentFreelance);
+    formData.append('image', imageFreelance);
     console.log(formData);
     try {
-      const res = await axios.patch("/orders/update-status-review", formData);
+      const res = await axios.patch('/orders/update-status-review', formData);
       console.log(res.data);
     } catch (err) {
       console.log(err);
@@ -60,6 +60,10 @@ function TestOrderFreelancePage() {
   const seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
 
   useEffect(() => {
+    fetchOrder();
+  }, []);
+
+  useEffect(() => {
     const timer = setTimeout(() => {
       setDayLeft(days);
       setHoursLeft(hours);
@@ -67,39 +71,37 @@ function TestOrderFreelancePage() {
       setSecondsLeft(seconds);
     }, 1000);
     return () => clearTimeout(timer);
-  });
-
-  useEffect(() => {
-    fetchOrder();
-  }, []);
+  }, [secondsLeft]);
 
   return (
     <>
       <Box
         component="div"
         sx={{
-          display: "flex",
-          flexFlow: "column",
-          alignItems: "center",
+          display: 'flex',
+          flexFlow: 'column',
+          alignItems: 'center',
         }}
       >
-        <Typography component="h1" sx={{ m: 1, fontSize: "2rem" }}>
+        <Typography component="h1" sx={{ m: 1, fontSize: '2rem' }}>
           ฟอร์ม สำหรับ ส่งงาน
         </Typography>
         <Typography component="p">
           จำนวนการแก้ไขงานที่เหลือ : {order && order.reviseCount}
         </Typography>
+
         <Typography>
-          ระยะเวลาสิ้นสุดงาน : {dayLeft} วัน : {hoursLeft} ชั่วโมง :{" "}
+          ระยะเวลาสิ้นสุดงาน : {dayLeft} วัน : {hoursLeft} ชั่วโมง :{' '}
           {minutesLeft} นาที : {secondsLeft} วินาที
         </Typography>
+
         <FormControl
           sx={{
             m: 1,
             minWidth: 120,
-            maxWidth: "28.75rem",
-            width: "100%",
-            gap: "2rem",
+            maxWidth: '28.75rem',
+            width: '100%',
+            gap: '2rem',
           }}
         >
           {/* // TODO: commentFreelance */}
@@ -113,9 +115,9 @@ function TestOrderFreelancePage() {
           sx={{
             m: 1,
             minWidth: 120,
-            maxWidth: "28.75rem",
-            width: "100%",
-            gap: "2rem",
+            maxWidth: '28.75rem',
+            width: '100%',
+            gap: '2rem',
           }}
         >
           {/* // TODO: should image */}
@@ -128,7 +130,7 @@ function TestOrderFreelancePage() {
                 if (e.target.files[0]) setImageFreelance(e.target.files[0]);
               }}
             />
-            <Button variant="contained" onClick={() => setImageFreelance("")}>
+            <Button variant="contained" onClick={() => setImageFreelance('')}>
               Remove
             </Button>
           </label>
