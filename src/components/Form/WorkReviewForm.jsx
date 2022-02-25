@@ -1,11 +1,5 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  Input,
-  Typography,
-  TextField,
-} from '@mui/material';
+import { Box, Button, FormControl, Typography, TextField } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import { useContext, useState } from 'react';
 import axios from '../../config/axios';
 import { OrderContext } from '../../contexts/OrderContext';
@@ -14,8 +8,11 @@ function WorkReviewForm({ orderItem }) {
   const { rejectOrder, submitApproval, activeOrderDetail } =
     useContext(OrderContext);
   const [commentUser, setCommentUser] = useState('');
-  const [imageUser, setImageUser] = useState('');
+  const [imageArr, setImageArr] = useState([]);
 
+  const Input = styled('input')({
+    display: 'none',
+  });
   const submitReject = async (commentUser, imageUser, orderId, revise) => {
     await rejectOrder(commentUser, imageUser, orderId, revise);
   };
@@ -30,7 +27,7 @@ function WorkReviewForm({ orderItem }) {
   };
   const handleClickReject = async (e) => {
     e.preventDefault();
-    await submitReject(commentUser, imageUser, orderItem.id);
+    await submitReject(commentUser, imageArr, orderItem.id);
   };
   return (
     <>
@@ -98,6 +95,7 @@ function WorkReviewForm({ orderItem }) {
               id="contained-button-file"
               multiple
               type="file"
+              onChange={(e) => setImageArr(e.target.files)}
               sx={{ display: 'none' }}
             />
             <Button variant="contained" component="span">

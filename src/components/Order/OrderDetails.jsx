@@ -2,15 +2,16 @@ import { Box } from '@mui/material';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
-import { UserContext } from '../../contexts/UserContext';
 import { OrderContext } from '../../contexts/OrderContext';
-import { useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import TestOrderUserPage from '../../pages/Test/TestOrderUserPage';
 import Typography from '@mui/material/Typography';
+import { useLocation } from 'react-router-dom';
 
 function OrderDetails() {
-  const { orderItem } = useContext(OrderContext);
+  const { orderItem, order } = useContext(OrderContext);
+  console.log(orderItem);
+  const isFreelance = useLocation().pathname.includes('freelance');
   const steps = [
     {
       label: 'กำลังทำงาน',
@@ -43,10 +44,12 @@ function OrderDetails() {
           height: '61px',
         }}
       >
+        <Typography color="initial">{orderItem?.Post.name}</Typography>
         <Typography color="initial">
-          LOGO HOUSE บ้านหลังใหญ่ของโลโก้คุณภาพ
+          {!isFreelance
+            ? `${orderItem?.seller.firstName} ${orderItem?.seller.lastName}`
+            : `${orderItem?.buyer.firstName} ${orderItem?.buyer.lastName}`}
         </Typography>
-        <Typography color="initial">ebony and ivory</Typography>
       </Box>
       {/* Body */}
       <Stepper

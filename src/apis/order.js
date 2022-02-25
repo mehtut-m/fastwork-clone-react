@@ -9,3 +9,6 @@ export const getFreelanceOrderByStatus = async (status) => {
     status: status,
   });
 };
+export const getOrderDetail = async (orderId) => {
+  return axios.get(`/orders/order-detail-image/${orderId}`);
+};

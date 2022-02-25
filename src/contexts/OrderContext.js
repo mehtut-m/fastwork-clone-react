@@ -1,13 +1,16 @@
 import { createContext, useEffect, useReducer } from 'react';
 import { getUserOrderByStatus, getFreelanceOrderByStatus } from '../apis/order';
+
 import axios from '../config/axios';
-import { useState } from 'react';
+import { LoadingContext } from '../contexts/LoadingContext';
+import { useState, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const OrderContext = createContext();
 const filter = ['WORKING', 'REVIEW', 'REVISE', 'COMPLETE'];
 
 const OrderContextProvider = ({ children }) => {
+  const { setIsLoading } = useContext(LoadingContext);
   const { pathname } = useLocation();
   const isFreelance = pathname.includes('freelance');
   const [order, setOrder] = useState([]);
@@ -25,6 +28,7 @@ const OrderContextProvider = ({ children }) => {
   };
 
   const submitWork = async (commentUser, imageUser, orderId, revise) => {
+    setIsLoading(true);
     const formData = new FormData();
     formData.append('orderId', orderId);
     formData.append('comment', commentUser);
@@ -33,18 +37,24 @@ const OrderContextProvider = ({ children }) => {
       const res = await axios.patch('/orders/update-status-review', formData);
       if (res.status === 200) {
         setActiveOrderDetail(res.data.order);
+        console.log(res);
         await refreshOrder();
       }
     } catch (err) {
       console.log(err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const rejectOrder = async (commentUser, imageUser, orderId, revise) => {
+    setIsLoading(true);
     const formData = new FormData();
     formData.append('orderId', orderId);
     formData.append('comment', commentUser);
-    formData.append('image', imageUser);
+    for (const element of imageUser) {
+      formData.append('image', element);
+    }
     try {
       const res = await axios.patch('/orders/review/reject', formData);
       if (res.status === 200) {
@@ -53,6 +63,8 @@ const OrderContextProvider = ({ children }) => {
       }
     } catch (err) {
       console.log(err);
+    } finally {
+      setIsLoading(false);
     }
   };
 

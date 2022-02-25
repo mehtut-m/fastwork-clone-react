@@ -13,13 +13,14 @@ import { OrderContext } from '../../contexts/OrderContext';
 function WorkSubmitForm({ orderItem }) {
   const { submitWork } = useContext(OrderContext);
   const [commentUser, setCommentUser] = useState('');
-  const [imageUser, setImageUser] = useState('');
+  const [imageArr, setImageArr] = useState([]);
 
-  const submitReject = async (commentUser, imageUser, orderId) => {
+  const submitReject = async (commentUser, imageArr, orderId) => {
     const formData = new FormData();
     formData.append('orderId', orderId);
     formData.append('comment', commentUser);
-    formData.append('image', imageUser);
+    console.log(imageArr);
+    formData.append('image', imageArr);
     try {
       const res = await axios.patch('/orders/update-status-review', formData);
       console.log(res);
@@ -40,7 +41,7 @@ function WorkSubmitForm({ orderItem }) {
     e.preventDefault();
     try {
       console.log(orderItem);
-      await submitWork(commentUser, imageUser, orderItem.id);
+      await submitWork(commentUser, imageArr, orderItem.id);
       // if (res.status === 200) {
       // }
     } catch (error) {
@@ -115,6 +116,7 @@ function WorkSubmitForm({ orderItem }) {
               multiple
               type="file"
               sx={{ display: 'none' }}
+              onChange={(e) => setImageArr(e.target.files)}
             />
             <Button variant="contained" component="span">
               Upload

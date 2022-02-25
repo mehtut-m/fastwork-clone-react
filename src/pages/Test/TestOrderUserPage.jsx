@@ -1,12 +1,7 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  Input,
-  Typography,
-  TextField,
-} from '@mui/material';
+import { Box, Button, FormControl, Typography, TextField } from '@mui/material';
+
 import { useEffect, useState } from 'react';
+
 import { OrderContext } from '../../contexts/OrderContext';
 import { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -17,6 +12,7 @@ import axios from '../../config/axios';
 
 function TestOrderUserPage({ orderItem }) {
   const { order, fetchOrderById, activeOrderDetail } = useContext(OrderContext);
+
   const [dayLeft, setDayLeft] = useState('');
   const [hoursLeft, setHoursLeft] = useState('');
   const [minutesLeft, setMinutesLeft] = useState('');
@@ -49,7 +45,7 @@ function TestOrderUserPage({ orderItem }) {
       setSecondsLeft(seconds);
     }, 1000);
     return () => clearTimeout(timer);
-  }, [secondsLeft]);
+  }, []);
 
   return (
     <>
