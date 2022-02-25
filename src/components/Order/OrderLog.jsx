@@ -34,8 +34,10 @@ export default function OrderLog({ orderDetails }) {
               >
                 <StepLabel>
                   {step.userId === user.id
-                    ? 'คุณ'
-                    : `Freelance : ${step?.User?.firstName}`}
+                    ? `คุณได้ทำการขอแก้ใขงานเมื่อ ${new Date(step?.createdAt)}`
+                    : `Freelance : ${
+                        step?.User?.firstName
+                      } ได้ทำการส่งงานให้คุณเมื่อ ${new Date(step?.createdAt)}`}
                 </StepLabel>
                 <StepContent>
                   <Box sx={{ display: 'flex', alignItems: 'center' }}>

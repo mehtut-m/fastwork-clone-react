@@ -13,6 +13,11 @@ function UserMenu() {
   const { user } = useContext(UserContext);
   const settings = [
     { menu: 'ออเดอร์ของฉัน', onClick: () => {}, path: 'user/order' },
+    {
+      menu: 'งาน Freelance ของฉัน',
+      onClick: () => {},
+      path: 'freelance/order',
+    },
     { menu: 'ตั้งค่าโปรไฟล์', onClick: () => {}, path: '#' },
     { menu: 'ออกจากระบบ', onClick: logOut, path: '#' },
   ];
