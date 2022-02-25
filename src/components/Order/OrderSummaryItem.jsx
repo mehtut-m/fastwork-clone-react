@@ -4,7 +4,8 @@ import { useContext } from 'react';
 import { OrderContext } from '../../contexts/OrderContext';
 
 function OrderSummaryItem({ item, index }) {
-  const { setActiveItem } = useContext(OrderContext);
+  const { activeItem, setActiveItem } = useContext(OrderContext);
+
   return (
     <Box
       className="order-summary-list"
@@ -14,6 +15,16 @@ function OrderSummaryItem({ item, index }) {
         alignItems: 'center',
         p: '1rem',
       }}
+      style={
+        activeItem === index
+          ? {
+              transition: 'background 0.2s linear',
+              color: 'white',
+              background:
+                'linear-gradient(93.32deg, #212121 22.81%, #373232 88.28%)',
+            }
+          : {}
+      }
       onClick={() => {
         setActiveItem(index);
       }}
@@ -32,10 +43,6 @@ function OrderSummaryItem({ item, index }) {
         </Typography>
         <Typography textAlign="left">{item?.seller.firstName}</Typography>
         <Typography textAlign="left">ที่ปรึกษา ทำ ตลาดจีน ส่งออก</Typography>
-      </Box>
-
-      <Box sx={{ height: '100%' }}>
-        <Typography textAlign="left">11:39</Typography>
       </Box>
     </Box>
   );

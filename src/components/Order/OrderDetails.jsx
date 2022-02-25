@@ -10,7 +10,6 @@ import { useLocation } from 'react-router-dom';
 
 function OrderDetails() {
   const { orderItem, order } = useContext(OrderContext);
-  console.log(orderItem);
   const isFreelance = useLocation().pathname.includes('freelance');
   const steps = [
     {
@@ -36,34 +35,41 @@ function OrderDetails() {
       {/* Header */}
       <Box
         sx={{
-          border: '1px solid rgba(0, 0, 0, 0.25);',
-          borderLeft: 'none',
+          backgroundColor: '#000',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          height: '61px',
+          py: '3rem',
+          height: '59px',
         }}
       >
-        <Typography color="initial">{orderItem?.Post.name}</Typography>
-        <Typography color="initial">
+        <Typography
+          color="#fff"
+          sx={{ fontSize: '1.25rem', fontWeight: '500' }}
+        >
+          {orderItem?.Post.name}
+        </Typography>
+        <Typography color="#fff">
           {!isFreelance
-            ? `${orderItem?.seller.firstName} ${orderItem?.seller.lastName}`
-            : `${orderItem?.buyer.firstName} ${orderItem?.buyer.lastName}`}
+            ? `${orderItem?.seller?.firstName} ${orderItem?.seller?.lastName}`
+            : `${orderItem?.buyer?.firstName} ${orderItem?.buyer?.lastName}`}
         </Typography>
       </Box>
       {/* Body */}
-      <Stepper
-        activeStep={activeStep?.step}
-        orientation="horizontal"
-        sx={{ my: '2.5rem' }}
-      >
-        {steps.map((step, index) => (
-          <Step key={step.label}>
-            <StepLabel>{step.label}</StepLabel>
-          </Step>
-        ))}
-      </Stepper>
-      <TestOrderUserPage orderItem={orderItem} />
+      <Box sx={{ padding: '2rem' }}>
+        <Stepper
+          activeStep={activeStep?.step}
+          orientation="horizontal"
+          sx={{ my: '2.5rem' }}
+        >
+          {steps.map((step, index) => (
+            <Step key={step.label}>
+              <StepLabel>{step.label}</StepLabel>
+            </Step>
+          ))}
+        </Stepper>
+        <TestOrderUserPage orderItem={orderItem} />
+      </Box>
     </Box>
   );
 }

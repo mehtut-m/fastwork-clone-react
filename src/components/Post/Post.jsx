@@ -49,7 +49,7 @@ function Post() {
       <Container sx={{ maxWidth: '66.5rem' }}>
         <Breadcrumbs
           separator={<NavigateNextIcon fontSize="small" />}
-          sx={{ color: 'primary.main' }}
+          sx={{ color: 'primary.main', my: '2rem' }}
           aria-label="breadcrumb"
         >
           {breadcrumbs}

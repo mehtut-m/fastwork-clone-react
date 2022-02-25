@@ -110,6 +110,7 @@ const OrderContextProvider = ({ children }) => {
         submitApproval,
         submitWork,
         refreshOrder,
+        activeItem,
         activeOrderDetail,
       }}
     >

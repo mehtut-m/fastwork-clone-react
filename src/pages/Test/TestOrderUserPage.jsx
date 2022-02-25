@@ -8,7 +8,6 @@ import { useLocation } from 'react-router-dom';
 import WorkReviewForm from '../../components/Form/WorkReviewForm';
 import WorkSubmitForm from '../../components/Form/WorkSubmitForm';
 import OrderLog from '../../components/Order/OrderLog';
-import axios from '../../config/axios';
 
 function TestOrderUserPage({ orderItem }) {
   const { order, fetchOrderById, activeOrderDetail } = useContext(OrderContext);

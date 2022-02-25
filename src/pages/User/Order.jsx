@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import OrderDetails from '../../components/Order/OrderDetails';
 import { useEffect, useState } from 'react';
-import { Container } from '@mui/material';
+import { Container, Paper } from '@mui/material';
 
 import OrderListSideBar from '../../components/Order/OrderListSideBar';
 import { OrderContext } from '../../contexts/OrderContext';
@@ -11,15 +11,22 @@ function OrderStatus() {
   const { order } = useContext(OrderContext);
 
   return (
-    <Container
-      sx={{
-        display: 'grid',
-        gridTemplateColumns: '1fr 3fr',
-        height: 'calc(100vh - 72px)',
-      }}
-    >
-      <OrderListSideBar />
-      <OrderDetails />
+    <Container>
+      <Paper
+        sx={{
+          border: '1px solid',
+          borderRadius: '5px',
+          display: 'grid',
+          gridTemplateColumns: '1fr 3fr',
+          minHeight: 'calc(100vh - 72px)',
+          padding: '0 !important',
+          my: '1rem',
+          width: 'max-content',
+        }}
+      >
+        <OrderListSideBar />
+        <OrderDetails />
+      </Paper>
     </Container>
   );
 }

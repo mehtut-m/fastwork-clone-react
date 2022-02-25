@@ -65,22 +65,6 @@ function PostBodyFreelance({ post }) {
               {freelanceInfo?.profileDesc}
             </Typography>
           </Box>
-          <Button // TODO: Button click to chat
-            sx={{
-              marginTop: '1.875rem',
-              display: 'flex',
-              gap: '0.3rem',
-              height: '2.5rem',
-              width: '10rem',
-              marginRight: '1rem',
-              marginLeft: '3rem',
-              border: '1px solid gray',
-              ':hover': { background: '#7900FF', color: '#fff' },
-            }}
-          >
-            <ChatIcon />
-            ติดต่อผู้ขาย
-          </Button>
         </Box>
         <Typography component="hr" sx={{ margin: '1rem' }}></Typography>
         <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
@@ -113,16 +97,6 @@ function PostBodyFreelance({ post }) {
               30 ครั้ง
             </Typography>
             <Typography component="p">ขายได้</Typography>
-          </Box>
-          <Box>
-            <ChatIcon />
-            <Typography
-              component="p"
-              sx={{ color: '#7900FF', fontWeight: 'bold' }}
-            >
-              6 นาที
-            </Typography>
-            <Typography component="p">ตอบกลับ</Typography>
           </Box>
         </Box>
       </Box>

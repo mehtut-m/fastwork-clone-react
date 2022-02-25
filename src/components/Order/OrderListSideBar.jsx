@@ -16,20 +16,21 @@ function OrderListSideBar() {
       <Box
         className="sidebar-header"
         sx={{
-          py: '1rem',
-          border: '1px solid rgba(0, 0, 0, 0.25);',
+          backgroundColor: '#000',
+          py: '34.25px',
         }}
       >
-        <Typography sx={{ fontSize: '1.125rem', fontWeight: '600' }}>
+        <Typography
+          sx={{ fontSize: '1.125rem', fontWeight: '600', color: '#fff' }}
+        >
           Active ออเดอร์
         </Typography>
       </Box>
       <Box
         className="sidebar-body"
         sx={{
-          border: '1px solid rgba(0, 0, 0, 0.25);',
-          borderTop: 'none',
-          maxHeight: 'calc(100vh - 4rem - 59px)',
+          borderRight: '1px solid rgba(0, 0, 0, 0.25);',
+          minHeight: 'calc(100vh - 4rem - 59px)',
           overflow: 'scroll',
         }}
       >

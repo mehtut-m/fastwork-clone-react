@@ -20,9 +20,15 @@ function OrderStatus() {
   return (
     <Container
       sx={{
+        border: '1px solid',
+        borderColor: '#7900FF',
+        borderRadius: '5px',
         display: 'grid',
         gridTemplateColumns: '1fr 3fr',
-        height: 'calc(100vh - 72px)',
+        minHeight: 'calc(100vh - 72px)',
+        padding: '0 !important',
+        my: '1rem',
+        width: 'max-content',
       }}
     >
       <OrderListSideBar order={order} setActiveItem={setActiveItem} />
