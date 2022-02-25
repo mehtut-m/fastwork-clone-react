@@ -9,9 +9,6 @@ import VideoIcon from '../../assets/video.svg';
 import EcommerceIcon from '../../assets/ecommerce.svg';
 import TrendingIcon from '../../assets/trending.svg';
 
-// import WritingIcon from '../../assets/writing.svg';
-// import WritingIcon from '../../assets/writing.svg';
-
 const categories = [
   { name: 'เทรนด์มาแรง', path: '0', icon: TrendingIcon },
   { name: 'Graphic & Design', path: '1', icon: GraphicIcon },
