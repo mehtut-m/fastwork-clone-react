@@ -43,44 +43,52 @@ function PostPackage({ post }) {
       </Box>
 
       {/*  */}
-      <Typography // TODO: Topic name package
-        component="p"
-        sx={{
-          fontSize: '1rem',
-          textAlign: 'start',
-          marginLeft: '1.375rem',
-          marginTop: '1.125rem',
-          color: '#7900FF',
-        }}
-      >
-        แพ็กเกจ : {packages && packages[packageSelect].name}
-      </Typography>
-      <Typography // TODO: Content
-        sx={{
-          fontSize: '1rem',
-          textAlign: 'start',
-          marginLeft: '1.375rem',
-          marginRight: '1.375rem',
-        }}
-      >
-        {packages && packages[packageSelect].description}
-      </Typography>
       <Box
         sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          marginTop: '0.8rem',
-          marginBottom: '1.375rem',
+          mx: '1.375rem',
+          my: '1.125rem',
         }}
       >
-        <Typography sx={{ marginLeft: '1.375rem', fontWeight: 'bold' }}>
-          ระยะเวลาในการทำงาน
-        </Typography>
-        <Typography
-          sx={{ marginRight: '1.375rem', fontWeight: 'bold', color: '#7900FF' }}
+        <Typography // TODO: Topic name package
+          component="p"
+          sx={{
+            fontSize: '1rem',
+            textAlign: 'start',
+            color: '#7900FF',
+          }}
         >
-          {packages && packages[packageSelect].duration} วัน
+          แพ็กเกจ : {packages && packages[packageSelect].name}
         </Typography>
+        <Typography // TODO: Content
+          sx={{
+            fontSize: '1rem',
+            mt: '.75rem',
+            textAlign: 'start',
+          }}
+        >
+          {packages && packages[packageSelect].description}
+        </Typography>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            marginTop: '0.8rem',
+            marginBottom: '1.375rem',
+          }}
+        >
+          <Typography sx={{ marginLeft: '1.375rem', fontWeight: 'bold' }}>
+            ระยะเวลาในการทำงาน
+          </Typography>
+          <Typography
+            sx={{
+              marginRight: '1.375rem',
+              fontWeight: 'bold',
+              color: '#7900FF',
+            }}
+          >
+            {packages && packages[packageSelect].duration} วัน
+          </Typography>
+        </Box>
       </Box>
       <Typography component="hr" sx={{ margin: '1rem' }}></Typography>
       <Button // TODO: button

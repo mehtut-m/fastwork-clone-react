@@ -11,27 +11,19 @@ import axios from '../../config/axios';
 import { OrderContext } from '../../contexts/OrderContext';
 
 function WorkReviewForm({ orderItem }) {
-  const { rejectOrder, refreshOrder } = useContext(OrderContext);
+  const { rejectOrder, submitApproval, activeOrderDetail } =
+    useContext(OrderContext);
   const [commentUser, setCommentUser] = useState('');
   const [imageUser, setImageUser] = useState('');
 
   const submitReject = async (commentUser, imageUser, orderId, revise) => {
     await rejectOrder(commentUser, imageUser, orderId, revise);
   };
-  const submitApproval = async (orderId) => {
-    try {
-      const res = await axios.patch(`/orders/review/approve/${orderId}`);
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   const handleClickApproval = async (e) => {
     e.preventDefault();
     try {
-      const res = await submitApproval(orderItem.id);
-      if (res.status === 200) {
-      }
+      await submitApproval(orderItem.id);
     } catch (error) {
       console.log(error);
     }

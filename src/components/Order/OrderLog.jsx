@@ -1,13 +1,16 @@
-import * as React from 'react';
+import { useContext, useState } from 'react';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import StepContent from '@mui/material/StepContent';
 import Typography from '@mui/material/Typography';
+import { UserContext } from '../../contexts/UserContext';
 
-export default function VerticalLinearStepper({ orderDetails }) {
-  const [activeStep, setActiveStep] = React.useState(orderDetails?.length);
+export default function OrderLog({ orderDetails }) {
+  const { user } = useContext(UserContext);
+  const [activeStep, setActiveStep] = useState(orderDetails?.length);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -30,10 +33,20 @@ export default function VerticalLinearStepper({ orderDetails }) {
       >
         {orderDetails &&
           orderDetails.map((step, index) => (
-            <Step key={step.label} onClick={() => setActiveStep(index)}>
-              <StepLabel>{step.label}</StepLabel>
+            <Step key={index} onClick={() => setActiveStep(index)}>
+              <StepLabel>
+                {console.log(step)}
+                {step.userId === user.id
+                  ? 'คุณ'
+                  : `Freelance : ${step?.User?.firstName}`}
+              </StepLabel>
               <StepContent>
-                <Typography>{step.description}</Typography>
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                  <Typography>{step.comment}</Typography>
+                  <Button sx={{ ml: '1rem' }} variant="contained">
+                    รายละเอียด
+                  </Button>
+                </Box>
               </StepContent>
             </Step>
           ))}
