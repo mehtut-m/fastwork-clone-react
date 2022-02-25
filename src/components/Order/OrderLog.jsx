@@ -15,7 +15,6 @@ export default function OrderLog({ orderDetails }) {
   const [activeStep, setActiveStep] = useState(orderDetails?.length);
   const [detailOn, setDetailOn] = useState(false);
   const [detail, setDetail] = useState(null);
-  // const isFreelancePath = useLocation().pathname.includes('freelance');
 
   return (
     <>
