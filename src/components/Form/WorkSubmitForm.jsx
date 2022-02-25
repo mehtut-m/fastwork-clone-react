@@ -6,22 +6,23 @@ import {
   Typography,
   TextField,
 } from '@mui/material';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import axios from '../../config/axios';
+import { OrderContext } from '../../contexts/OrderContext';
 
 function WorkSubmitForm({ orderItem }) {
+  const { submitWork } = useContext(OrderContext);
   const [commentUser, setCommentUser] = useState('');
-  const [imageUser, setImageUser] = useState('');
+  const [imageArr, setImageArr] = useState([]);
 
-  const submitReject = async (commentUser, imageUser, orderId, revise) => {
+  const submitReject = async (commentUser, imageArr, orderId) => {
     const formData = new FormData();
     formData.append('orderId', orderId);
     formData.append('comment', commentUser);
-    formData.append('image', imageUser);
+    console.log(imageArr);
+    formData.append('image', imageArr);
     try {
-      // const res = await axios.patch('/orders/update-status-review', formData);
-      // const res = await axios.patch('/orders/review/approve', formData);
-      const res = await axios.patch('/orders/review/reject', formData);
+      const res = await axios.patch('/orders/update-status-review', formData);
       console.log(res);
     } catch (err) {
       console.log(err);
@@ -36,19 +37,16 @@ function WorkSubmitForm({ orderItem }) {
     }
   };
 
-  const handleClickApproval = async (e) => {
+  const handleClickSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await submitApproval(orderItem.id);
-      if (res.status === 200) {
-      }
+      console.log(orderItem);
+      await submitWork(commentUser, imageArr, orderItem.id);
+      // if (res.status === 200) {
+      // }
     } catch (error) {
       console.log(error);
     }
-  };
-  const handleClickReject = async (e) => {
-    e.preventDefault();
-    await submitReject(commentUser, imageUser, orderItem.id);
   };
 
   return (
@@ -118,6 +116,7 @@ function WorkSubmitForm({ orderItem }) {
               multiple
               type="file"
               sx={{ display: 'none' }}
+              onChange={(e) => setImageArr(e.target.files)}
             />
             <Button variant="contained" component="span">
               Upload
@@ -131,8 +130,8 @@ function WorkSubmitForm({ orderItem }) {
         component="div"
         sx={{ marginTop: '2rem', display: 'flex', gap: '5rem' }}
       >
-        <Button value={false} variant="contained" onClick={handleClickApproval}>
-          ยืนยันรับผลงาน
+        <Button value={false} variant="contained" onClick={handleClickSubmit}>
+           ส่งมอบผลงาน
         </Button>
       </Box>
     </>
