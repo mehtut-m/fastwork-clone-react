@@ -1,44 +1,33 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  Input,
-  Typography,
-  TextField,
-} from '@mui/material';
+import { Box, Button, FormControl, Typography, TextField } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import { useContext, useState } from 'react';
 import axios from '../../config/axios';
 import { OrderContext } from '../../contexts/OrderContext';
 
 function WorkReviewForm({ orderItem }) {
-  const { rejectOrder, refreshOrder } = useContext(OrderContext);
+  const { rejectOrder, submitApproval, activeOrderDetail } =
+    useContext(OrderContext);
   const [commentUser, setCommentUser] = useState('');
-  const [imageUser, setImageUser] = useState('');
+  const [imageArr, setImageArr] = useState([]);
 
+  const Input = styled('input')({
+    display: 'none',
+  });
   const submitReject = async (commentUser, imageUser, orderId, revise) => {
     await rejectOrder(commentUser, imageUser, orderId, revise);
-  };
-  const submitApproval = async (orderId) => {
-    try {
-      const res = await axios.patch(`/orders/review/approve/${orderId}`);
-    } catch (err) {
-      console.log(err);
-    }
   };
 
   const handleClickApproval = async (e) => {
     e.preventDefault();
     try {
-      const res = await submitApproval(orderItem.id);
-      if (res.status === 200) {
-      }
+      await submitApproval(orderItem.id);
     } catch (error) {
       console.log(error);
     }
   };
   const handleClickReject = async (e) => {
     e.preventDefault();
-    await submitReject(commentUser, imageUser, orderItem.id);
+    await submitReject(commentUser, imageArr, orderItem.id);
   };
   return (
     <>
@@ -106,6 +95,7 @@ function WorkReviewForm({ orderItem }) {
               id="contained-button-file"
               multiple
               type="file"
+              onChange={(e) => setImageArr(e.target.files)}
               sx={{ display: 'none' }}
             />
             <Button variant="contained" component="span">

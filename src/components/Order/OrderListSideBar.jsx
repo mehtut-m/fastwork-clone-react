@@ -6,6 +6,7 @@ import OrderSummaryItem from './OrderSummaryItem';
 
 function OrderListSideBar() {
   const { order, setActiveItem } = useContext(OrderContext);
+
   return (
     <Box
       sx={{

@@ -60,9 +60,9 @@ function ThumbnailForm({
 
       <label htmlFor="contained-button-file">
         <Input
+          multiple
           accept="image/*"
           id="contained-button-file"
-          multiple
           type="file"
           onChange={handleSelectImage}
         />
