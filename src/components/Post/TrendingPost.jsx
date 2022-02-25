@@ -9,8 +9,8 @@ function TrendingPost({ categoryId }) {
 
   useEffect(() => {
     getPostBySubCategories(categoryId)
-      .then((res) => setPosts(res.data.post))
-      .catch((err) => console.log(err));
+      .then(res => setPosts(res.data.post))
+      .catch(err => console.log(err));
   }, []);
 
   return (
@@ -46,7 +46,7 @@ function TrendingPost({ categoryId }) {
       </Typography>
 
       <Box sx={{ display: 'flex', gap: '.5rem' }}>
-        {posts.map((item) => (
+        {posts.map(item => (
           <PostItem item={item} key={item.id} />
         ))}
       </Box>

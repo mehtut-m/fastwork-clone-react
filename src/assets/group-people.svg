@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<style>.cls-1,.cls-6{fill:#fff}.cls-1{stroke:#707070}.cls-2{fill:#edf3fd}.cls-3{fill:rgba(255,255,255,0)}.cls-4{clip-path:url(#a)}.cls-5{fill:#7ca7ee}.cls-7{fill:#444b54}</style>
+<clipPath id="a">
+<path class="cls-1" transform="translate(412 2120)" d="M0 0h32v32H0z" data-name="Rectangle 4563"/>
+</clipPath>
+</defs>
+<g transform="translate(3597 73)" data-name="Group 12817">
+<circle class="cls-2" transform="translate(-3597 -73)" cx="36" cy="36" r="36" data-name="Ellipse 717"/>
+<g transform="translate(-4005 -2258)" data-name="Group 12749">
+<path class="cls-3" transform="translate(420 2197)" d="M0 0h48v48H0z" data-name="Rectangle 4568"/>
+</g>
+<g class="cls-4" transform="translate(-3989 -2173)" data-name="Mask Group 61">
+<g transform="translate(416.21 2120)">
+<g data-name="Group 12717">
+<g transform="translate(0 1.965)" data-name="Group 12712">
+<path class="cls-5" transform="translate(-6.175 -4.491)" d="M13.474 11.789H8.982A2.815 2.815 0 0 0 6.175 14.6v6.175a2.257 2.257 0 0 0 1.685 2.158V32a1.689 1.689 0 0 0 1.684 1.684h3.368A1.689 1.689 0 0 0 14.6 32v-8.982h1.684V14.6a2.815 2.815 0 0 0-2.81-2.811z" data-name="Path 13285"/>
+<circle class="cls-5" transform="translate(2.246)" cx="2.807" cy="2.807" r="2.807" data-name="Ellipse 707"/>
+</g>
+<g transform="translate(13.474 1.965)" data-name="Group 12713">
+<path class="cls-5" transform="translate(-19.649 -4.491)" d="M26.947 11.789h-4.491a2.815 2.815 0 0 0-2.807 2.811v6.175a2.257 2.257 0 0 0 1.684 2.161v8.982a1.691 1.691 0 0 0 1.628 1.74c.954.028 2.526.028 3.481 0a1.728 1.728 0 0 0 1.628-1.74v-8.9a1.689 1.689 0 0 0 1.684-1.684V14.6a2.815 2.815 0 0 0-2.807-2.811z" data-name="Path 13286"/>
+<circle class="cls-5" transform="translate(2.246)" cx="2.807" cy="2.807" r="2.807" data-name="Ellipse 708"/>
+</g>
+<path class="cls-6" transform="translate(-6.175 -2.526)" d="M19.649 33.684A1.689 1.689 0 0 1 17.965 32V20.211h3.368V32a1.689 1.689 0 0 1-1.684 1.684z" data-name="Path 13287"/>
+<path class="cls-6" transform="translate(-6.175 -2.526)" d="M20.211 11.789h-4.492a2.815 2.815 0 0 0-2.807 2.811v8.421A1.689 1.689 0 0 1 14.6 24.7v7.214a1.685 1.685 0 1 0 3.368.056v-8.952h5.053V14.6a2.815 2.815 0 0 0-2.81-2.811z" data-name="Path 13288"/>
+<g transform="translate(5.895 8.421)" data-name="Group 12714">
+<path class="cls-7" transform="translate(-12.07 -10.947)" d="M19.649 34.526A2.516 2.516 0 0 1 17.123 32v-8.982a.842.842 0 0 1 1.684 0V32a.842.842 0 1 0 1.684 0v-8.982a.827.827 0 0 1 .842-.842h.842V14.6a1.953 1.953 0 0 0-1.965-1.965h-4.491a1.953 1.953 0 0 0-1.965 1.965v8.421a.842.842 0 1 1-1.684 0V14.6a3.642 3.642 0 0 1 3.649-3.649h4.491a3.642 3.642 0 0 1 3.65 3.649v8.421a.827.827 0 0 1-.842.842h-.842V32a2.516 2.516 0 0 1-2.527 2.526z" data-name="Path 13289"/>
+</g>
+<circle class="cls-6" transform="translate(8.982 .842)" cx="2.807" cy="2.807" r="2.807" data-name="Ellipse 709"/>
+<g transform="translate(8.14)" data-name="Group 12715">
+<path class="cls-7" transform="translate(-14.316 -2.526)" d="m17.965 9.825a3.649 3.649 0 1 1 3.649-3.649 3.642 3.642 0 0 1-3.649 3.649zm0-5.614a1.965 1.965 0 1 0 1.965 1.964 1.953 1.953 0 0 0-1.965-1.964z" data-name="Path 13290"/>
+</g>
+<g transform="translate(7.579 21.333)" data-name="Group 12716">
+<path class="cls-7" transform="translate(-13.754 -23.86)" d="M16.281 34.526A2.516 2.516 0 0 1 13.754 32v-7.3a.842.842 0 1 1 1.684 0V32a.842.842 0 1 0 1.684 0 .842.842 0 1 1 1.684 0 2.516 2.516 0 0 1-2.525 2.526z" data-name="Path 13291"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</svg>
