@@ -1,27 +1,30 @@
-import { Box, Typography, Link } from '@mui/material';
-// import { Link } from 'react-router-dom';
-import consultant from '../../assets/consultant.svg';
+import { Typography, Link } from '@mui/material';
+import './CategoryItem.css';
 
 function CategoryItem({ item }) {
   return (
     <Link
       href={`/category/${item.path}`}
+      className="category-item"
       sx={{
         width: '9rem',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        gap: '.75rem',
         flexDirection: 'column',
         textDecoration: 'none',
         py: '1rem',
       }}
     >
-      <img
-        src={consultant}
-        alt={item.name}
-        style={{ filter: 'grayscale(1)' }}
-      />
-      <Typography sx={{ marginTop: '.75rem' }}>{item.name}</Typography>
+      <img src={item.icon} alt={item.name} className="category-icon" />
+
+      <Typography
+        sx={{
+          marginTop: '.75rem',
+        }}
+      >
+        {item.name}
+      </Typography>
     </Link>
   );
 }

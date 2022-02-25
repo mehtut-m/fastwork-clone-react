@@ -1,5 +1,4 @@
-import { useContext, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Stepper from '@mui/material/Stepper';
@@ -8,19 +7,31 @@ import StepLabel from '@mui/material/StepLabel';
 import StepContent from '@mui/material/StepContent';
 import Typography from '@mui/material/Typography';
 import { UserContext } from '../../contexts/UserContext';
+import { OrderContext } from '../../contexts/OrderContext';
 import LogStatusModal from './LogStatusModal';
 
 export default function OrderLog({ orderDetails }) {
-  const { user, order } = useContext(UserContext);
+  const { user } = useContext(UserContext);
+  const { order, orderItem, activeOrderDetail } = useContext(OrderContext);
   const [activeStep, setActiveStep] = useState(orderDetails?.length);
   const [detailOn, setDetailOn] = useState(false);
   const [detail, setDetail] = useState(null);
 
+  useEffect(() => {
+    setActiveStep(orderDetails?.length);
+  }, [activeOrderDetail]);
   return (
     <>
       <Box sx={{ maxWidth: 400, ml: '.5rem' }}>
+        <Typography
+          textAlign="left"
+          color="primary"
+          sx={{ fontSize: '1.25rem', fontWeight: '500' }}
+        >
+          ประวัติของการทำงาน
+        </Typography>
         <Stepper
-          activeStep={activeStep}
+          activeStep={activeStep || orderDetails?.length || 0}
           orientation="vertical"
           sx={{ flexDirection: 'column-reverse' }}
         >
@@ -34,7 +45,9 @@ export default function OrderLog({ orderDetails }) {
               >
                 <StepLabel>
                   {step.userId === user.id
-                    ? `คุณได้ทำการขอแก้ใขงานเมื่อ ${new Date(step?.createdAt)}`
+                    ? `คุณ : ได้ทำการขอแก้ใขงานเมื่อ ${new Date(
+                        step?.createdAt
+                      )}`
                     : `Freelance : ${
                         step?.User?.firstName
                       } ได้ทำการส่งงานให้คุณเมื่อ ${new Date(step?.createdAt)}`}

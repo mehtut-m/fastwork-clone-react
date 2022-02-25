@@ -1,0 +1,32 @@
+.category-icon {
+  filter: grayscale(1);
+  position: relative;
+  width: 56px;
+}
+.category-item:hover .category-icon {
+  transform: translate3d(0, -4px, 0);
+  transition: all 0.2s ease-in-out;
+  filter: grayscale(0);
+}
+.category-item:hover .category-icon::before {
+  opacity: 1;
+}
+.category-item .category-icon::before {
+  content: '';
+  position: absolute;
+  opacity: 0;
+  bottom: -3.2px;
+  left: 0;
+  right: 0;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 44.8px;
+  height: 11.2px;
+  background: hsl(217, 85%, 95%);
+  border-radius: 50%;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}

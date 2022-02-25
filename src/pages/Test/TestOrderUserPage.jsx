@@ -43,7 +43,7 @@ function TestOrderUserPage({ orderItem }) {
       setSecondsLeft(seconds);
     }, 1000);
     return () => clearTimeout(timer);
-  }, []);
+  }, [secondsLeft]);
 
   return (
     <>
@@ -56,14 +56,28 @@ function TestOrderUserPage({ orderItem }) {
           mb: '1.5rem',
         }}
       >
-        {activeOrderDetail.status === 'REVIEW' && !isFreelancePath && (
-          <WorkReviewForm orderItem={orderItem} />
-        )}
         {activeOrderDetail.status === 'REVIEW' && isFreelancePath && (
-          <Typography>--- Reviewing ---</Typography>
-        )}
-        {activeOrderDetail.status === 'WORKING' && isFreelancePath && (
-          <WorkSubmitForm orderItem={orderItem} />
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <Typography
+              component="h2"
+              color="primary"
+              sx={{ fontSize: '1.5rem', fontWeight: '500' }}
+            >
+              อยู่ระหว่างการตรวจสอบงาน
+            </Typography>
+            <img
+              src="https://media.giphy.com/media/1pUvx2WHilZYxZ60e1/giphy.gif"
+              alt="working"
+              style={{ display: 'block', width: '175px' }}
+            />
+          </Box>
         )}
         {activeOrderDetail.status === 'WORKING' && !isFreelancePath && (
           <Box
@@ -75,8 +89,8 @@ function TestOrderUserPage({ orderItem }) {
             }}
           >
             <Typography
-              color="primary"
               component="h2"
+              color="primary"
               sx={{ fontSize: '1.5rem', fontWeight: '500' }}
             >
               Freelance ของเรากำลังทำงานให้กับคุณ
@@ -90,9 +104,18 @@ function TestOrderUserPage({ orderItem }) {
         )}
         {activeOrderDetail.status === 'COMPLETE' && (
           <Box>
-            <Typography>ส่งมอบงานสำเร็จ</Typography>
+            <Typography
+              color="primary"
+              sx={{ fontSize: '1.5rem', fontWeight: '500', mb: '1.5rem' }}
+            >
+              ส่งมอบงานสำเร็จ
+            </Typography>
             <img
-              style={{ width: '200px' }}
+              style={{
+                width: '200px',
+                filter: 'brightness(50%)',
+                marginBottom: '2rem',
+              }}
               src="https://media.giphy.com/media/CaS9NNso512WJ4po0t/giphy.gif"
               alt="complete"
             />
@@ -116,6 +139,12 @@ function TestOrderUserPage({ orderItem }) {
           ระยะเวลาสิ้นสุดงาน : {dayLeft} วัน {hoursLeft} ชั่วโมง {minutesLeft}{' '}
           นาที {secondsLeft} วินาที
         </Typography>
+        {activeOrderDetail.status === 'REVIEW' && !isFreelancePath && (
+          <WorkReviewForm orderItem={orderItem} />
+        )}
+        {activeOrderDetail.status === 'WORKING' && isFreelancePath && (
+          <WorkSubmitForm orderItem={orderItem} />
+        )}
       </Box>
       <OrderLog orderDetails={activeOrderDetail?.OrderDetails} />
     </>
