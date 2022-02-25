@@ -61,12 +61,8 @@ function LoginEmail({ email }) {
 
   return (
     <>
-      <Typography
-        component="h1"
-        variant="h5"
-        // sx={{ mb: 3, fontWeight: 'bold', color: 'blue' }}
-      >
-        fastwork
+      <Typography component="h1" variant="h5">
+        ั fastwork
       </Typography>
 
       <Typography
