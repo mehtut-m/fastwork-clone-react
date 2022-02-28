@@ -8,6 +8,40 @@ function SubcategaryCatalogue() {
   const { id } = useParams();
   const [posts, setPosts] = useState([]);
   const [categoryInfo, setCategoryInfo] = useState({});
+  const temp = posts
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts)
+    .concat(posts);
 
   useEffect(() => {
     getPostBySubCategories(id)
@@ -21,7 +55,7 @@ function SubcategaryCatalogue() {
       .catch((err) => console.log(err));
   }, [id]);
 
-  return <Catalogue posts={posts} categoryInfo={categoryInfo} />;
+  return <Catalogue posts={temp} categoryInfo={categoryInfo} />;
 }
 
 export default SubcategaryCatalogue;

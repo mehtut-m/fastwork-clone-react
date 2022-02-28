@@ -34,7 +34,7 @@ function Post() {
       underline="hover"
       key="2"
       color="inherit"
-      to={`/subcategory/${post?.subCategoryId}`}
+      to={`/sub-category/${post?.subCategoryId}`}
     >
       {post?.SubCategory?.Category?.name}
     </Link>,
