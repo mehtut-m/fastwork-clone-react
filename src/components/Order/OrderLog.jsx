@@ -16,7 +16,9 @@ export default function OrderLog({ orderDetails }) {
   const [activeStep, setActiveStep] = useState(orderDetails?.length);
   const [detailOn, setDetailOn] = useState(false);
   const [detail, setDetail] = useState(null);
-
+  console.log(activeOrderDetail);
+  console.log(user.id);
+  console.log(activeOrderDetail.sellerId);
   useEffect(() => {
     setActiveStep(orderDetails?.length);
   }, [activeOrderDetail]);
@@ -35,22 +37,34 @@ export default function OrderLog({ orderDetails }) {
           orientation="vertical"
           sx={{ flexDirection: 'column-reverse' }}
         >
+          {
+            <Step key={0}>
+              <StepLabel>
+                {`Start : ผู้จ้างได้ทำการจ้างทำงานเมื่อ
+              ${new Date(activeOrderDetail?.createdAt)}`}
+              </StepLabel>
+            </Step>
+          }
           {orderDetails &&
             orderDetails.map((step, index) => (
               <Step
-                key={index}
+                key={index + 1}
                 onClick={() => {
-                  setActiveStep(index);
+                  setActiveStep(index + 1);
                 }}
               >
                 <StepLabel>
-                  {step.userId === user.id
-                    ? `คุณ : ได้ทำการขอแก้ใขงานเมื่อ ${new Date(
-                        step?.createdAt
-                      )}`
-                    : `Freelance : ${
-                        step?.User?.firstName
-                      } ได้ทำการส่งงานให้คุณเมื่อ ${new Date(step?.createdAt)}`}
+                  {step.userId === activeOrderDetail.buyerId
+                    ? `${
+                        user.id === activeOrderDetail.sellerId
+                          ? `Freelance ${step?.User?.firstName} ได้ทำการส่งงานเมื่อ`
+                          : `ผู้ว่าจ้าง ${step?.User?.firstName} ได้ทำการขอแก้ใขงานเมื่อ`
+                      } :  ${new Date(step?.createdAt)}`
+                    : `${
+                        user.id === activeOrderDetail.sellerId
+                          ? `ผู้ว่าจ้าง ${step?.User?.firstName} ได้ทำการขอแก้ใขงานเมื่อ`
+                          : `Freelance  ${step?.User?.firstName}  ได้ทำการส่งงานเมื่อ`
+                      } : ${new Date(step?.createdAt)}`}
                 </StepLabel>
                 <StepContent>
                   <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -69,6 +83,21 @@ export default function OrderLog({ orderDetails }) {
                 </StepContent>
               </Step>
             ))}
+          {/* Default Order Log */}
+
+          {activeOrderDetail.status === 'COMPLETE' && (
+            <Step
+              key={orderDetails.length}
+              onClick={() => {
+                setActiveStep(orderDetails.length);
+              }}
+            >
+              <StepLabel>
+                {`ออร์เดอร์สำเร็จ
+              ${new Date(activeOrderDetail?.createdAt)}`}
+              </StepLabel>
+            </Step>
+          )}
         </Stepper>
       </Box>
 

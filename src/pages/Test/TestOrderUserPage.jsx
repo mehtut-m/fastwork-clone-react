@@ -135,10 +135,12 @@ function TestOrderUserPage({ orderItem }) {
           จำนวนการแก้ไขงานคงเหลือ : {activeOrderDetail?.reviseCount}
         </Typography>
 
-        <Typography textAlign="left">
-          ระยะเวลาสิ้นสุดงาน : {dayLeft} วัน {hoursLeft} ชั่วโมง {minutesLeft}{' '}
-          นาที {secondsLeft} วินาที
-        </Typography>
+        {activeOrderDetail.status !== 'COMPLETE' && (
+          <Typography textAlign="left">
+            ระยะเวลาสิ้นสุดงาน : {dayLeft} วัน {hoursLeft} ชั่วโมง {minutesLeft}{' '}
+            นาที {secondsLeft} วินาที
+          </Typography>
+        )}
         {activeOrderDetail.status === 'REVIEW' && !isFreelancePath && (
           <WorkReviewForm orderItem={orderItem} />
         )}
