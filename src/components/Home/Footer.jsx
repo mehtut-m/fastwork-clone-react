@@ -13,49 +13,46 @@ import { Link } from 'react-router-dom';
 function Footer() {
   const footerDetail = [
     {
-      headTitle1: 'หมวดหมู่งาน',
-      items1: 'Graphic & Design',
-      items2: 'การตลาดและโฆษณา',
-      items3: 'เขียนและแปลภาษา',
-      items4: 'ภาพและเสียง',
-      items5: 'Web & Programming',
-      items6: 'ปรึกษาและแนะนำ',
-      items7: 'จัดการร้านค้าออนไลน์',
+      headTitle: 'หมวดหมู่งาน',
+      items: [
+        'Graphic & Design',
+        'การตลาดและโฆษณา',
+        'เขียนและแปลภาษา',
+        'ภาพและเสียง',
+        'Web & Programming',
+        'ปรึกษาและแนะนำ',
+        'จัดการร้านค้าออนไลน์',
+      ],
     },
 
     {
-      headTitle2: 'วิธีการใช้งาน',
-      items8: 'สมัครเป็นฟรีแลนซ์',
-      items9: 'เริ่มขายงานอย่างไร',
-      items10: 'การชำระค่าจ้าง',
-      items11: 'รับประกันการจ้างงาน',
-      items12: 'บล็อกความรู้',
-      items13: 'คำถามที่เจอบ่อย',
-      items14: 'จัดการการใช้ข้อมูล',
+      headTitle: 'วิธีการใช้งาน',
+      items: [
+        'สมัครเป็นฟรีแลนซ์',
+        'เริ่มขายงานอย่างไร',
+        'การชำระค่าจ้าง',
+        'รับประกันการจ้างงาน',
+        'บล็อกความรู้',
+        'คำถามที่เจอบ่อย',
+        'จัดการการใช้ข้อมูล',
+      ],
     },
 
     {
-      headTitle3: 'ผลิตภัณฑ์',
-      items15: 'Fastwork',
-      items16: 'Fastwork for Business',
+      headTitle: 'ผลิตภัณฑ์',
+      items: ['Fastwork', 'Fastwork for Business'],
     },
 
     {
-      headTitle4: 'เกี่ยวกับ Fastwork',
-      items17: 'Feedback พวกเรา',
-      items18: 'ร่วมงานกับ Fastwork',
-      items19: 'เงื่อนไขการใช้บริการ',
-      items20: 'นโยบายความเป็นส่วนตัว',
-      items21: 'ร่วมงานกับ Fastwork',
+      headTitle: 'เกี่ยวกับ Fastwork',
+      items: [
+        'Feedback พวกเรา',
+        'ร่วมงานกับ Fastwork',
+        'เงื่อนไขการใช้บริการ',
+        'นโยบายความเป็นส่วนตัว',
+        'ร่วมงานกับ Fastwork',
+      ],
     },
-    // {
-    //   headTitle5: 'ติดต่อเรา',
-    //   items22: 'hello@fastwork.com',
-    //   items23: '02-114-7008',
-    //   items24: 'จันทร์ - ศุกร์ 9.30 - 18.30 น.',
-    //   items25: 'เสาร์ - อาทิตย์',
-    //   items26: 'วันหยุดนักขัตฤกษ์ 10.00-19.00 น.',
-    // },
   ];
 
   return (
@@ -65,15 +62,14 @@ function Footer() {
         display="flex"
         bgcolor="black"
         justifyContent="space-around"
-        marginTop={5}
         color="white"
       >
         {footerDetail.map(item => {
           return <FooterMap item={item} />;
         })}
 
-        <List component="div" marginTop={5}>
-          <Typography sx={{ mb: 2 }}>ติดต่อเรา</Typography>
+        <List component="div">
+          <Typography sx={{ mb: 3 }}>ติดต่อเรา</Typography>
 
           <Link to="hello@fastwork.com" display="flex">
             <ListItem>
@@ -90,7 +86,6 @@ function Footer() {
           </Link>
 
           <List component="div">
-            <ListItem></ListItem>
             <ListItem>จันทร์ - ศุกร์ 9.30 - 18.30 น.</ListItem>
             <ListItem>วันหยุดนักขัตฤกษ์ 10.00-19.00 น.</ListItem>
           </List>
@@ -99,7 +94,7 @@ function Footer() {
         {/* Icon Social  */}
 
         <List component="div">
-          <Box component="div" mt={5}>
+          <Box component="div">
             <Box component="div">
               <Typography>
                 <Link to="https://www.instagram.com/fastworkco/">
