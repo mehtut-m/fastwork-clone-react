@@ -12,9 +12,18 @@ import Typography from '@mui/material/Typography';
 import PostWrapper from './PostWrapper';
 import FilterPriceMenu from '../Menu/FilterPriceMenu';
 
+const initialFilter = {
+  min: null,
+  max: null,
+  duration: null,
+};
+
 function Catalogue({ posts, categoryInfo }) {
   // Paginations
   const [currentPage, setCurrentPage] = useState(1);
+  const [filter, setFilter] = useState(initialFilter);
+  const setFilterDuration = () => {};
+  const setFilterMinMax = () => {};
   const postPage = 12;
   const totalPages = Math.ceil(posts.length / postPage);
   const productToShow = posts.slice(
@@ -22,8 +31,6 @@ function Catalogue({ posts, categoryInfo }) {
     (currentPage - 1) * postPage + postPage
   );
 
-  console.log('currentPage -------_>', (currentPage - 1) * postPage);
-  console.log('currentPage + 12 -------_>', currentPage * postPage - 1);
   const handlePaginationChange = (event, value) => {
     setCurrentPage(value);
   };
