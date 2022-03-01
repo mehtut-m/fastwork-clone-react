@@ -1,16 +1,16 @@
-import { getAllPost } from '../../apis/post';
-import { useState, useEffect } from 'react';
-import FilterDurationMenu from '../Menu/FilterDurationMenu';
-import { Container } from '@mui/material';
-import { Link } from 'react-router-dom';
-import Breadcrumbs from '@mui/material/Breadcrumbs';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Pagination from '@mui/material/Pagination';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import Typography from '@mui/material/Typography';
-import PostWrapper from './PostWrapper';
-import FilterPriceMenu from '../Menu/FilterPriceMenu';
+import { getAllPost } from "../../apis/post";
+import { useState, useEffect } from "react";
+import FilterDurationMenu from "../Menu/FilterDurationMenu";
+import { Container } from "@mui/material";
+import { Link } from "react-router-dom";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Pagination from "@mui/material/Pagination";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import Typography from "@mui/material/Typography";
+import PostWrapper from "./PostWrapper";
+import FilterPriceMenu from "../Menu/FilterPriceMenu";
 
 function Catalogue({ posts, categoryInfo }) {
   // Paginations
@@ -22,8 +22,8 @@ function Catalogue({ posts, categoryInfo }) {
     (currentPage - 1) * postPage + postPage
   );
 
-  console.log('currentPage -------_>', (currentPage - 1) * postPage);
-  console.log('currentPage + 12 -------_>', currentPage * postPage - 1);
+  console.log("currentPage -------_>", (currentPage - 1) * postPage);
+  console.log("currentPage + 12 -------_>", currentPage * postPage - 1);
   const handlePaginationChange = (event, value) => {
     setCurrentPage(value);
   };
@@ -55,7 +55,7 @@ function Catalogue({ posts, categoryInfo }) {
       <Breadcrumbs
         separator={<NavigateNextIcon fontSize="small" />}
         color="primary"
-        sx={{ my: '2rem' }}
+        sx={{ my: "2rem" }}
         aria-label="breadcrumb"
       >
         {breadcrumbs}
@@ -63,25 +63,25 @@ function Catalogue({ posts, categoryInfo }) {
       {/* Header */}
       <Box>
         <Typography
-          component={'h1'}
-          sx={{ fontSize: '1.5rem', textAlign: 'start', mb: '1.75rem' }}
+          component={"h1"}
+          sx={{ fontSize: "1.5rem", textAlign: "start", mb: "1.75rem" }}
         >
           {categoryInfo.name}
         </Typography>
       </Box>
       {/* Filter Bar */}
-      <Box sx={{ display: 'flex', gap: '.5rem', mb: '1.5rem' }}>
+      <Box sx={{ display: "flex", gap: ".5rem", mb: "1.5rem" }}>
         <FilterDurationMenu />
         <FilterPriceMenu />
         <Button
           variant="outlined"
-          sx={{ borderColor: '#BBBBBB', color: '#BBB' }}
+          sx={{ borderColor: "#BBBBBB", color: "#BBB" }}
         >
           ทั้งหมด
         </Button>
       </Box>
 
-      <Typography sx={{ textAlign: 'start', mb: '12px' }}>
+      <Typography sx={{ textAlign: "start", mb: "12px" }}>
         งาน {posts.length} รายการ
       </Typography>
 
@@ -91,7 +91,7 @@ function Catalogue({ posts, categoryInfo }) {
         count={totalPages}
         variant="outlined"
         color="primary"
-        sx={{ m: '2.5rem auto', width: 'max-content' }}
+        sx={{ m: "2.5rem auto", width: "max-content" }}
         onChange={handlePaginationChange}
       />
     </Container>
