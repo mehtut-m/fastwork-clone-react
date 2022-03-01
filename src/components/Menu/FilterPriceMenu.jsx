@@ -79,7 +79,7 @@ const FilterDurationMenu = ({ item }) => {
                     textAlign="start"
                     sx={{
                       fontSize: '1.25rem',
-                      fontWeight: 700,
+                      fontWeight: 600,
                       p: '1rem 1.5rem .75rem',
                       borderBottom: '1px solid hsl(216, 15%, 92%)',
                     }}

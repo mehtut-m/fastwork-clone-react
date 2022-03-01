@@ -32,7 +32,9 @@ const OrderContextProvider = ({ children }) => {
     const formData = new FormData();
     formData.append('orderId', orderId);
     formData.append('comment', commentUser);
-    formData.append('image', imageUser);
+    for (const element of imageUser) {
+      formData.append('image', element);
+    }
     try {
       const res = await axios.patch('/orders/update-status-review', formData);
       if (res.status === 200) {

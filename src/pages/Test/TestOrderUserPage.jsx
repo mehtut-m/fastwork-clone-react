@@ -43,7 +43,7 @@ function TestOrderUserPage({ orderItem }) {
       setSecondsLeft(seconds);
     }, 1000);
     return () => clearTimeout(timer);
-  }, [secondsLeft]);
+  }, []);
 
   return (
     <>

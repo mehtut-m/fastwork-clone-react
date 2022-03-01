@@ -5,7 +5,9 @@ import Grow from '@mui/material/Grow';
 import Paper from '@mui/material/Paper';
 import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
+import Typography from '@mui/material/Typography';
 import MenuList from '@mui/material/MenuList';
+import Box from '@mui/material/Box';
 
 const FIlterDurationMenu = ({ item }) => {
   const [open, setOpen] = React.useState(false);
@@ -73,23 +75,82 @@ const FIlterDurationMenu = ({ item }) => {
           >
             <Paper sx={{ position: 'relative' }}>
               <ClickAwayListener onClickAway={handleClose}>
-                <MenuList
-                  autoFocusItem={open}
-                  id="composition-menu"
-                  aria-labelledby="composition-button"
-                  onKeyDown={handleListKeyDown}
-                  sx={{ zIndex: '99', position: 'relative' }}
+                <Box
+                  sx={{
+                    minWidth: '300px',
+                    flexDirection: 'column',
+                    position: 'relative',
+                    zIndex: '5',
+                    borderRadius: '4px',
+                  }}
                 >
-                  <MenuItem onClick={handleClose} sx={{ py: '2rem' }}>
-                    ใน 24 ชม.
-                  </MenuItem>
-                  <MenuItem onClick={handleClose} sx={{ py: '2rem' }}>
-                    ใน 3 วัน
-                  </MenuItem>
-                  <MenuItem onClick={handleClose} sx={{ py: '2rem' }}>
-                    ใน 7 วัน
-                  </MenuItem>
-                </MenuList>
+                  <Typography
+                    textAlign="start"
+                    sx={{
+                      fontSize: '1.25rem',
+                      fontWeight: 600,
+                      p: '1rem 1.5rem .75rem',
+                      borderBottom: '1px solid hsl(216, 15%, 92%)',
+                    }}
+                  >
+                    ระยะเวลาการทำงาน
+                  </Typography>
+                  <MenuList
+                    autoFocusItem={open}
+                    id="composition-menu"
+                    aria-labelledby="composition-button"
+                    onKeyDown={handleListKeyDown}
+                    sx={{
+                      zIndex: '99',
+                      position: 'relative',
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat( 2, 9.75rem)',
+                      gap: '.5rem',
+                      p: '1rem',
+                    }}
+                  >
+                    <MenuItem
+                      onClick={handleClose}
+                      sx={{
+                        py: '4px',
+                        borderRadius: '4px',
+                        border: '1px solid rgb(133, 133, 133)',
+                        width: '100%',
+                      }}
+                    >
+                      <span style={{ textAlign: 'center', width: '100%' }}>
+                        ใน 24 ชั่วโมง
+                      </span>
+                    </MenuItem>
+                    <MenuItem
+                      onClick={handleClose}
+                      sx={{
+                        py: '4px',
+                        borderRadius: '4px',
+                        border: '1px solid rgb(133, 133, 133)',
+                        width: '100%',
+                      }}
+                    >
+                      <span style={{ textAlign: 'center', width: '100%' }}>
+                        ใน 3 วัน
+                      </span>
+                    </MenuItem>
+                    <MenuItem
+                      onClick={handleClose}
+                      sx={{
+                        py: '4px',
+                        borderRadius: '4px',
+                        border: '1px solid rgb(133, 133, 133)',
+                        textAlign: 'center',
+                        width: '100%',
+                      }}
+                    >
+                      <span style={{ textAlign: 'center', width: '100%' }}>
+                        ใน 7 วัน
+                      </span>
+                    </MenuItem>
+                  </MenuList>
+                </Box>
               </ClickAwayListener>
             </Paper>
           </Grow>

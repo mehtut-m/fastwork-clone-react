@@ -15,17 +15,29 @@ import FilterPriceMenu from '../Menu/FilterPriceMenu';
 function Catalogue({ posts, categoryInfo }) {
   // Paginations
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(posts.length / 12);
-  const productToShow = posts.slice(currentPage, currentPage + 12);
+  const postPage = 12;
+  const totalPages = Math.ceil(posts.length / postPage);
+  const productToShow = posts.slice(
+    (currentPage - 1) * postPage,
+    (currentPage - 1) * postPage + postPage
+  );
+
+  console.log('currentPage -------_>', (currentPage - 1) * postPage);
+  console.log('currentPage + 12 -------_>', currentPage * postPage - 1);
   const handlePaginationChange = (event, value) => {
     setCurrentPage(value);
   };
-  console.log(productToShow);
+
   const breadcrumbs = [
     <Link underline="hover" key="1" color="inherit" to={`/category/`}>
       ประเภทงานทั้งหมด
     </Link>,
-    <Link underline="hover" key="2" color="inherit" to={`/sub-category/`}>
+    <Link
+      underline="hover"
+      key="2"
+      color="inherit"
+      to={`/sub-category/${categoryInfo?.id}`}
+    >
       {categoryInfo?.Category?.name}
     </Link>,
     <Link
@@ -73,7 +85,7 @@ function Catalogue({ posts, categoryInfo }) {
         งาน {posts.length} รายการ
       </Typography>
 
-      <PostWrapper post={posts} />
+      <PostWrapper post={productToShow} />
 
       <Pagination
         count={totalPages}
