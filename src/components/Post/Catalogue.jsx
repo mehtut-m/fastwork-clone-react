@@ -1,5 +1,6 @@
-import { getAllPost } from '../../apis/post';
+import axios from '../../config/axios';
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import FilterDurationMenu from '../Menu/FilterDurationMenu';
 import { Container } from '@mui/material';
 import { Link } from 'react-router-dom';
@@ -13,23 +14,46 @@ import PostWrapper from './PostWrapper';
 import FilterPriceMenu from '../Menu/FilterPriceMenu';
 
 const initialFilter = {
-  min: null,
-  max: null,
-  duration: null,
+  min: 0,
+  max: '',
+  duration: '',
 };
 
-function Catalogue({ posts, categoryInfo }) {
+function Catalogue({ posts, categoryInfo, setPosts }) {
+  const { id } = useParams();
+  console.log(id);
   // Paginations
   const [currentPage, setCurrentPage] = useState(1);
   const [filter, setFilter] = useState(initialFilter);
-  const setFilterDuration = () => {};
-  const setFilterMinMax = () => {};
+  console.log(filter);
+  const setFilterDuration = (value) => {
+    setFilter({ ...filter, duration: value });
+  };
+  const setFilterMinMax = (e) => {
+    setFilter({ ...filter, [e.target.name]: e.target.value });
+  };
+  const clearFilter = (e) => {
+    setFilter(initialFilter);
+  };
   const postPage = 12;
   const totalPages = Math.ceil(posts.length / postPage);
   const productToShow = posts.slice(
     (currentPage - 1) * postPage,
     (currentPage - 1) * postPage + postPage
   );
+
+  const submitQuery = async () => {
+    let query = '?';
+    for (const item in filter) {
+      if (filter[item] !== '') {
+        query = `${query}${item}=${filter[item]}&`;
+      }
+    }
+    const res = await axios
+      .get(`/post/filter/${id}${query}`)
+      .catch((err) => console.log(err));
+    setPosts(res.data.post);
+  };
 
   const handlePaginationChange = (event, value) => {
     setCurrentPage(value);
@@ -78,8 +102,18 @@ function Catalogue({ posts, categoryInfo }) {
       </Box>
       {/* Filter Bar */}
       <Box sx={{ display: 'flex', gap: '.5rem', mb: '1.5rem' }}>
-        <FilterDurationMenu />
-        <FilterPriceMenu />
+        <FilterDurationMenu
+          filter={filter}
+          setFilterDuration={setFilterDuration}
+          submitQuery={submitQuery}
+          clearFilter={clearFilter}
+        />
+        <FilterPriceMenu
+          filter={filter}
+          setFilterMinMax={setFilterMinMax}
+          submitQuery={submitQuery}
+          clearFilter={clearFilter}
+        />
         <Button
           variant="outlined"
           sx={{ borderColor: '#BBBBBB', color: '#BBB' }}

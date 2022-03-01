@@ -53,7 +53,7 @@ export default function LogStatusModal({
           {detail?.comment}
           <Box>
             {imgArr.map((el) => (
-              <img src={el.url} style={{ maxWidth: '300px' }} />
+              <img src={el.url} alt="" style={{ maxWidth: '300px' }} />
             ))}
           </Box>
         </DialogContentText>

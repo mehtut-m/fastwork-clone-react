@@ -11,28 +11,22 @@ import IconButton from '@mui/material/IconButton';
 function UserMenu() {
   const { logOut } = useContext(AuthContext);
   const { user } = useContext(UserContext);
+
   const settings = [
     { menu: 'ออเดอร์ของฉัน', onClick: () => {}, path: 'user/order' },
-    {
-      menu: 'งาน Freelance ของฉัน',
-      onClick: () => {},
-      path: 'freelance/order',
-    },
+    // {
+    //   menu: 'งาน Freelance ของฉัน',
+    //   onClick: () => {},
+    //   path: 'freelance/order',
+    // },
     { menu: 'ตั้งค่าโปรไฟล์', onClick: () => {}, path: '#' },
     { menu: 'ออกจากระบบ', onClick: logOut, path: '#' },
   ];
-  const [anchorElNav, setAnchorElNav] = useState(null);
+
   const [anchorElUser, setAnchorElUser] = useState(null);
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
   };
 
   const handleCloseUserMenu = () => {
@@ -78,6 +72,17 @@ function UserMenu() {
             {user.email}
           </Typography>
         </MenuItem>
+        {/* Freelance Menu */}
+        {user.freelanceInfoId && (
+          <Link to="freelance/order/">
+            <MenuItem onClick={handleCloseUserMenu}>
+              <Typography
+                textAlign="center"
+                sx={{ mb: '.5rem' }}
+              >{`งานฟรีแลนซ์ของฉัน`}</Typography>
+            </MenuItem>
+          </Link>
+        )}
         {settings.map(({ menu, onClick, path }, index) => (
           <Link to={path}>
             <MenuItem

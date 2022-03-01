@@ -18,10 +18,10 @@ function TestOrderUserPage({ orderItem }) {
 
   const orderId = orderItem?.id;
   const isFreelancePath = useLocation().pathname.includes('freelance');
-
+  console.log(orderId);
   useEffect(() => {
     fetchOrderById(orderId);
-  }, [orderId]);
+  }, [orderId, order]);
 
   const countDownDate =
     new Date(activeOrderDetail.deadlineDate).getTime() || new Date().getTime();

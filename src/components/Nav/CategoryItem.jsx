@@ -1,12 +1,13 @@
-import { Typography, Link } from '@mui/material';
+import { Typography, Link, Box } from '@mui/material';
 import './CategoryItem.css';
 
-function CategoryItem({ item }) {
+function CategoryItem({ item, setSubCatOn }) {
   return (
-    <Link
-      href={`/category/${item.path}`}
+    <Box
+      // href={`/category/${item.path}`}
       className="category-item"
       sx={{
+        cursor: 'pointer',
         width: '9rem',
         display: 'flex',
         alignItems: 'center',
@@ -15,17 +16,19 @@ function CategoryItem({ item }) {
         textDecoration: 'none',
         py: '1rem',
       }}
+      onClick={setSubCatOn}
     >
       <img src={item.icon} alt={item.name} className="category-icon" />
 
       <Typography
+        color="primary"
         sx={{
           marginTop: '.75rem',
         }}
       >
         {item.name}
       </Typography>
-    </Link>
+    </Box>
   );
 }
 

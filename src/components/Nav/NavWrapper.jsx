@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Box } from '@mui/material';
 import CategoryItem from './CategoryItem';
 import WritingIcon from '../../assets/writing.svg';
@@ -21,6 +22,7 @@ const categories = [
   { name: 'จัดการร้านค้าออนไลน์', path: '7', icon: EcommerceIcon },
 ];
 function NavWrapper({ children }) {
+  const [subCatOn, setSubCatOn] = useState(false);
   return (
     <Box
       sx={{
@@ -50,10 +52,10 @@ function NavWrapper({ children }) {
         }}
       >
         {categories.map((item, index) => (
-          <CategoryItem key={index} item={item} />
+          <CategoryItem key={index} item={item} setSubCatOn={setSubCatOn} />
         ))}
       </Box>
-      <SubCategoryMenu />
+      <SubCategoryMenu subCatOn={subCatOn} />
     </Box>
   );
 }

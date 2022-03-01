@@ -12,7 +12,6 @@ function SubcategaryCatalogue() {
   useEffect(() => {
     getPostBySubCategories(id)
       .then((res) => {
-        console.log(res);
         setPosts(res.data.post);
       })
       .catch((err) => console.log(err));
@@ -26,7 +25,9 @@ function SubcategaryCatalogue() {
       .catch((err) => console.log(err));
   }, [id]);
 
-  return <Catalogue posts={posts} categoryInfo={categoryInfo} />;
+  return (
+    <Catalogue posts={posts} categoryInfo={categoryInfo} setPosts={setPosts} />
+  );
 }
 
 export default SubcategaryCatalogue;

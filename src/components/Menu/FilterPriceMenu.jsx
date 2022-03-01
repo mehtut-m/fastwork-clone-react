@@ -9,7 +9,13 @@ import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
 import { Input, Typography } from '@mui/material';
 
-const FilterDurationMenu = ({ item }) => {
+const FilterDurationMenu = ({
+  item,
+  setFilterMinMax,
+  submitQuery,
+  clearFilter,
+  filter,
+}) => {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
@@ -103,6 +109,9 @@ const FilterDurationMenu = ({ item }) => {
                       InputLabelProps={{
                         shrink: true,
                       }}
+                      name="min"
+                      value={filter.min}
+                      onChange={(e) => setFilterMinMax(e)}
                       sx={{ p: 0, width: '100%' }}
                     />
 
@@ -110,11 +119,29 @@ const FilterDurationMenu = ({ item }) => {
                       id="outlined-number"
                       type="number"
                       placeholder="สูงสุด"
+                      name="max"
+                      value={filter.max}
                       InputLabelProps={{
                         shrink: true,
                       }}
+                      onChange={(e) => setFilterMinMax(e)}
                       sx={{ p: 0, width: '100%' }}
                     />
+                  </Box>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'flex-end',
+                      px: '1rem',
+                      pb: '.75rem',
+                    }}
+                  >
+                    <Button onClick={clearFilter} sx={{}}>
+                      ล้างตัวกรอง
+                    </Button>
+                    <Button variant="contained" onClick={submitQuery}>
+                      ยืนยัน
+                    </Button>
                   </Box>
                 </Box>
               </ClickAwayListener>

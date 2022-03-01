@@ -16,12 +16,10 @@ export default function OrderLog({ orderDetails }) {
   const [activeStep, setActiveStep] = useState(orderDetails?.length);
   const [detailOn, setDetailOn] = useState(false);
   const [detail, setDetail] = useState(null);
-  console.log(activeOrderDetail);
-  console.log(user.id);
-  console.log(activeOrderDetail.sellerId);
+
   useEffect(() => {
     setActiveStep(orderDetails?.length);
-  }, [activeOrderDetail]);
+  }, [activeOrderDetail, order]);
   return (
     <>
       <Box sx={{ maxWidth: 400, ml: '.5rem' }}>

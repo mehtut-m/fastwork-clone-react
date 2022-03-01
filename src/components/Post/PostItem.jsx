@@ -11,6 +11,7 @@ import { formatThaiCurrency } from '../../services/currencyService';
 
 function PostItem({ item }) {
   const packageArr = item.Packages.sort((a, b) => a.price - b.price);
+
   return (
     <Card
       sx={{

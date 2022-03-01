@@ -13,7 +13,7 @@ function Home() {
       <Navbar />
       <HomeTwo />
       <TrendingPost categoryId={1} />
-      <TrendingPost categoryId={6} />
+      <TrendingPost categoryId={7} />
       <UserReview />
       <Footer />
     </Box>
