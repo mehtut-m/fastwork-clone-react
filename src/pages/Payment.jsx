@@ -8,7 +8,7 @@ import PaymentForm from '../components/Form/CreditCardForm';
 function Payment() {
   const { order, post, packageId } = useContext(CheckoutContext);
   const pkg = post?.Packages?.find((element) => element.id === packageId);
-
+  console.log(pkg);
   return (
     <Container sx={{ display: 'flex', height: 'calc(100vh - 4.5rem)' }}>
       <Box
@@ -32,12 +32,11 @@ function Payment() {
           sx={{
             background: '#fff',
             borderRadius: '.5rem',
-            px: '.75rem',
+            p: '.75rem',
             textAlign: 'start',
           }}
         >
-          ที่ปรึกษา ทำ ตลาดจีน ส่งออกจีน โดยนักธรุกิจ จีน ประสบการณ์ตั้งแต่ปี
-          2545
+          {pkg?.name}
           <Box
             sx={{
               background: 'rgba(196, 196, 196, 0.25)',

@@ -40,7 +40,11 @@ const OrderContextProvider = ({ children }) => {
       if (res.status === 200) {
         setActiveOrderDetail(res.data.order);
         console.log(res);
-        await refreshOrder();
+        getFreelanceOrderByStatus(['WORKING', 'REVIEW', 'REVISE', 'COMPLETE'])
+          .then((res) => {
+            setOrder([...res.data.order]);
+          })
+          .catch((err) => console.log(err));
       }
     } catch (err) {
       console.log(err);

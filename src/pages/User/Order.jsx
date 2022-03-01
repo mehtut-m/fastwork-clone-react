@@ -8,8 +8,10 @@ import { OrderContext } from '../../contexts/OrderContext';
 import { useContext } from 'react';
 
 function OrderStatus() {
-  const { order } = useContext(OrderContext);
-
+  const { order, refreshOrder } = useContext(OrderContext);
+  useEffect(() => {
+    refreshOrder();
+  }, []);
   return (
     <Container>
       <Paper

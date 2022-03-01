@@ -1,6 +1,7 @@
 import { Avatar, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import { useContext } from 'react';
+
 import { OrderContext } from '../../contexts/OrderContext';
 import OrderSummaryItem from './OrderSummaryItem';
 

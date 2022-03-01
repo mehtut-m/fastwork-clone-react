@@ -9,7 +9,13 @@ import Typography from '@mui/material/Typography';
 import MenuList from '@mui/material/MenuList';
 import Box from '@mui/material/Box';
 
-const FIlterDurationMenu = ({ item }) => {
+const FIlterDurationMenu = ({
+  item,
+  setFilterDuration,
+  clearFilter,
+  filter,
+  submitQuery,
+}) => {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
@@ -17,20 +23,23 @@ const FIlterDurationMenu = ({ item }) => {
     setOpen((prevOpen) => !prevOpen);
   };
 
-  const handleClose = (event) => {
+  const handleClose = (event, value) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
     setOpen(false);
   };
+  const onSelect = (e, value) => {
+    setFilterDuration(value);
+  };
 
   function handleListKeyDown(event) {
-    if (event.key === 'Tab') {
-      event.preventDefault();
-      setOpen(false);
-    } else if (event.key === 'Escape') {
-      setOpen(false);
-    }
+    // if (event.key === 'Tab') {
+    //   event.preventDefault();
+    //   setOpen(false);
+    // } else if (event.key === 'Escape') {
+    //   setOpen(false);
+    // }
   }
 
   // return focus to the button when we transitioned from !open -> open
@@ -110,7 +119,7 @@ const FIlterDurationMenu = ({ item }) => {
                     }}
                   >
                     <MenuItem
-                      onClick={handleClose}
+                      onClick={(e) => onSelect(e, 1)}
                       sx={{
                         py: '4px',
                         borderRadius: '4px',
@@ -123,12 +132,13 @@ const FIlterDurationMenu = ({ item }) => {
                       </span>
                     </MenuItem>
                     <MenuItem
-                      onClick={handleClose}
+                      onClick={(e) => onSelect(e, 3)}
                       sx={{
                         py: '4px',
                         borderRadius: '4px',
                         border: '1px solid rgb(133, 133, 133)',
                         width: '100%',
+                        borderColor: 'primary.main',
                       }}
                     >
                       <span style={{ textAlign: 'center', width: '100%' }}>
@@ -136,7 +146,7 @@ const FIlterDurationMenu = ({ item }) => {
                       </span>
                     </MenuItem>
                     <MenuItem
-                      onClick={handleClose}
+                      onClick={(e) => onSelect(e, 7)}
                       sx={{
                         py: '4px',
                         borderRadius: '4px',
@@ -150,6 +160,27 @@ const FIlterDurationMenu = ({ item }) => {
                       </span>
                     </MenuItem>
                   </MenuList>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'flex-end',
+                      px: '1rem',
+                      pb: '.75rem',
+                    }}
+                  >
+                    <Button onClick={clearFilter} sx={{}}>
+                      ล้างตัวกรอง
+                    </Button>
+                    <Button
+                      variant="contained"
+                      onClick={() => {
+                        submitQuery();
+                        handleClose();
+                      }}
+                    >
+                      ยืนยัน
+                    </Button>
+                  </Box>
                 </Box>
               </ClickAwayListener>
             </Paper>
