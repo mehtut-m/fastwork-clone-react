@@ -8,54 +8,25 @@ function SubcategaryCatalogue() {
   const { id } = useParams();
   const [posts, setPosts] = useState([]);
   const [categoryInfo, setCategoryInfo] = useState({});
-  const temp = posts
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts)
-    .concat(posts);
 
   useEffect(() => {
     getPostBySubCategories(id)
-      .then((res) => setPosts(res.data.post))
+      .then((res) => {
+        console.log(res);
+        setPosts(res.data.post);
+      })
       .catch((err) => console.log(err));
   }, []);
 
   useEffect(() => {
     getSubCategoryById(id)
-      .then((res) => setCategoryInfo(res.data.subCategory))
+      .then((res) => {
+        setCategoryInfo(res.data.subCategory);
+      })
       .catch((err) => console.log(err));
   }, [id]);
 
-  return <Catalogue posts={temp} categoryInfo={categoryInfo} />;
+  return <Catalogue posts={posts} categoryInfo={categoryInfo} />;
 }
 
 export default SubcategaryCatalogue;
