@@ -21,6 +21,7 @@ const CheckoutContextProvider = ({ children }) => {
   };
 
   const updateOrderImage = async (e) => {
+    console.log(e.target.files);
     setOrder({
       ...order,
       requirementImage: [...order.requirementImage, e.target.files],

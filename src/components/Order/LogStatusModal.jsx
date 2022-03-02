@@ -10,6 +10,7 @@ import Slide from '@mui/material/Slide';
 import { getOrderDetail } from '../../apis/order';
 import { OrderContext } from '../../contexts/OrderContext';
 import Typography from '@mui/material/Typography';
+import OrderDetailGallery from './OrderDetailGallery';
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -50,7 +51,6 @@ export default function LogStatusModal({
       keepMounted
       onClose={handleClose}
       fullWidth={'80%'}
-      maxWidth={'900px'}
       aria-describedby="alert-dialog-slide-description"
     >
       <DialogTitle sx={{ background: 'black' }}>
@@ -83,9 +83,7 @@ export default function LogStatusModal({
           </Typography>
 
           <Box>
-            {imgArr.map((el) => (
-              <img src={el.url} alt="" style={{ maxWidth: '300px' }} />
-            ))}
+            <OrderDetailGallery imgArr={imgArr} />
           </Box>
         </DialogContentText>
         {children}

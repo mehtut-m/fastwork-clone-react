@@ -81,6 +81,10 @@ export default function CheckoutModal({
     proceedToPayment();
   };
 
+  for (const property in order.requirementImage) {
+    console.log(`${property}: ${order.requirementImage[property]}`);
+  }
+
   return (
     <Modal
       aria-labelledby="spring-modal-title"
@@ -153,7 +157,11 @@ export default function CheckoutModal({
                 </label>
               </Grid>
             </Grid>
+            <Box>
+              {console.log(order.requirementImage)}
 
+              {/* <img src={}/> */}
+            </Box>
             <Box sx={{ display: 'flex', justifyContent: 'end', mt: '1rem' }}>
               <Button
                 variant="outlined"
