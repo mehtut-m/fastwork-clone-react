@@ -17,7 +17,7 @@ function MainLogin({
   setEmailValid,
   setEmailError,
 }) {
-  const handleOnchangeText = e => {
+  const handleOnchangeText = (e) => {
     // console.log(email);
     setEmail(e.target.value);
     if (e.target.value.length < 1) {
@@ -47,7 +47,7 @@ function MainLogin({
         เข้าสู่ระบบ
       </Typography>
 
-      <Box>
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: '.5rem' }}>
         <GoogleLoginButton />
         <FacebookLoginButton />
       </Box>

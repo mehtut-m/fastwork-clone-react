@@ -33,6 +33,8 @@ function OrderListSideBar() {
           borderRight: '1px solid rgba(0, 0, 0, 0.25);',
           minHeight: 'calc(100vh - 4rem - 59px)',
           overflow: 'scroll',
+          overflowX: 'hidden',
+          textOverflow: 'ellipsis',
         }}
       >
         {order.map((item, index) => (

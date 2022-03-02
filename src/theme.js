@@ -8,6 +8,7 @@ const theme = createTheme({
   palette: {
     primary: {
       main: '#7900FF',
+      facebook: 'rgb(59, 92, 171)',
     },
     border: {
       main: '',

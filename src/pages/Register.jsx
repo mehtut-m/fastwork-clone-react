@@ -20,13 +20,13 @@ export default function SignUp() {
     confirmPassword: '',
   });
 
-  const handleChange = event => {
-    setFormInput(prev => ({
+  const handleChange = (event) => {
+    setFormInput((prev) => ({
       ...prev,
       [event.target.name]: event.target.value,
     }));
   };
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     await register(formInput);
   };
@@ -64,7 +64,7 @@ export default function SignUp() {
         >
           สร้างบัญชี fastwork
         </Typography>
-        <Box>
+        <Box sx={{ display: 'grid', gap: '.5rem' }}>
           <GoogleLoginButton />
           <FacebookLoginButton />
         </Box>

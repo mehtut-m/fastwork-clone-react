@@ -24,7 +24,7 @@ const CheckoutContextProvider = ({ children }) => {
     console.log(e.target.files);
     setOrder({
       ...order,
-      requirementImage: [...order.requirementImage, e.target.files],
+      requirementImage: e.target.files,
     });
   };
 
@@ -40,6 +40,11 @@ const CheckoutContextProvider = ({ children }) => {
     const formData = new FormData();
     for (const key in payload) {
       formData.append(key, payload[key]);
+      if (key === 'image') {
+        for (const element of payload[key]) {
+          formData.append('image', element);
+        }
+      }
     }
     return checkoutCreditCard(formData);
   };

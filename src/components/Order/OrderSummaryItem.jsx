@@ -20,6 +20,7 @@ function OrderSummaryItem({ item, index }) {
         cursor: 'pointer',
         alignItems: 'center',
         p: '1rem',
+        width: '100%',
       }}
       style={
         activeItem === index
