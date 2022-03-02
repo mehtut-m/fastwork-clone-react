@@ -12,13 +12,14 @@ import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import UserMenu from '../../components/Menu/UserMenu';
+import NavOrderWrapper from '../../components/NavOrder/NavOrderWrapper';
 import { useContext } from 'react';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 
 function Header() {
   const { user } = useContext(UserContext);
-  console.log(user);
+
   const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     display: 'flex',
@@ -58,86 +59,91 @@ function Header() {
   }));
 
   return (
-    <AppBar
-      className={'header-bar'}
-      color="nav-primary-color"
-      sx={{
-        padding: '.75rem 0',
-        top: '0',
-        position: 'sticky',
-      }}
-    >
-      <Container
-        maxWidth="xl"
-        sx={{ display: 'flex', justifyContent: 'space-between' }}
+    <Box sx={{ top: '0', position: 'sticky', zIndex: '99' }}>
+      <AppBar
+        className={'header-bar'}
+        color="nav-primary-color"
+        sx={{
+          boxShadow: 'none',
+          padding: '.75rem 0',
+          top: '0',
+          position: 'sticky',
+          zIndex: '99',
+        }}
       >
-        <Box sx={{ display: 'flex' }}>
-          <Link
-            to="/"
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <img
-              alt="fastwork"
-              src="https://fastwork.co/static-v4/images/logo/fastwork-logo-full-white.svg"
-            />
-          </Link>
-          <Search sx={{ borderRadius: '15px' }}>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="จ้างฟรีแลนซ์ทำ ..."
-              inputProps={{ 'aria-label': 'search' }}
+        <Container
+          maxWidth="xl"
+          sx={{ display: 'flex', justifyContent: 'space-between' }}
+        >
+          <Box sx={{ display: 'flex' }}>
+            <Link
+              to="/"
               sx={{
-                width: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
               }}
-            />
-          </Search>
-        </Box>
-        {/* Guest bar */}
-        {!user.id ? (
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Link to="/login">
-              <Typography
-                noWrap
-                component="h1"
-                className="fastwork-logo"
-                sx={{
-                  mr: 2,
-                  display: { md: 'flex' },
-                  fontSize: '1rem',
-                  fontWeight: '500',
-                }}
-              >
-                เข้าสู่ระบบ
-              </Typography>
+            >
+              <img
+                alt="fastwork"
+                src="https://fastwork.co/static-v4/images/logo/fastwork-logo-full-white.svg"
+              />
             </Link>
-
-            <Link to="/register">
-              <Typography
-                noWrap
-                component="h1"
-                className="fastwork-logo"
+            <Search sx={{ borderRadius: '15px' }}>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="จ้างฟรีแลนซ์ทำ ..."
+                inputProps={{ 'aria-label': 'search' }}
                 sx={{
-                  mr: 2,
-                  display: { md: 'flex' },
-                  fontSize: '1rem',
-                  fontWeight: '500',
+                  width: '100%',
                 }}
-              >
-                สมัครเป็นฟรีแลนซ์
-              </Typography>
-            </Link>
+              />
+            </Search>
           </Box>
-        ) : (
-          <UserMenu />
-        )}
-      </Container>
-    </AppBar>
+          {/* Guest bar */}
+          {!user.id ? (
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <Link to="/login">
+                <Typography
+                  noWrap
+                  component="h1"
+                  className="fastwork-logo"
+                  sx={{
+                    mr: 2,
+                    display: { md: 'flex' },
+                    fontSize: '1rem',
+                    fontWeight: '500',
+                  }}
+                >
+                  เข้าสู่ระบบ
+                </Typography>
+              </Link>
+
+              <Link to="/register">
+                <Typography
+                  noWrap
+                  component="h1"
+                  className="fastwork-logo"
+                  sx={{
+                    mr: 2,
+                    display: { md: 'flex' },
+                    fontSize: '1rem',
+                    fontWeight: '500',
+                  }}
+                >
+                  สมัครเป็นฟรีแลนซ์
+                </Typography>
+              </Link>
+            </Box>
+          ) : (
+            <UserMenu />
+          )}
+        </Container>
+      </AppBar>
+      <NavOrderWrapper />
+    </Box>
   );
 }
 

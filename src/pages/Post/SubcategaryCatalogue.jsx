@@ -17,7 +17,7 @@ function SubcategaryCatalogue() {
         setPosts(res.data.post);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     getSubCategoryById(id)
@@ -33,9 +33,7 @@ function SubcategaryCatalogue() {
         sx={{
           boxShadow: '0px 5px 4px 0px rgba(0,0,0,0.10)',
         }}
-      >
-        <NavOrderWrapper />
-      </Box>
+      ></Box>
       <Catalogue
         posts={posts}
         categoryInfo={categoryInfo}

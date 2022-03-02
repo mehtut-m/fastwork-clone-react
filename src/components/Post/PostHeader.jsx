@@ -36,6 +36,7 @@ function PostHeader({ images }) {
             >
               <img
                 {...srcset(item.url, 500, item.rows, item.cols)}
+                style={{ objectFit: 'cover' }}
                 alt={item.title}
                 loading="lazy"
               />

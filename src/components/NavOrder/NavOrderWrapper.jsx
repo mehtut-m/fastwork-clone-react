@@ -1,13 +1,14 @@
-import { Flag } from "@mui/icons-material";
-import { Button, Fade, Menu, MenuItem, Typography } from "@mui/material";
-import { Box } from "@mui/system";
-import { useEffect, useState } from "react";
-import { getAllCategories, getSubCategoryById } from "../../apis/category";
+import { Button, Container, Menu, MenuItem } from '@mui/material';
+import { Box } from '@mui/system';
+import { useEffect, useState } from 'react';
+import { getAllCategories, getSubCategoryById } from '../../apis/category';
+import NavBarCategory from './NavBarCategory';
 
 function NavOrderWrapper() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [categories, setCategories] = useState([]);
   const [subCategories, setSubCategories] = useState([]);
+  const [scrollLocation, setScrollLocation] = useState(0);
   const open = Boolean(anchorEl);
 
   useEffect(() => {
@@ -16,66 +17,41 @@ function NavOrderWrapper() {
       .catch((err) => console.log(err));
   }, []);
 
-  console.log(categories);
-
-  const handleMouseOver = (e) => {
-    setAnchorEl(e.currentTarget);
-  };
-
-  const handleMouseLever = () => {
-    setAnchorEl(null);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  console.log(
-    categories.map((item) => item.SubCategories.map((el) => el.name))
-  );
-
   return (
     <Box
-      component="nav"
       sx={{
-        mx: "15.375rem",
-        display: "flex",
-        height: "3.5rem",
-        alignItems: "center",
-        justifyContent: "space-evenly",
+        boxShadow:
+          '0 10px 40px -4px rgb(19 55 109 / 8%), 0 8px 22px -6px rgb(19 55 109 / 10%)',
+        position: 'sticky',
+        top: '4rem',
+        background: '#fff',
       }}
     >
-      <Box>
-        {categories &&
-          categories.map((item) => (
-            <>
-              <Button
-                id="basic-button"
-                aria-controls={open ? "basic-menu" : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? "true" : undefined}
-                onMouseOver={handleMouseOver}
-                value={item.id}
-              >
-                {item.name}
-              </Button>
-              <Menu
-                id="basic-menu"
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                MenuListProps={{
-                  "aria-labelledby": "basic-button",
-                  onMouseLeave: handleMouseLever,
-                }}
-              >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-                <MenuItem onClick={handleClose}>Logout</MenuItem>
-              </Menu>
-            </>
-          ))}
-      </Box>
+      <Container
+        component="nav"
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          height: '3.5rem',
+          alignItems: 'center',
+        }}
+      >
+        <Box
+          sx={{
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'space-between',
+            height: '100%',
+          }}
+        >
+          {categories &&
+            categories.map((item) => (
+              <>
+                <NavBarCategory item={item} />
+              </>
+            ))}
+        </Box>
+      </Container>
     </Box>
   );
 }

@@ -101,11 +101,10 @@ export default function OrderLog({ orderDetails }) {
 
       <LogStatusModal
         detailOn={detailOn}
+        orderItem={orderItem}
         setDetailOn={setDetailOn}
         detail={detail}
-      >
-        {/*  */}
-      </LogStatusModal>
+      />
     </>
   );
 }

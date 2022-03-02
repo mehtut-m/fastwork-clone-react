@@ -8,6 +8,8 @@ import LoadingScreen from './components/Utils/LoadingScreen';
 import { Backdrop } from '@mui/material';
 import { useContext } from 'react';
 import { LoadingContext } from './contexts/LoadingContext';
+import NavBarCategory from './components/NavOrder/NavBarCategory';
+import NavOrderWrapper from './components/NavOrder/NavOrderWrapper';
 
 function App() {
   const { isLoading } = useContext(LoadingContext);
@@ -15,9 +17,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <LoadingScreen />
       <div className="App">
         <Header />
+        {/* <NavOrderWrapper /> */}
         <RouteConfig />
       </div>
       <LoadingScreen open={isLoading} />

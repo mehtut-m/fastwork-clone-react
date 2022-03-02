@@ -9,6 +9,7 @@ import Box from '@mui/material/Box';
 import Slide from '@mui/material/Slide';
 import { getOrderDetail } from '../../apis/order';
 import { OrderContext } from '../../contexts/OrderContext';
+import Typography from '@mui/material/Typography';
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -18,12 +19,15 @@ export default function LogStatusModal({
   children,
   detailOn,
   setDetailOn,
+  orderItem,
   detail,
 }) {
   const { activeOrderDetail } = useContext(OrderContext);
   const orderStatus = activeOrderDetail?.OrderDetails;
   const [imgArr, setImgArr] = useState([]);
   console.log(imgArr);
+  console.log(orderItem);
+
   const handleClickOpen = () => {
     setDetailOn(true);
   };
@@ -45,12 +49,39 @@ export default function LogStatusModal({
       TransitionComponent={Transition}
       keepMounted
       onClose={handleClose}
+      fullWidth={'80%'}
+      maxWidth={'900px'}
       aria-describedby="alert-dialog-slide-description"
     >
-      <DialogTitle>{"Use Google's location service?"}</DialogTitle>
+      <DialogTitle sx={{ background: 'black' }}>
+        <Typography variant="body1" color="white" sx={{ fontSize: '1.5rem' }}>
+          {orderItem.Post.name}
+        </Typography>
+      </DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-slide-description">
-          {detail?.comment}
+          <Typography
+            variant="body1"
+            color="initial"
+            sx={{ fontSize: '1.5rem', my: '1rem' }}
+          >
+            คำอธิบายเกี่ยวกับคำขอ :
+          </Typography>
+          <Typography
+            variant="body1"
+            color="initial"
+            sx={{ fontSize: '1.25rem', mb: '1.75rem' }}
+          >
+            {detail?.comment}
+          </Typography>
+          <Typography
+            variant="body1"
+            color="initial"
+            sx={{ fontSize: '1.5rem', mb: '1rem' }}
+          >
+            ภาพประกอบ :
+          </Typography>
+
           <Box>
             {imgArr.map((el) => (
               <img src={el.url} alt="" style={{ maxWidth: '300px' }} />
