@@ -65,8 +65,8 @@ function UserReview() {
           // border: '1px solid red',
         }}
       >
-        {cardDetail.map(item => {
-          return <UserReviewCard item={item} />;
+        {cardDetail.map((item, i) => {
+          return <UserReviewCard item={item} key={i} />;
         })}
       </Box>
     </Container>

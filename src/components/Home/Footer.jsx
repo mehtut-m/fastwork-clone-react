@@ -8,6 +8,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import DraftsIcon from '@mui/icons-material/Drafts';
 import PhoneIcon from '@mui/icons-material/Phone';
+import CommentIcon from '@mui/icons-material/Comment';
 import { Link } from 'react-router-dom';
 
 function Footer() {
@@ -56,88 +57,113 @@ function Footer() {
   ];
 
   return (
-    <Box component="div">
+    <Box component="div" sx={{ mt: '2rem' }}>
       <Box
         component="div"
-        display="flex"
-        bgcolor="black"
-        justifyContent="space-around"
-        color="white"
+        sx={{
+          display: 'flex',
+          bgcolor: 'black',
+          paddingTop: '3rem',
+          paddingBottom: '3rem',
+          justifyContent: 'space-around',
+          color: 'white',
+          gap: '2',
+        }}
       >
-        {footerDetail.map(item => {
-          return <FooterMap item={item} />;
+        {footerDetail.map((item, i) => {
+          return <FooterMap item={item} key={i} />;
         })}
 
-        <List component="div">
-          <Typography sx={{ mb: 3 }}>ติดต่อเรา</Typography>
+        <List component="div" sx={{ padding: '0' }}>
+          <Typography sx={{ mb: '2rem', fontWeight: 'bold' }}>
+            ติดต่อเรา
+          </Typography>
 
-          <Link to="hello@fastwork.com" display="flex">
-            <ListItem>
+          <Link to="hello@fastwork.com">
+            <ListItem sx={{ p: '0', mb: '0.5rem' }}>
               <DraftsIcon />
               hello@fastwork.com
             </ListItem>
           </Link>
 
-          <Link to="#" display="flex">
-            <ListItem>
+          <Link to="https://www.facebook.com/fastworkco">
+            <ListItem sx={{ p: '0', mb: '0.5rem' }}>
+              <CommentIcon />
+              Facebook Messenger
+            </ListItem>
+          </Link>
+
+          <Link to="#">
+            <ListItem sx={{ p: '0', mb: '1rem' }}>
               <PhoneIcon />
               02-114-7008
             </ListItem>
           </Link>
 
-          <List component="div">
-            <ListItem>จันทร์ - ศุกร์ 9.30 - 18.30 น.</ListItem>
-            <ListItem>วันหยุดนักขัตฤกษ์ 10.00-19.00 น.</ListItem>
+          <List component="div" sx={{ mt: '0.75rem' }}>
+            <ListItem sx={{ p: '0' }}>จันทร์ - ศุกร์ 9.30 - 18.30 น.</ListItem>
+            <ListItem sx={{ p: '0' }}>
+              วันหยุดนักขัตฤกษ์ 10.00-19.00 น.
+            </ListItem>
           </List>
         </List>
+      </Box>
 
-        {/* Icon Social  */}
+      {/* Icon Social  */}
+      <List component="div" sx={{ bgcolor: 'gray' }}>
+        <Box
+          component="div"
+          sx={{
+            padding: '16px',
+            display: 'flex',
+            justifyContent: 'space-evenly',
+          }}
+        >
+          <Box component="div" sx={{ display: 'flex', color: 'white' }}>
+            <Typography>
+              <Link to="https://www.instagram.com/fastworkco/">
+                <InstagramIcon />
+              </Link>
+              <Link to="https://www.facebook.com/fastworkco">
+                <FacebookIcon />
+              </Link>
+              <Link to="https://twitter.com/fastworkco">
+                <TwitterIcon />
+              </Link>
 
-        <List component="div">
-          <Box component="div">
-            <Box component="div">
-              <Typography>
-                <Link to="https://www.instagram.com/fastworkco/">
-                  <InstagramIcon />
-                </Link>
-                <Link to="https://www.facebook.com/fastworkco">
-                  <FacebookIcon />
-                </Link>
-                <Link to="https://twitter.com/fastworkco">
-                  <TwitterIcon />
-                </Link>
+              <Link to="https://www.youtube.com/channel/UCroiT_lHdQl7iGZ6CxlmwAg">
+                <YouTubeIcon />
+              </Link>
+              <Link to="https://www.linkedin.com/company/fastworkco">
+                <LinkedInIcon />
+              </Link>
+              <Link to="https://www.blockdit.com/fastworkco">
+                <img src="" alt="" width="14px" height="16px" />
+              </Link>
+            </Typography>
+            <Typography>Sitemaps 🇮🇩 Fastwork Indonesia</Typography>
+          </Box>
 
-                <Link to="https://www.youtube.com/channel/UCroiT_lHdQl7iGZ6CxlmwAg">
-                  <YouTubeIcon />
-                </Link>
-                <Link to="https://www.linkedin.com/company/fastworkco">
-                  <LinkedInIcon />
-                </Link>
-                <Link to="https://www.blockdit.com/fastworkco">
-                  <img src="" alt="" width="14px" height="16px" />
-                </Link>
-              </Typography>
-            </Box>
-
-            <Box component="div">
-              <Box>© สงวนลิขสิทธิ์ บริษัทฟาสต์เวิร์ค เทคโนโลยีส์ จำกัด</Box>
-
-              <Box>
-                <Link
-                  to="//www.trustmarkthai.com/callbackData/popup.php?data=11-30-5-4c87a2a0a9a2281d7b5fefb5b727743372ca8bbf695&amp;markID=firstmar"
-                  title="กรมพัฒนาธุรกิจการค้า Trustmarkthai"
-                >
-                  <img
-                    alt="กรมพัฒนาธุรกิจการค้า Trustmarkthai"
-                    src="https://www.trustmarkthai.com/trust_banners/bns_registered.png"
-                  />
-                </Link>
-                <Typography>จัดทำเพื่อการศึกษา</Typography>
-              </Box>
+          <Box component="div" color="white" sx={{ display: 'flex' }}>
+            <Typography>
+              © สงวนลิขสิทธิ์ บริษัทฟาสต์เวิร์ค เทคโนโลยีส์ จำกัด
+            </Typography>
+            <Box sx={{ ml: ' 0.8rem' }}>
+              <Link
+                to="//www.trustmarkthai.com/callbackData/popup.php?data=11-30-5-4c87a2a0a9a2281d7b5fefb5b727743372ca8bbf695&amp;markID=firstmar"
+                title="กรมพัฒนาธุรกิจการค้า Trustmarkthai"
+              >
+                <img
+                  alt="กรมพัฒนาธุรกิจการค้า Trustmarkthai"
+                  src="https://www.trustmarkthai.com/trust_banners/bns_registered.png"
+                  width="69px"
+                />
+              </Link>
             </Box>
           </Box>
-        </List>
-      </Box>
+        </Box>
+        <Typography sx={{ color: 'white' }}>จัดทำเพื่อการศึกษา</Typography>
+      </List>
     </Box>
   );
 }
