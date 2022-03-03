@@ -15,14 +15,14 @@ function LoginEmail({ email }) {
   const { logIn } = useContext(AuthContext);
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
-  const [passwordValid, setPasswordValid] = useState(false);
+  const [passwordValid, setPasswordValid] = useState(true);
 
   const handleOnchangePassword = (e) => {
     setPassword(e.target.value);
     if (e.target.value.length < 1) {
       setPasswordValid(false);
       setPasswordError('');
-      return;
+      // return;
     }
   };
 
@@ -49,10 +49,13 @@ function LoginEmail({ email }) {
     //password not empty
     if (password.length === 0) {
       setPasswordError('Password is required');
+      setPasswordValid(false);
     } else if (password.length < 6) {
       setPasswordError('Password length must be atleast 6 characters');
+      setPasswordValid(false);
     } else if (password.indexOf(' ') >= 0) {
       setPasswordError('Password cannot contain spaces');
+      setPasswordValid(false);
     } else {
       setPasswordError('');
       setPasswordValid(true);
@@ -99,7 +102,7 @@ function LoginEmail({ email }) {
         >
           <Grid item xs={12}>
             <TextField
-              error={passwordValid}
+              // error={!passwordValid}
               margin="normal"
               required
               fullWidth
