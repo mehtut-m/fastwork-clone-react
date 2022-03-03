@@ -63,7 +63,7 @@ function LoginEmail({ email }) {
   return (
     <>
       <Typography component="h1" variant="h5">
-        ั fastwork
+        Quidwork
       </Typography>
 
       <Typography

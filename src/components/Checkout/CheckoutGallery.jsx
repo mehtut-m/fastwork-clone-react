@@ -8,7 +8,9 @@ function CheckoutGallery({ items }) {
   return (
     <Box sx={{ my: '2rem' }}>
       {items.length > 0 && (
-        <Typography sx={{ fontSize: '1.25rem' }}>Preview</Typography>
+        <Typography sx={{ fontSize: '1.25rem' }} color="primary">
+          Preview :
+        </Typography>
       )}
       <ImageList
         sx={{

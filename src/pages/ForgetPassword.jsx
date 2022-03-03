@@ -7,7 +7,7 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 
 function ForgetPassword() {
-  const handleForgetPassword = e => {
+  const handleForgetPassword = (e) => {
     e.preventDefault();
   };
 
@@ -32,7 +32,7 @@ function ForgetPassword() {
           variant="h5"
           // sx={{ mb: 3, fontWeight: 'bold', color: 'blue' }}
         >
-          fastwork
+          quidwork
         </Typography>
 
         <Box>
@@ -52,7 +52,7 @@ function ForgetPassword() {
 
           <Box>
             <Typography sx={{ textAlign: 'start' }}>
-              Fastwork จะทําการส่งรหัสยืนยันไปยังอีเมล / เบอร์โทรศัพท์ของคุณ
+              Quidwork จะทําการส่งรหัสยืนยันไปยังอีเมล / เบอร์โทรศัพท์ของคุณ
               เพื่อยืนยันความเป็นเจ้าของบัญชี
             </Typography>
           </Box>

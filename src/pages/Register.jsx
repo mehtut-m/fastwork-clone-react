@@ -48,7 +48,7 @@ export default function SignUp() {
         }}
       >
         <Typography component="h1" variant="h5">
-          fastwork
+          Quidwork
         </Typography>
 
         <Typography
@@ -62,7 +62,7 @@ export default function SignUp() {
             my: '1rem',
           }}
         >
-          สร้างบัญชี fastwork
+          สร้างบัญชี quidwork
         </Typography>
         <Box sx={{ display: 'grid', gap: '.5rem' }}>
           <GoogleLoginButton />

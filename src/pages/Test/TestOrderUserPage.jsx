@@ -35,6 +35,8 @@ function TestOrderUserPage({ orderItem }) {
   const minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
 
+  console.log(activeOrderDetail);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setDayLeft(days);
@@ -56,6 +58,42 @@ function TestOrderUserPage({ orderItem }) {
           mb: '1.5rem',
         }}
       >
+        <Box sx={{ mb: '1.25rem', width: '100%' }}>
+          <Typography
+            component="h2"
+            textAlign="start"
+            color="primary"
+            sx={{ fontSize: '1.25rem', mb: '.5rem' }}
+          >
+            รายละเอียดการจ้างงาน
+          </Typography>
+          <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
+            <Typography
+              variant="p"
+              color="initial"
+              textAlign="start"
+              sx={{ width: '100%' }}
+            >
+              ความต้องการของผู้จ้าง : {activeOrderDetail?.requirement}
+            </Typography>
+            <Typography
+              variant="p"
+              color="initial"
+              textAlign="start"
+              sx={{ width: '100%' }}
+            >
+              เบอร์โทรศัพท์ติดต่อ : {orderItem?.seller.telephoneNo}
+            </Typography>
+            <Typography
+              variant="p"
+              color="initial"
+              textAlign="start"
+              sx={{ width: '100%' }}
+            >
+              อีเมล : {orderItem?.seller.email}
+            </Typography>
+          </Box>
+        </Box>
         {activeOrderDetail.status === 'REVIEW' && isFreelancePath && (
           <Box
             sx={{
