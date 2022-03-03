@@ -16,7 +16,7 @@ export default function OrderLog({ orderDetails }) {
   const [activeStep, setActiveStep] = useState(orderDetails?.length);
   const [detailOn, setDetailOn] = useState(false);
   const [detail, setDetail] = useState(null);
-
+  console.log(orderDetails);
   useEffect(() => {
     setActiveStep(orderDetails?.length);
   }, [activeOrderDetail, order]);
@@ -82,12 +82,15 @@ export default function OrderLog({ orderDetails }) {
               </Step>
             ))}
           {/* Default Order Log */}
-
           {activeOrderDetail.status === 'COMPLETE' && (
             <Step
-              key={orderDetails.length}
+              key={orderDetails?.length}
               onClick={() => {
-                setActiveStep(orderDetails.length);
+                if (orderDetails) {
+                  setActiveStep(orderDetails?.length);
+                } else {
+                  setActiveStep(0);
+                }
               }}
             >
               <StepLabel>

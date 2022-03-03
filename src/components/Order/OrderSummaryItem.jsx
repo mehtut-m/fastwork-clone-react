@@ -11,7 +11,6 @@ function OrderSummaryItem({ item, index }) {
 
   const { pathname } = useLocation();
   const isFreelance = pathname.includes('freelance');
-  console.log(item);
   return (
     <Box
       className="order-summary-list"
@@ -20,6 +19,7 @@ function OrderSummaryItem({ item, index }) {
         cursor: 'pointer',
         alignItems: 'center',
         p: '1rem',
+        width: '100%',
       }}
       style={
         activeItem === index
@@ -50,7 +50,6 @@ function OrderSummaryItem({ item, index }) {
         <Typography
           textAlign="left"
           sx={{
-            // WebkitLineClamp: 1,
             overflow: 'hidden',
             width: 'max-content',
             textOverflow: 'ellipsis',
@@ -61,7 +60,7 @@ function OrderSummaryItem({ item, index }) {
         </Typography>
         <Typography textAlign="left">
           คุณ{' '}
-          {isFreelance ? item.buyer.firstName + ' ' : item?.seller.firstName}
+          {isFreelance ? item?.buyer.firstName + ' ' : item?.seller.firstName}
         </Typography>
       </Box>
     </Box>

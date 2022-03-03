@@ -1,7 +1,7 @@
 import { Box, Button, Container, TextField, Typography } from '@mui/material';
 
 function ResetPassword() {
-  const handleResetPassword = e => {
+  const handleResetPassword = (e) => {
     e.preventDefault();
   };
 
@@ -19,7 +19,7 @@ function ResetPassword() {
         }}
       >
         <Typography component="h1" variant="h4">
-          Fastwork
+          Quidwork
         </Typography>
         <br />
         <Typography component="h1" variant="h5">

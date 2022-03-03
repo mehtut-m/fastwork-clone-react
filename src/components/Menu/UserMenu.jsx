@@ -74,14 +74,24 @@ function UserMenu() {
         </MenuItem>
         {/* Freelance Menu */}
         {user.freelanceInfoId && (
-          <Link to="freelance/order/">
-            <MenuItem onClick={handleCloseUserMenu}>
-              <Typography
-                textAlign="center"
-                sx={{ mb: '.5rem' }}
-              >{`งานฟรีแลนซ์ของฉัน`}</Typography>
-            </MenuItem>
-          </Link>
+          <>
+            <Link to="freelance/order/">
+              <MenuItem onClick={handleCloseUserMenu}>
+                <Typography
+                  textAlign="center"
+                  sx={{ mb: '.5rem' }}
+                >{`งานฟรีแลนซ์ของฉัน`}</Typography>
+              </MenuItem>
+            </Link>
+            <Link to="create-post/">
+              <MenuItem onClick={handleCloseUserMenu}>
+                <Typography
+                  textAlign="center"
+                  sx={{ mb: '.5rem' }}
+                >{`สร้างโพสต์รับงาน`}</Typography>
+              </MenuItem>
+            </Link>
+          </>
         )}
         {settings.map(({ menu, onClick, path }, index) => (
           <Link to={path}>

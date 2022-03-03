@@ -55,7 +55,7 @@ export default function LogStatusModal({
     >
       <DialogTitle sx={{ background: 'black' }}>
         <Typography variant="body1" color="white" sx={{ fontSize: '1.5rem' }}>
-          {orderItem.Post.name}
+          {orderItem?.Post.name}
         </Typography>
       </DialogTitle>
       <DialogContent>

@@ -1,11 +1,5 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  Input,
-  Typography,
-  TextField,
-} from '@mui/material';
+import { Box, Button, FormControl, Typography, TextField } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import { useContext, useState } from 'react';
 import axios from '../../config/axios';
 import { OrderContext } from '../../contexts/OrderContext';
@@ -14,7 +8,9 @@ function WorkSubmitForm({ orderItem }) {
   const { submitWork } = useContext(OrderContext);
   const [commentUser, setCommentUser] = useState('');
   const [imageArr, setImageArr] = useState([]);
-
+  const Input = styled('input')({
+    display: 'none',
+  });
   const submitReject = async (commentUser, imageArr, orderId) => {
     const formData = new FormData();
     formData.append('orderId', orderId);

@@ -22,7 +22,7 @@ function HomeTwo() {
           variant="h5"
           sx={{ textAlign: 'start', fontSize: '1.5rem' }}
         >
-          ทำไมถึงต้องใช้ Fastwork?
+          ทำไมถึงต้องใช้ Quidwork?
         </Typography>
         <Typography
           component="h2"

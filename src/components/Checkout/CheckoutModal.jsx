@@ -7,7 +7,8 @@ import { CheckoutContext } from '../../contexts/CheckoutContext';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
-import Input from '@mui/material/Input';
+import { styled } from '@mui/material/styles';
+import CheckoutGallery from './CheckoutGallery';
 
 // web.cjs is required for IE11 support
 import { useSpring, animated } from '@react-spring/web';
@@ -54,6 +55,9 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
+const Input = styled('input')({
+  display: 'none',
+});
 
 export default function CheckoutModal({
   open,
@@ -81,8 +85,10 @@ export default function CheckoutModal({
     proceedToPayment();
   };
 
-  for (const property in order.requirementImage) {
-    console.log(`${property}: ${order.requirementImage[property]}`);
+  const imgArr = [];
+
+  for (let i = 0; i < order.requirementImage.length; i++) {
+    imgArr.push(order.requirementImage[i]);
   }
 
   return (
@@ -98,7 +104,7 @@ export default function CheckoutModal({
       }}
     >
       <Fade in={open}>
-        <Box sx={style} component="form">
+        <Box sx={{ ...style, width: '500px' }} component="form">
           <Box>
             <Typography>
               <Typography
@@ -158,9 +164,9 @@ export default function CheckoutModal({
               </Grid>
             </Grid>
             <Box>
-              {console.log(order.requirementImage)}
-
-              {/* <img src={}/> */}
+              <CheckoutGallery
+                items={imgArr.map((item) => URL.createObjectURL(item))}
+              />
             </Box>
             <Box sx={{ display: 'flex', justifyContent: 'end', mt: '1rem' }}>
               <Button

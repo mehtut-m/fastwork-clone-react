@@ -8,6 +8,7 @@ import {
 } from '@mui/material';
 import './Header.css';
 import { UserContext } from '../../contexts/UserContext';
+import Quid from '../../assets/Quidwork.png';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
@@ -85,8 +86,9 @@ function Header() {
               }}
             >
               <img
-                alt="fastwork"
-                src="https://fastwork.co/static-v4/images/logo/fastwork-logo-full-white.svg"
+                alt="Quidwork"
+                src={Quid}
+                style={{ height: '2.5rem', objectFit: 'cover' }}
               />
             </Link>
             <Search sx={{ borderRadius: '15px' }}>
@@ -109,7 +111,7 @@ function Header() {
                 <Typography
                   noWrap
                   component="h1"
-                  className="fastwork-logo"
+                  className="quidwork-logo"
                   sx={{
                     mr: 2,
                     display: { md: 'flex' },
@@ -125,7 +127,7 @@ function Header() {
                 <Typography
                   noWrap
                   component="h1"
-                  className="fastwork-logo"
+                  className="quidwork-logo"
                   sx={{
                     mr: 2,
                     display: { md: 'flex' },

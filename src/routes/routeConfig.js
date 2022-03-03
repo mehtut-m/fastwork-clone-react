@@ -27,7 +27,7 @@ function RouteConfig() {
       <Routes>
         {user?.id ? (
           <>
-            <Route path="/services/add" element={<CreateServices />} />
+            <Route path="/create-post" element={<CreateServices />} />
             <Route path="/message" element={<Chat />} />
             <Route path="/payment" element={<Payment />} />
             <Route path="/forget-password" element={<ForgetPassword />} />
