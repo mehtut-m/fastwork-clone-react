@@ -3,6 +3,7 @@ import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import { blue } from '@mui/material/colors';
+import '../../../node_modules/font-awesome/css/font-awesome.min.css';
 
 function UserReviewCard({ item }) {
   return (
@@ -10,16 +11,18 @@ function UserReviewCard({ item }) {
       sx={{
         boxShadow: 5,
         width: '22.5rem',
-        height: '15rem',
         display: 'flex',
         flexFlow: 'column',
         justifyContent: 'space-between',
         padding: '1.5rem',
+        borderRadius: '8px',
+        margin: '1.5rem',
         // border: '1px solid blue',
       }}
     >
       <Box display="flex">
         <FormatQuoteIcon sx={{ color: blue[100], fontSize: '50px' }} />
+        <i class="fas fa-quote-left "></i>
 
         {/* Description */}
         <Typography component="p" sx={{ textAlign: 'left', mx: '1rem' }}>

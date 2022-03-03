@@ -31,12 +31,7 @@ function UserReview() {
     },
   ];
   return (
-    <Container
-      sx={{
-        width: '80vw',
-      }}
-      style={{ maxWidth: 'unset' }}
-    >
+    <Container>
       <Box
         sx={{
           mt: 8,
@@ -45,9 +40,8 @@ function UserReview() {
         <Typography
           variant="h5"
           sx={{
-            textAlign: 'start',
-            mt: 3,
             fontSize: '2rem',
+            textAlign: 'start',
             color: 'rgba(121, 0, 255, 1)',
           }}
         >
@@ -57,11 +51,12 @@ function UserReview() {
 
       <Box
         sx={{
-          mt: 8,
+          mt: 2,
           display: 'flex',
           justifyContent: 'space-evenly',
           gap: '1rem',
           fontSize: '1rem',
+
           // border: '1px solid red',
         }}
       >

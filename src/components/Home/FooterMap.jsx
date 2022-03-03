@@ -1,12 +1,12 @@
 import React from 'react';
-import { Box, List, ListItem, Typography } from '@mui/material';
+import { List, ListItem, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 function FooterMap({ item }) {
   console.log(item);
   return (
     <>
-      <List component="div" color="white" sx={{ p: '0' }}>
+      <List component="div" color="white" sx={{ p: '0', textAlign: 'start' }}>
         <Typography sx={{ mb: '0.75rem', fontWeight: 'bold' }}>
           {item.headTitle}
         </Typography>
