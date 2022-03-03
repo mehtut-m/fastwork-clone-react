@@ -4,6 +4,8 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { addApiPackages } from '../../../apis/post';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 function PackageFormWrapper({
   activeStep,
@@ -17,11 +19,22 @@ function PackageFormWrapper({
   const addPackages = () => {
     setPackages([...packages, {}]);
   };
+  const navigate = useNavigate();
   const handleClickNext = async () => {
     console.log(addPackages);
-    console.log(packages);
+
     const res = await addApiPackages({ postId, packages });
-    console.log(res);
+
+    if (res.status === 201) {
+      Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: 'Your Post has been created',
+        showConfirmButton: false,
+        timer: 1750,
+      });
+    }
+    setTimeout(() => navigate('/'), 2000);
     setCategoryForm((prev) => ({ ...prev, packages }));
   };
 

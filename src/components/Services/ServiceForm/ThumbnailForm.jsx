@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { addPostImage } from '../../../apis/post';
 import { createPost } from '../../../services/upload';
+import ThumbnailGallery from './ThumbnailGallery';
 
 function ThumbnailForm({
   activeStep,
@@ -47,47 +48,50 @@ function ThumbnailForm({
   };
 
   return (
-    <>
-      <Typography sx={{ fontSize: '1.25rem' }}>
-        อัพโหลดรูปผลงาน {imgArr.length} / 12
-      </Typography>
-      <Typography>
-        ลูกค้าอยากเห็นฝีมือของคุณ เลือกรูปขั้นต่ำ 3 รูป ที่แสดงผลงานของคุณ
-      </Typography>
-      <Typography sx={{ fontSize: '1.25rem' }}>
-        อธิบายเพิ่มเติมเกี่ยวกับตัวงาน
-      </Typography>
+    <Box>
+      <Box>
+        <Typography sx={{ fontSize: '1.25rem', mt: '.75rem', mb: '.5rem' }}>
+          อัพโหลดรูปผลงาน {imgArr.length} / 12
+        </Typography>
+        <Typography>
+          ลูกค้าอยากเห็นฝีมือของคุณ เลือกรูปขั้นต่ำ 3 รูป ที่แสดงผลงานของคุณ
+        </Typography>
+        <Typography sx={{ fontSize: '1.25rem', mt: '1rem', mb: '.5rem' }}>
+          อธิบายเพิ่มเติมเกี่ยวกับตัวงาน
+        </Typography>
 
-      <label htmlFor="contained-button-file">
-        <Input
-          multiple
-          accept="image/*"
-          id="contained-button-file"
-          type="file"
-          onChange={handleSelectImage}
-        />
-        <Button variant="contained" component="span">
-          Upload
-        </Button>
-      </label>
-
-      <Box sx={{ display: 'flex', justifyContent: `flex-end` }}>
-        {activeStep !== 0 && (
-          <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
-            กลับ
+        <label htmlFor="contained-button-file">
+          <Input
+            multiple
+            accept="image/*"
+            id="contained-button-file"
+            type="file"
+            onChange={handleSelectImage}
+          />
+          <Button variant="contained" component="span">
+            Upload
           </Button>
-        )}
+        </label>
 
-        <LoadingButton
-          variant="contained"
-          loading={isLoading}
-          onClick={handleClickNext}
-          sx={{ mt: 3, ml: 1 }}
-        >
-          บันทึกและไปต่อ
-        </LoadingButton>
+        <Box sx={{ display: 'flex', justifyContent: `flex-end` }}>
+          {activeStep !== 0 && (
+            <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
+              กลับ
+            </Button>
+          )}
+
+          <LoadingButton
+            variant="contained"
+            loading={isLoading}
+            onClick={handleClickNext}
+            sx={{ mt: 3, ml: 1 }}
+          >
+            บันทึกและไปต่อ
+          </LoadingButton>
+        </Box>
       </Box>
-    </>
+      <ThumbnailGallery imgArr={imgArr} />
+    </Box>
   );
 }
 

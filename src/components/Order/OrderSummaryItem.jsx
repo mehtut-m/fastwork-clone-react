@@ -45,7 +45,7 @@ function OrderSummaryItem({ item, index }) {
             '--webkit-line-clamp': '2',
           }}
         >
-          {item.requirement}
+          {item?.requirement}
         </Typography>
         <Typography
           textAlign="left"
@@ -60,7 +60,7 @@ function OrderSummaryItem({ item, index }) {
         </Typography>
         <Typography textAlign="left">
           คุณ{' '}
-          {isFreelance ? item?.buyer.firstName + ' ' : item?.seller.firstName}
+          {isFreelance ? item?.buyer?.firstName + ' ' : item?.seller?.firstName}
         </Typography>
       </Box>
     </Box>
