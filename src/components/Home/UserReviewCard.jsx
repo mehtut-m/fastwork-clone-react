@@ -1,9 +1,8 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import { blue } from '@mui/material/colors';
-import '../../../node_modules/font-awesome/css/font-awesome.min.css';
+import { FaQuoteLeft } from 'react-icons/fa';
 
 function UserReviewCard({ item }) {
   return (
@@ -21,33 +20,47 @@ function UserReviewCard({ item }) {
       }}
     >
       <Box display="flex">
-        <FormatQuoteIcon sx={{ color: blue[100], fontSize: '50px' }} />
-        <i class="fas fa-quote-left "></i>
+        {/* Icon quote */}
+        <Box sx={{ p: 1, mt: '1rem' }}>
+          <FaQuoteLeft style={{ color: blue[50], fontSize: '32px' }} />
+        </Box>
 
         {/* Description */}
-        <Typography component="p" sx={{ textAlign: 'left', mx: '1rem' }}>
-          {item.comment}
-        </Typography>
+        <Box>
+          <Typography
+            component="p"
+            sx={{ textAlign: 'left', mx: '1rem', mt: '1rem', color: '#728197' }}
+          >
+            {item.comment}
+          </Typography>
+        </Box>
       </Box>
 
       <Box
         sx={{
           display: 'flex',
           alignItems: 'center',
+          mt: '1rem',
         }}
       >
         <img
           src={item.profileImg}
           alt="Images"
-          width={50}
-          height={50}
-          style={{ borderRadius: '50%' }}
+          style={{
+            width: 50,
+            height: 50,
+            borderRadius: '50%',
+            objectFit: 'cover',
+          }}
         />
 
         {/* Name */}
-        <Typography textAlign="start" sx={{ fontWeight: 'bold', mx: '1rem' }}>
+        <Typography
+          textAlign="start"
+          sx={{ fontWeight: 'bold', mx: '1rem', color: '#7900FF' }}
+        >
           {item.name}
-          <Typography>{item.position}</Typography>
+          <Typography sx={{ color: '#728197' }}>{item.position}</Typography>
         </Typography>
       </Box>
     </Box>

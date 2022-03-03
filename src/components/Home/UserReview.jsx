@@ -1,30 +1,30 @@
 import { Container, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
-import Profile1 from '../../assets/profile-1.png';
-import Profile2 from '../../assets/profile-2.png';
+import Profile1 from '../../assets/profile-1.jpg';
+import Profile2 from '../../assets/profile-2.jpg';
 import Profile3 from '../../assets/profile-3.jpg';
 import UserReviewCard from './UserReviewCard';
 
 function UserReview() {
   const cardDetail = [
     {
-      name: 'คุณสุกฤตา ประวีณเมธ',
-      position: 'ผู้ช่วยกรรมการผู้จัดการ ทรัพย์เจริญแทรเวล (2007)',
+      name: 'คุณอดัม สมิธ',
+      position: 'กรรมการผู้จัดการ แทรเวล จำกัด',
       comment:
-        'ใช้ Fastwork ช่วยประหยัดเวลาได้มาก เพราะมีตัวเลือกหลากหลายทั้งผลงานและรีวิวการันตีมั่นใจได้ว่าจะได้ผลงานตรงกับความต้องการของเราจริงๆ',
+        'ใช้ Quidwork ช่วยประหยัดเวลาได้มาก เพราะมีตัวเลือกหลากหลายทั้งผลงานและรีวิวการันตีมั่นใจได้ว่าจะได้ผลงานตรงกับความต้องการของเราจริงๆ',
       profileImg: Profile1,
     },
     {
-      name: 'คุณอังกูร บุณยะโอภาส',
-      position: 'CEO เครื่องสำอางแบรนด์ Evecosmetics',
+      name: 'คุณจอห์น โด',
+      position: 'เจ้าหน้าที่ฝ่ายการตลาด บริษัทเอกชน',
       comment:
-        'เวลามีปัญหาจะคิดถึง Fastwork เป็นอย่างแรก สะดวก รวดเร็ว เทียบราคาและผลงานได้ เป็นผู้ช่วยธุรกิจอย่างแท้จริง',
+        'เวลามีปัญหาจะคิดถึง Quidwork เป็นอย่างแรก สะดวก รวดเร็ว เทียบราคาและผลงานได้ เป็นผู้ช่วยธุรกิจอย่างแท้จริง',
       profileImg: Profile2,
     },
     {
-      name: 'คุณเตวิช บริบูรณ์ชัยศิริ',
-      position: 'เจ้าของธุรกิจ ลิ้มเหล่าโหงว Bistro',
+      name: 'คุณโทมัส เอดิสัน',
+      position: 'เจ้าของธุรกิจ Start up Software',
       comment:
         'เอาสิ่งที่เราไม่ถนัดให้คนอื่นที่เก่งกว่าเรา แบบนี้ถึงจะทำให้ธุรกิจเราโตไปได้',
       profileImg: Profile3,
