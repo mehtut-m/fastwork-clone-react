@@ -8,7 +8,6 @@ import PaymentForm from '../components/Form/CreditCardForm';
 function Payment() {
   const { order, post, packageId } = useContext(CheckoutContext);
   const pkg = post?.Packages?.find((element) => element.id === packageId);
-  console.log(pkg);
   return (
     <Container sx={{ display: 'flex', height: 'calc(100vh - 4.5rem)' }}>
       <Box
@@ -16,6 +15,7 @@ function Payment() {
           backgroundColor: 'primary.main',
           pt: '150px',
           px: '20px',
+          width: '30rem',
         }}
       >
         <Typography

@@ -2,6 +2,8 @@ import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props
 import axios from '../../config/axios';
 import { FACEBOOK_CLIENT_ID } from '../../config/env';
 import Button from '@mui/material/Button';
+import { IoLogoFacebook } from 'react-icons/io';
+import { Typography } from '@mui/material';
 
 function FacebookLoginButton() {
   const facebookLogin = async (response) => {
@@ -38,7 +40,8 @@ function FacebookLoginButton() {
             },
           }}
         >
-          Continue with Facebook
+          <IoLogoFacebook style={{ fontSize: '1.5rem' }} />
+          <Typography sx={{ ml: '.5rem' }}>Continue with Facebook</Typography>
         </Button>
       )}
     />

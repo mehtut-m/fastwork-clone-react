@@ -20,6 +20,7 @@ function OrderSummaryItem({ item, index }) {
         alignItems: 'center',
         p: '1rem',
         width: '100%',
+        maxWidth: '19.95rem',
       }}
       style={
         activeItem === index
@@ -36,13 +37,14 @@ function OrderSummaryItem({ item, index }) {
       }}
     >
       <Avatar sx={{ mr: '1rem' }} />
-      <Box>
+      <Box sx={{ width: '15.5rem' }}>
         <Typography
           textAlign="left"
           sx={{
             fontSize: '1.125rem',
+            overflow: 'hidden',
             textOverflow: 'ellipsis',
-            '--webkit-line-clamp': '2',
+            whiteSpace: 'nowrap',
           }}
         >
           {item?.requirement}
@@ -51,7 +53,6 @@ function OrderSummaryItem({ item, index }) {
           textAlign="left"
           sx={{
             overflow: 'hidden',
-            width: 'max-content',
             textOverflow: 'ellipsis',
             whiteSpace: 'nowrap',
           }}

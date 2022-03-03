@@ -11,7 +11,7 @@ import { formatThaiCurrency } from '../../services/currencyService';
 
 function PostItem({ item }) {
   const packageArr = item.Packages.sort((a, b) => a.price - b.price);
-
+  console.log(item);
   return (
     <Card
       sx={{
@@ -29,7 +29,7 @@ function PostItem({ item }) {
           sx={{ height: '187px' }}
           component="img"
           height="140"
-          image={item.PostImages[0].url}
+          image={item?.PostImages[0]?.url}
           alt="PostImage"
         />
 

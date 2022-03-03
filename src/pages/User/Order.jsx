@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import OrderDetails from '../../components/Order/OrderDetails';
 import { useEffect, useState } from 'react';
-import { Container, Paper } from '@mui/material';
+import { Container, Paper, Typography } from '@mui/material';
 
 import OrderListSideBar from '../../components/Order/OrderListSideBar';
 import { OrderContext } from '../../contexts/OrderContext';
@@ -14,6 +14,7 @@ function OrderStatus() {
   }, []);
   return (
     <Container>
+      <Typography component="h1">ติดตามสถานะการจ้างงานของคุณ</Typography>
       <Paper
         sx={{
           border: '1px solid',
