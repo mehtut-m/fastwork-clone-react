@@ -12,9 +12,17 @@ function OrderStatus() {
   useEffect(() => {
     refreshOrder();
   }, []);
+
   return (
     <Container>
-      <Typography component="h1">ติดตามสถานะการจ้างงานของคุณ</Typography>
+      <Typography
+        component="h1"
+        color="primary"
+        textAlign="start"
+        sx={{ fontSize: '1.5rem', my: '1.125rem' }}
+      >
+        ติดตามสถานะการจ้างงานของคุณ
+      </Typography>
       <Paper
         sx={{
           border: '1px solid',

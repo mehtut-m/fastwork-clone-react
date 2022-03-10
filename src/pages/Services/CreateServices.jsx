@@ -5,7 +5,7 @@ import Paper from '@mui/material/Paper';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
-
+import DesignerImg from '../../assets/designer.png';
 import Typography from '@mui/material/Typography';
 import CategoryForm from '../../components/Services/ServiceForm/CategoryForm';
 import DetailForm from '../../components/Services/ServiceForm/DetailForm';
@@ -21,7 +21,7 @@ function CreateServices() {
     categoryId: '',
   });
   const [activeStep, setActiveStep] = useState(0);
-  console.log('form to send', categoryForm);
+
   const steps = [
     'เลือกหมวดหมู่ผลงาน',
     'ชื่องานและคำอธิบาย',
@@ -109,48 +109,54 @@ function CreateServices() {
             ))}
           </Stepper>
           {/* Form Body */}
-          <>
-            {activeStep === steps.length ? (
-              <>
-                <Typography variant="h5" gutterBottom>
-                  Thank you for your order.
-                </Typography>
-                <Typography variant="subtitle1">
-                  Your order number is #2001539. We have emailed your order
-                  confirmation, and will send you an update when your order has
-                  shipped.
-                </Typography>
-              </>
-            ) : (
-              <>
-                <Typography
-                  component="h1"
-                  sx={{
-                    color: 'primary.main',
-                    fontSize: '2rem',
-                    fontWeight: '600',
-                  }}
-                >
-                  ขั้นตอนที่ {activeStep + 1}
-                </Typography>
-                <Typography
-                  component="h2"
-                  sx={{
-                    fontSize: '1.5rem',
-                    fontWeight: '500',
-                  }}
-                >
-                  {steps[activeStep]}
-                </Typography>
+          <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+            <>
+              {activeStep === steps.length ? (
+                <></>
+              ) : (
+                <>
+                  <Box>
+                    <Typography
+                      component="h1"
+                      sx={{
+                        color: 'primary.main',
+                        fontSize: '2rem',
+                        fontWeight: '600',
+                      }}
+                    >
+                      ขั้นตอนที่ {activeStep + 1}
+                    </Typography>
+                    <Typography
+                      component="h2"
+                      sx={{
+                        fontSize: '1.5rem',
+                        fontWeight: '500',
+                      }}
+                    >
+                      {steps[activeStep]}
+                    </Typography>
 
-                <Box
-                  sx={{ minWidth: 120, maxWidth: '28.75rem', width: '100%' }}
-                >
-                  {getStepContent(activeStep)}
-                </Box>
-              </>
-            )}
-          </>
+                    <Box
+                      sx={{
+                        minWidth: 120,
+                        maxWidth: '28.75rem',
+                        width: '100%',
+                      }}
+                    >
+                      {getStepContent(activeStep)}
+                    </Box>
+                  </Box>
+                  <Box sx={{ maxHeight: '500px' }}>
+                    <img
+                      src={DesignerImg}
+                      alt=""
+                      style={{ width: '100%', height: '100%' }}
+                    />
+                  </Box>
+                </>
+              )}
+            </>
+          </Box>
         </Paper>
       </Container>
     </div>

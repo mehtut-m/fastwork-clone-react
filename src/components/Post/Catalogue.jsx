@@ -31,7 +31,11 @@ function Catalogue({ posts, categoryInfo, setPosts }) {
     setFilter({ ...filter, [e.target.name]: e.target.value });
   };
   const clearFilter = (e) => {
-    setFilter(initialFilter);
+    setFilter({
+      min: 0,
+      max: '',
+      duration: '',
+    });
   };
   const postPage = 12;
   const totalPages = Math.ceil(posts.length / postPage);
@@ -61,7 +65,8 @@ function Catalogue({ posts, categoryInfo, setPosts }) {
     submitQuery()
       .then((res) => setPosts(res.data.post))
       .catch((err) => console.log(err));
-  }, []);
+  }, [filter]);
+
   const breadcrumbs = [
     <Link underline="hover" key="1" color="inherit" to={`/category/`}>
       ประเภทงานทั้งหมด

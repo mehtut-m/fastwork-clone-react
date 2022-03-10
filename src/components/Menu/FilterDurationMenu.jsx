@@ -31,6 +31,7 @@ const FIlterDurationMenu = ({
   };
   const onSelect = (e, value) => {
     setFilterDuration(value);
+    setOpen(false);
   };
 
   function handleListKeyDown(event) {

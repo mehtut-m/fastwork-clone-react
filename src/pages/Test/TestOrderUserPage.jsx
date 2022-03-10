@@ -1,4 +1,6 @@
-// import second from '../../assets/'
+import SwipeableTextMobileStepper, {
+  images,
+} from '../../components/ImagesList/Carousel';
 import { Box, Button, FormControl, Typography, TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { OrderContext } from '../../contexts/OrderContext';
@@ -7,6 +9,7 @@ import { useLocation } from 'react-router-dom';
 import WorkReviewForm from '../../components/Form/WorkReviewForm';
 import WorkSubmitForm from '../../components/Form/WorkSubmitForm';
 import OrderLog from '../../components/Order/OrderLog';
+import RequirementCarousel from '../../components/Order/RequirementCarousel';
 
 function TestOrderUserPage({ orderItem }) {
   const { order, fetchOrderById, activeOrderDetail } = useContext(OrderContext);
@@ -35,7 +38,7 @@ function TestOrderUserPage({ orderItem }) {
   const minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
 
-  console.log(activeOrderDetail);
+  console.log('------->', activeOrderDetail);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -45,8 +48,8 @@ function TestOrderUserPage({ orderItem }) {
       setSecondsLeft(seconds);
     }, 1000);
     return () => clearTimeout(timer);
-  }, []);
-
+  }, [seconds]);
+  console.log('------------__>', activeOrderDetail);
   return (
     <>
       <Box
@@ -58,42 +61,6 @@ function TestOrderUserPage({ orderItem }) {
           mb: '1.5rem',
         }}
       >
-        <Box sx={{ mb: '1.25rem', width: '100%' }}>
-          <Typography
-            component="h2"
-            textAlign="start"
-            color="primary"
-            sx={{ fontSize: '1.25rem', mb: '.5rem' }}
-          >
-            รายละเอียดการจ้างงาน
-          </Typography>
-          <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
-            <Typography
-              variant="p"
-              color="initial"
-              textAlign="start"
-              sx={{ width: '100%' }}
-            >
-              ความต้องการของผู้จ้าง : {activeOrderDetail?.requirement}
-            </Typography>
-            <Typography
-              variant="p"
-              color="initial"
-              textAlign="start"
-              sx={{ width: '100%' }}
-            >
-              เบอร์โทรศัพท์ติดต่อ : {orderItem?.seller.telephoneNo}
-            </Typography>
-            <Typography
-              variant="p"
-              color="initial"
-              textAlign="start"
-              sx={{ width: '100%' }}
-            >
-              อีเมล : {orderItem?.seller.email}
-            </Typography>
-          </Box>
-        </Box>
         {activeOrderDetail.status === 'REVIEW' && isFreelancePath && (
           <Box
             sx={{
@@ -179,6 +146,55 @@ function TestOrderUserPage({ orderItem }) {
             นาที {secondsLeft} วินาที
           </Typography>
         )}
+
+        <Box sx={{ mb: '1.25rem', width: '100%' }}>
+          <Typography
+            component="h2"
+            textAlign="start"
+            color="primary"
+            sx={{ fontSize: '1.25rem', mb: '.5rem' }}
+          >
+            รายละเอียดการจ้างงาน
+          </Typography>
+          <Box sx={{ display: 'flex' }}>
+            <Box
+              sx={{
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                maxWidth: '350px',
+              }}
+            >
+              <Typography
+                variant="p"
+                color="initial"
+                textAlign="start"
+                sx={{ width: '100%' }}
+              >
+                ความต้องการของผู้จ้าง : {activeOrderDetail?.requirement}
+              </Typography>
+              <Typography
+                variant="p"
+                color="initial"
+                textAlign="start"
+                sx={{ width: '100%' }}
+              >
+                เบอร์โทรศัพท์ติดต่อ : {orderItem?.seller.telephoneNo}
+              </Typography>
+              <Typography
+                variant="p"
+                color="initial"
+                textAlign="start"
+                sx={{ width: '100%' }}
+              >
+                อีเมล : {orderItem?.seller.email}
+              </Typography>
+            </Box>
+            <Box className="requirement-carousel">
+              <RequirementCarousel img={activeOrderDetail?.OrderImages} />
+            </Box>
+          </Box>
+        </Box>
         {activeOrderDetail.status === 'REVIEW' && !isFreelancePath && (
           <WorkReviewForm orderItem={orderItem} />
         )}
