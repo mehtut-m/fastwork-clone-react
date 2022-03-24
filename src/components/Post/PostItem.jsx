@@ -29,7 +29,7 @@ function PostItem({ item }) {
           sx={{ height: '187px' }}
           component="img"
           height="140"
-          image={item.PostImages[0].url}
+          image={item?.PostImages[0]?.url}
           alt="PostImage"
         />
 
@@ -59,16 +59,12 @@ function PostItem({ item }) {
           </Typography>
         </CardContent>
 
-<<<<<<< HEAD
-        <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
-=======
         <CardActions
           sx={{
             display: 'flex',
             justifyContent: 'space-between',
           }}
         >
->>>>>>> 6dfe0f0d1f3e4fc378d59cc3c31988f43654d54a
           <Box sx={{ display: 'flex', padding: '0' }}>
             <StarIcon sx={{ color: '#FBBC05', fontSize: '1.25rem' }} />
             <Typography>4.86 (78)</Typography>
