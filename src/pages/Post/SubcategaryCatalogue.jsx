@@ -6,10 +6,17 @@ import Catalogue from '../../components/Post/Catalogue';
 import NavOrderWrapper from '../../components/NavOrder/NavOrderWrapper';
 import { Box } from '@mui/system';
 
+const initialFilter = {
+  min: 0,
+  max: '',
+  duration: '',
+};
+
 function SubcategaryCatalogue() {
   const { id } = useParams();
   const [posts, setPosts] = useState([]);
   const [categoryInfo, setCategoryInfo] = useState({});
+  const [filter, setFilter] = useState(initialFilter);
 
   useEffect(() => {
     getPostBySubCategories(id)
@@ -38,6 +45,7 @@ function SubcategaryCatalogue() {
         posts={posts}
         categoryInfo={categoryInfo}
         setPosts={setPosts}
+        filter={filter}
       />
     </>
   );

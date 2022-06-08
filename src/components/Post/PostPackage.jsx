@@ -17,7 +17,7 @@ function PostPackage({ post }) {
         border: '1px solid gray',
         height: '100%',
         position: 'sticky',
-        top: '5.5rem',
+        top: '8.5rem',
       }}
     >
       <Box

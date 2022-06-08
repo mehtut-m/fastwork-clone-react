@@ -29,13 +29,15 @@ function OrderDetails() {
     },
   ];
   const activeStep = steps.find((el) => el.name === orderItem?.status);
-
+  const bgColor = !isFreelance
+    ? '#000'
+    : 'linear-gradient(90deg,#8200d6, #bc4cee);';
   return (
     <Box>
       {/* Header */}
       <Box
         sx={{
-          backgroundColor: '#000',
+          background: bgColor,
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',

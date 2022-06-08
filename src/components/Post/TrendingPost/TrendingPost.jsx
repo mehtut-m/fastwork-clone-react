@@ -6,7 +6,7 @@ import PostItem from '../PostItem';
 
 function TrendingPost({ categoryId }) {
   const [posts, setPosts] = useState([]);
-
+  const trendingPost = posts.slice(0, 5);
   useEffect(() => {
     getPostBySubCategories(categoryId)
       .then((res) => setPosts(res.data.post))
@@ -46,7 +46,7 @@ function TrendingPost({ categoryId }) {
       </Typography>
 
       <Box sx={{ display: 'flex', gap: '.5rem' }}>
-        {posts.map((item) => (
+        {trendingPost.map((item) => (
           <PostItem item={item} key={item.id} />
         ))}
       </Box>

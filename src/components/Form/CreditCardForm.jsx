@@ -55,8 +55,8 @@ function CreditCardForm({ pkg, order }) {
               showConfirmButton: false,
               timer: 1750,
             });
-            // clearOrder();
-            // setTimeout(() => navigate('/'), 2000);
+            clearOrder();
+            setTimeout(() => navigate('/'), 2000);
           } else {
             Swal.fire({
               position: 'top-center',

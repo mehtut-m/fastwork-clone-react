@@ -7,6 +7,10 @@ import OrderSummaryItem from './OrderSummaryItem';
 
 function OrderListSideBar() {
   const { order, setActiveItem } = useContext(OrderContext);
+  const newOrder = [...order].sort((a, b) => {
+    return new Date(a.createdAt) - new Date(b.createdAt);
+    console.log(a);
+  });
 
   return (
     <Box
@@ -37,7 +41,7 @@ function OrderListSideBar() {
           textOverflow: 'ellipsis',
         }}
       >
-        {order.map((item, index) => (
+        {newOrder.map((item, index) => (
           <OrderSummaryItem item={item} index={index} />
         ))}
       </Box>

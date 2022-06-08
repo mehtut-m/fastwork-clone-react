@@ -21,11 +21,9 @@ const initialFilter = {
 
 function Catalogue({ posts, categoryInfo, setPosts }) {
   const { id } = useParams();
-  console.log(id);
   // Paginations
   const [currentPage, setCurrentPage] = useState(1);
   const [filter, setFilter] = useState(initialFilter);
-  console.log(filter);
   const setFilterDuration = (value) => {
     setFilter({ ...filter, duration: value });
   };
@@ -59,6 +57,11 @@ function Catalogue({ posts, categoryInfo, setPosts }) {
     setCurrentPage(value);
   };
 
+  useEffect(() => {
+    submitQuery()
+      .then((res) => setPosts(res.data.post))
+      .catch((err) => console.log(err));
+  }, []);
   const breadcrumbs = [
     <Link underline="hover" key="1" color="inherit" to={`/category/`}>
       ประเภทงานทั้งหมด

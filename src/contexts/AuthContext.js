@@ -49,6 +49,7 @@ const AuthContextProvider = ({ children }) => {
 
   const logOut = () => {
     clearToken();
+    navigate('/');
     dispatch({
       type: LOGOUT,
       payload: {},
@@ -57,7 +58,6 @@ const AuthContextProvider = ({ children }) => {
       type: LOGOUT,
       payload: {},
     });
-    navigate('/', { replace: true });
   };
 
   const googleLogin = async (response) => {

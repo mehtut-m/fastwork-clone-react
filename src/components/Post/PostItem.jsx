@@ -11,7 +11,7 @@ import { formatThaiCurrency } from '../../services/currencyService';
 
 function PostItem({ item }) {
   const packageArr = item.Packages.sort((a, b) => a.price - b.price);
-
+  console.log(item);
   return (
     <Card
       sx={{
@@ -59,22 +59,15 @@ function PostItem({ item }) {
           </Typography>
         </CardContent>
 
-        <CardActions
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-          }}
-        >
+        <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Box sx={{ display: 'flex', padding: '0' }}>
             <StarIcon sx={{ color: '#FBBC05', fontSize: '1.25rem' }} />
             <Typography>4.86 (78)</Typography>
           </Box>
 
           <Box sx={{ p: '5px 4px', color: '#000', height: '50px' }}>
-            <Typography sx={{}}>เริ่มต้น</Typography>
-            <Typography sx={{}}>
-              {formatThaiCurrency(packageArr[0].price)}
-            </Typography>
+            <Typography>เริ่มต้น</Typography>
+            <Typography>{formatThaiCurrency(packageArr[0].price)}</Typography>
           </Box>
         </CardActions>
       </Link>
